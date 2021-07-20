@@ -1,10 +1,14 @@
 import React from "react";
 import { Button, Container } from "@material-ui/core";
 import { logoutUser } from "../actions/authActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const state = useSelector((state) => ({
+    auth: state.auth,
+    errors: state.errors,
+  }));
 
   return (
     <div>
