@@ -5,7 +5,7 @@ const ERROR = require("../types/errors");
 // @route   GET /api/v1/transactions
 // @access  Public
 const getTransactions = async (data) => {
-  const transactions = Transaction.find();
+  const transactions = Transaction.find().populate("owner");
 
   return transactions
 }
@@ -14,12 +14,7 @@ const getTransactions = async (data) => {
 // @route   POST /api/v1/transactions
 // @access  Public
 const addTransaction = async (data) => {
-  const newTransaction = new Transaction({
-    name: data.name,
-    note: data.note,
-    amount: data.amount,
-    category: data.category,
-  });
+  const newTransaction = new Transaction(data);
 
   return newTransaction.save()
 }
