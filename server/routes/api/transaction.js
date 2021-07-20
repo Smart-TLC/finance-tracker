@@ -3,7 +3,7 @@ const { addTransaction, getTransactions, deleteTransaction, updateTransaction } 
 
 // Get transactions endpoint
 router.get("/", (req, res) => {
-  getTransactions().then((result) => {
+  getTransactions(req.body).then((result) => {
     res.status(200).json({ 
       success: true, 
       count: result.length, 

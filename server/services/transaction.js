@@ -5,7 +5,7 @@ const ERROR = require("../types/errors");
 // @route   GET /api/v1/transactions
 // @access  Public
 const getTransactions = async (data) => {
-  const transactions = Transaction.find().populate("owner");
+  const transactions = Transaction.find({ owner: data.id }).populate("owner");
 
   return transactions
 }
