@@ -1,0 +1,22 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "category": "Entertainment",
+            "date": "14/01/2021",
+            "money": 1200
+        },
+        {
+            "id": 1,
+            "category": "Education",
+            "date": "22/02/2021",
+            "money": 1400
+        },
+        {
+            "id": 1,
+            "category": "Insurance",
+            "date": "19/12/2021",
+            "money": 1600
+        }
+    ]
+}
