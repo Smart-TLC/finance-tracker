@@ -67,7 +67,7 @@ export default function UserButton() {
         onClick={handleClick}
       >
         <PermIdentityIcon />
-        <Typography variant='h7'>UserName</ Typography>
+        <Typography variant='subtitle2'>UserName</ Typography>
         <ExpandMore />
       </Button>
       <StyledMenu
