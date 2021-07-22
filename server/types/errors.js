@@ -5,6 +5,7 @@ const ERROR = {
     USER_NOT_EXIST: "User does not exist",
     PASSWORD_NOT_MATCH: "Password does not match",
     INTERNAL_ERROR: "Internal Error",
+    TRANSACTION_NOT_FOUND: "Transaction not found"
 }
 
 module.exports = ERROR;

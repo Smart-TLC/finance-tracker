@@ -23,6 +23,10 @@ const userSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  transactions: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Transaction"
+  }]
 });
 
 userSchema.methods.generatePassword = function (password) {
