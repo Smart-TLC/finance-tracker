@@ -65,7 +65,7 @@ const Login = () => {
 
   // if account is already set
   if (state.auth.isAuthenticated) {
-    history.push("/home");
+    history.push("/transaction");
   }
 
   const dispatch = useDispatch();
