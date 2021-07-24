@@ -79,14 +79,14 @@ export default function TransactionListItem(props) {
                             justifyContent="space-between"
                             alignItems="center"
                         >
-                            {/* <ButtonBase>
+                            <ButtonBase>
                                 <Typography variant="h5" color="secondary" button onClick={() => {window.location.pathname = `/category/${category}`}}>
                                     {category}
                                 </Typography>
-                            </ButtonBase> */}
-                            <Typography color="textSecondary">
+                            </ButtonBase>
+                            {/* <Typography color="textSecondary">
                                 {note}
-                            </Typography>
+                            </Typography> */}
                             <Typography variant="h4">
                                 ${money}
                             </Typography>
