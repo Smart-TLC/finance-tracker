@@ -16,7 +16,7 @@ export default function TransactionList() {
     
     return (
         <Container>
-            <Grid container spacing={3}>
+            <Grid container spacing={1}>
                 {transLists.map((transList) => (
                      <TransactionListItem transList={transList} />  
                 ))}    

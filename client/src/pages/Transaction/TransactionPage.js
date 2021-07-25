@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import TransactionList from "../../components/TransactionList/TransactionList";
-import Form02 from "../../components/Form02";
+import Form02 from "../../components/TransactionForm/Form02";
 
 const useStyles = makeStyles((theme) => ({
     root: {

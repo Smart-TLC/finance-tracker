@@ -69,6 +69,8 @@ export default function AddTransaction() {
                 id="outlined-number"
                 label="Name"
                 type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className={classes.textField}
                 InputLabelProps={{
                   shrink: true,
@@ -92,7 +94,6 @@ export default function AddTransaction() {
               <TextField
                 value={cost}
                 onChange={(e) => setCost(e.target.value)}
-                className={classes.field}
                 label="Cost"
                 className={classes.textField}
                 type="number"
@@ -112,9 +113,9 @@ export default function AddTransaction() {
                   <MenuItem value="education">Education</MenuItem>
                   <MenuItem value="shopping">Shopping</MenuItem>
                   <MenuItem value="insurance">Insurance</MenuItem>
-                  <MenuItem value="emergency">Meal</MenuItem>
+                  <MenuItem value="meal">Meal</MenuItem>
                   <MenuItem value="emergency">Emergency</MenuItem>
-                  <MenuItem value="emergency">Other</MenuItem>
+                  <MenuItem value="other">Other</MenuItem>
                 </Select>
               </FormControl>
             </DialogContent>
@@ -124,7 +125,6 @@ export default function AddTransaction() {
                 Additional Details
               </DialogContentText>
               <TextField
-                className={classes.field}
                 label="Note"
                 variant="outlined"
                 multiline
