@@ -5,7 +5,7 @@ const ERROR = require("../types/errors");
 // @route   GET /api/v1/transactions
 // @access  Public
 const getTransactions = async (data) => {
-  const transactions = Transaction.find({ owner: data.id }).populate("owner");
+  const transactions = Transaction.find({ owner: data.id });
 
   return transactions
 }
@@ -34,14 +34,14 @@ const deleteTransaction = async (data) => {
 
 }
 
-const updateTransaction = async (data, updatedData) => {
+const updateTransaction = async (data) => {
   const transaction = await Transaction.findById(data.id);
 
   if(!transaction) {
     throw new Error(ERROR.TRANSACTION_NOT_FOUND);
   }
 
-  return Transaction.findByIdAndUpdate(data.id, updatedData, { new: true })
+  return Transaction.findByIdAndUpdate(data.id, data, { new: true })
 
 }
 

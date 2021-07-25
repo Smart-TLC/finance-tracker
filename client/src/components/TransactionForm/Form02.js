@@ -1,22 +1,12 @@
-import React, {useState} from 'react';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
 import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import Tooltip from '@material-ui/core/Tooltip';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import { makeStyles, Button, Fab, Tooltip, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core';
+import { addTransaction } from "../../actions/transactionAction";
+import { useFormik } from "formik";
+
+import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
-    
     absolute: {
       position: 'absolute',
       bottom: theme.spacing(1),
@@ -36,11 +26,28 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddTransaction() {
   const classes = useStyles();  
-  const [open, setOpen] = useState(false);
-  const [name, setName] = useState('');
-  const [cost, setCost] = useState();
-  const [category, setCategory] = useState('');
 
+  const dispatch = useDispatch();
+  const state = useSelector((state) => ({
+    auth: state.auth,
+    errors: state.errors,
+    data: state.data,
+  }));
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      note: "",
+      amount: "",
+      category: "",
+    },
+    onSubmit: (values) => {
+      dispatch(addTransaction({...values, owner: state.auth.user.id}));
+    },
+  });
+  
+  // open action of form 
+  const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -57,91 +64,98 @@ export default function AddTransaction() {
             </Fab>
         </Tooltip>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title" align="center">
-              <h3 style={{color: "white", fontFamily: "Arial", backgroundColor: "deeppink", padding: 4,}}>EXPENSE ADDITION FORM</h3>
-            </DialogTitle>
-            <DialogContent>
-              <DialogContentText style={{color: "navy", fontWeight: 'bold'}}>
-                  Information
-              </DialogContentText>
+            <form onSubmit={formik.handleSubmit} >
+                <DialogTitle id="form-dialog-title" align="center">
+                  <h3 style={{color: "white", fontFamily: "Arial", backgroundColor: "deeppink", padding: 4,}}>EXPENSE ADDITION FORM</h3>
+                </DialogTitle>
+                <DialogContent>
+                  <DialogContentText style={{color: "navy", fontWeight: 'bold'}}>
+                      Information
+                  </DialogContentText>
 
-              <TextField
-                id="outlined-number"
-                label="Name"
-                type="text"
-                className={classes.textField}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                variant="outlined"
-        />
-              <TextField
-                variant="outlined"
-                id="date"
-                label="Date"
-                type="date"
-                defaultValue=""
-                className={classes.textField}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </DialogContent>
+                  <TextField
+                    id="name"
+                    name="name"
+                    label="Name"
+                    type="text"
+                    className={classes.textField}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    variant="outlined"
+                    onChange={formik.handleChange}
+                  />
+                  <TextField
+                    variant="outlined"
+                    id="spentAt"
+                    name="spentAt"
+                    label="Date"
+                    type="date"
+                    defaultValue=""
+                    className={classes.textField}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onChange={formik.handleChange}
+                  />
+                </DialogContent>
 
-            <DialogContent>
-              <TextField
-                value={cost}
-                onChange={(e) => setCost(e.target.value)}
-                className={classes.field}
-                label="Cost"
-                className={classes.textField}
-                type="number"
-                variant="outlined"
+                <DialogContent>
+                  <TextField
+                    id="amount"
+                    label="Cost"
+                    name="amount"
+                    className={classes.textField}
+                    type="number"
+                    variant="outlined"
+                    onChange={formik.handleChange}
+                  />
+                  <FormControl variant="outlined" className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-outlined-label">Category</InputLabel>
+                    <Select
+                      native 
+                      id="category"
+                      name="category"
+                      label="Category"
+                      onChange={formik.handleChange}
+                    >
+                      <option value="entertainment">Entertainment</option>
+                      <option value="education">Education</option>
+                      <option value="shopping">Shopping</option>
+                      <option value="insurance">Insurance</option>
+                      <option value="meal">Meal</option>
+                      <option value="emergency">Emergency</option>
+                      <option value="other">Other</option>
+                    </Select>
+                  </FormControl>
+                </DialogContent>
+
+                <DialogContent>
+                  <DialogContentText style={{color: "navy", fontWeight: 'bold'}}>
+                    Additional Details
+                  </DialogContentText>
+                  <TextField
+                    className={classes.field}
+                    id="note"
+                    name="note"
+                    label="Note"
+                    variant="outlined"
+                    multiline
+                    rows={5}
+                    fullWidth
+                    onChange={formik.handleChange}
+                  />
+                </DialogContent>
                 
-              />
-              <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">Category</InputLabel>
-                <Select
-                  labelId="demo-simple-select-outlined-label"
-                  id="demo-simple-select-outlined"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                  label="Category"
-                >
-                  <MenuItem value="entertianment">Entertainment</MenuItem>
-                  <MenuItem value="education">Education</MenuItem>
-                  <MenuItem value="shopping">Shopping</MenuItem>
-                  <MenuItem value="insurance">Insurance</MenuItem>
-                  <MenuItem value="emergency">Meal</MenuItem>
-                  <MenuItem value="emergency">Emergency</MenuItem>
-                  <MenuItem value="emergency">Other</MenuItem>
-                </Select>
-              </FormControl>
-            </DialogContent>
-
-            <DialogContent>
-              <DialogContentText style={{color: "navy", fontWeight: 'bold'}}>
-                Additional Details
-              </DialogContentText>
-              <TextField
-                className={classes.field}
-                label="Note"
-                variant="outlined"
-                multiline
-                rows={5}
-                fullWidth
-              />
-            </DialogContent>
-            
-            <DialogActions>
-              <Button onClick={handleClose} color="primary">
-                  Cancel
-              </Button>
-              <Button onClick={handleClose} color="primary">
-                  Save
-              </Button>
-            </DialogActions>
-
+                <DialogActions>
+                  <Button onClick={handleClose} color="primary">
+                      Cancel
+                  </Button>
+                  <Button type="submit" onClick={handleClose} color="primary">
+                      Save
+                  </Button>
+                </DialogActions>
+            </form>
         </Dialog>
     </div>
   );
