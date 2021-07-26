@@ -6,20 +6,19 @@ import TransactionList from "../../components/TransactionList/TransactionList";
 import Form02 from "../../components/TransactionForm/Form02";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        //...theme.typography.button,
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(1),
-        marginLeft: 75,
-    },
-    title: {
-        color: 'secondary',
-        
-    }
+  root: {
+    //...theme.typography.button,
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(1),
+    marginLeft: 75,
+  },
+  title: {
+    color: "secondary",
+  },
 }));
 
 export default function TransactionPage() {
-    const classes = useStyles();
+  const classes = useStyles();
 
     return (
         <div className={classes.root}>
@@ -30,6 +29,5 @@ export default function TransactionPage() {
             <TransactionList />
             <Form02 />
         </div>
-    )
+  );
 }
-

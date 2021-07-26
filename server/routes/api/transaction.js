@@ -3,7 +3,7 @@ const { addTransaction, getTransactions, deleteTransaction, updateTransaction } 
 
 // Get transactions endpoint
 router.get("/", (req, res) => {
-  getTransactions(req.body).then((result) => {
+  getTransactions(req.query).then((result) => {
     res.status(200).json({ 
       success: true, 
       count: result.length, 
@@ -42,8 +42,8 @@ router.post("/", (req, res) => {
 })
 
 // Delete transactions
-router.delete("/:id", (req, res) => {
-  deleteTransaction(req.params).then((result) => {
+router.delete("/", (req, res) => {
+  deleteTransaction(req.query).then((result) => {
     res.status(200).json({
       success: true,
       data: {}
@@ -57,8 +57,8 @@ router.delete("/:id", (req, res) => {
 })
 
 // Update transactions
-router.patch("/:id", (req, res) => {
-  updateTransaction(req.params, req.body).then((result) => {
+router.patch("/", (req, res) => {
+  updateTransaction(req.body).then((result) => {
     res.status(200).json({
       success: true,
       data: result

@@ -9,7 +9,7 @@ const TransactionSchema = new mongoose.Schema({
   note: {
     type: String,
     trim: true,
-    required: [true, 'Please add some note']
+    // required: [true, 'Please add some note']
   },
   amount: {
     type: Number,
@@ -22,6 +22,10 @@ const TransactionSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  spentAt: {
+    type: String,
+    required: [true, 'Please add date to spend']
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,

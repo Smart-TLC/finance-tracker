@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
+import { getTransactions, deleteTransaction, updateTransaction } from "../../actions/transactionAction";
+import { useDispatch, useSelector } from "react-redux";
 import "../../index.css";
 import { 
     Grid,
@@ -38,14 +40,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TransactionListItem(props) {
-    const {id, name, category, date, money, note} = props.transList;
+    const {_id, name, category, spentAt, amount, note} = props.item;
     const classes = useStyles();
     const [expanded, setExpanded] = useState(false);
     const [setting, setSetting] = useState(false);
+    const dispatch = useDispatch();
+    const state = useSelector((state) => ({
+        auth: state.auth,
+        errors: state.errors,
+        data: state.data,
+    }));
+
+    // useEffect(() => {
+    //     dispatch(getTransactions(state.auth.user.id));
+    //   }, []);
 
     console.log(setting);
     return (
-            <Grid item key={id} xs={12}>
+            <Grid item key={_id} xs={12}>
                 <Card className={classes.card}>
                     <Grid 
                         container
@@ -68,7 +80,7 @@ export default function TransactionListItem(props) {
                             </Grid>
                             <Grid>
                                 <Typography variant="h6" color="textSecondary" className={clsx(expanded && classes.hide)}>
-                                    {date}
+                                    {spentAt}
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -80,7 +92,7 @@ export default function TransactionListItem(props) {
                         >
                             <Grid item>
                                 <Typography variant="h4" color="primary">
-                                    ${money}
+                                    ${amount}
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -109,7 +121,12 @@ export default function TransactionListItem(props) {
                                     <IconButton size="small" onClick={() => {setSetting(!setting)}}>
                                         <EditOutlinedIcon />
                                     </IconButton>
-                                    <IconButton size="small">
+                                    <IconButton 
+                                        size="small" 
+                                        onClick={(e) => {
+                                        e.preventDefault();
+                                        dispatch(deleteTransaction(_id))
+                                    }}>
                                         <DeleteOutlinedIcon />
                                     </IconButton>
                                 </ButtonGroup>
@@ -119,7 +136,7 @@ export default function TransactionListItem(props) {
                     <Collapse in={expanded} timeout="auto" >
                         <CardContent>
                             <Typography  variant="body2" color="secondary">
-                                {date}
+                                {spentAt}
                             </Typography>
                             <Typography>
                                 {note}
