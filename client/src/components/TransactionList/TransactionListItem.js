@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
-import { getTransactions, deleteTransaction, updateTransaction } from "../../actions/transactionAction";
-import { useDispatch, useSelector } from "react-redux";
+import { deleteTransaction, updateTransaction } from "../../actions/transactionAction";
+import { useDispatch } from "react-redux";
 import "../../index.css";
 import { 
     Grid,
@@ -12,7 +12,7 @@ import {
     IconButton,
     ButtonBase,
     ButtonGroup,
-    Zoom,
+    Fade,
 } from "@material-ui/core";
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
     btnColor: {
         // display: 'none',
-        backgroundColor: "#33eaff",
+        backgroundColor: "#ffeb3b",
     },
     vert: {
         "&:hover": {
@@ -45,20 +45,10 @@ export default function TransactionListItem(props) {
     const [expanded, setExpanded] = useState(false);
     const [setting, setSetting] = useState(false);
     const dispatch = useDispatch();
-    const state = useSelector((state) => ({
-        auth: state.auth,
-        errors: state.errors,
-        data: state.data,
-    }));
-
-    // useEffect(() => {
-    //     dispatch(getTransactions(state.auth.user.id));
-    //   }, []);
-
-    console.log(setting);
+    
     return (
             <Grid item key={_id} xs={12}>
-                <Card className={classes.card}>
+                <Card className="card">
                     <Grid 
                         container
                         spacing={1}
@@ -66,7 +56,10 @@ export default function TransactionListItem(props) {
                         <Grid item xs={9} container 
                             justifyContent="flex-start"
                             alignItems="center"
-                            onClick={() => {setExpanded(!expanded)}}>
+                            onClick={() => {
+                                if(!expanded){setSetting(false)} 
+                                setExpanded(!expanded)
+                            }}>
                             <Grid item xs={1}></Grid>
                             <Grid item xs={7}>
                                 <Typography variant="h5" color="textPrimary">
@@ -105,13 +98,17 @@ export default function TransactionListItem(props) {
                             <Grid item >
                                 <IconButton 
                                     // className={classes.vert}
-                                    onClick={() => {setSetting(!setting)}}
+                                    onClick={() => {
+                                        setSetting(!setting) 
+                                        setExpanded(false)
+                                        }
+                                    }
                                     className={clsx(setting && classes.hide)}
                                 >
                                     <MoreVertIcon/>
                                 </IconButton>
                             </Grid>
-                                <Zoom in={setting} timeout="auto" unmountOnExit>
+                                <Fade in={setting} unmountOnExit>
                                 <ButtonGroup
                                     orientation="vertical"
                                     color="primary"
@@ -124,13 +121,14 @@ export default function TransactionListItem(props) {
                                     <IconButton 
                                         size="small" 
                                         onClick={(e) => {
-                                        e.preventDefault();
+                                        e.preventDefault()
                                         dispatch(deleteTransaction(_id))
+                                        setSetting(false)
                                     }}>
                                         <DeleteOutlinedIcon />
                                     </IconButton>
                                 </ButtonGroup>
-                                </Zoom>
+                                </Fade>
                             </Grid>
                     </Grid>
                     <Collapse in={expanded} timeout="auto" >
