@@ -1,6 +1,9 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
-import Typography from '@material-ui/core/Typography';
+import "../../index.css";
+import {
+    Typography,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
 
@@ -23,7 +26,7 @@ export default function CategoryDetailsPage() {
     return (
         <div className={classes.root}>
             <Sidebar />
-            <Typography variant='h3' className={classes.title}>
+            <Typography variant='h3'>
                 {cate} Page
             </Typography>
         </div>

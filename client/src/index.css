@@ -12,3 +12,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.card:hover {
+  /* transform: scale(1.1); */
+  background-color: #00b0ff;
+  cursor: pointer;
+}
+

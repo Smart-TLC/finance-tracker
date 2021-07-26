@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   //   }),
   // },
   menuButton: {
-    marginRight: 16,
+    marginRight: 15,
   },
   title: {
     flexGrow: 1,
@@ -126,7 +126,7 @@ export default function Sidebar() {
         }}
       >
         <div className={classes.toolbar}>
-          <Avatar className={classes.logoImage} button onClick={() => {window.location.pathname = "/home"}} />
+          <Avatar/>
         </div>
         <Lists />
       </Drawer>
