@@ -11,7 +11,7 @@ import { getTransactions, deleteTransaction } from "../../actions/transactionAct
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: theme.palette.success.main,
         padding: theme.spacing(1),
         marginLeft: 75,
     },

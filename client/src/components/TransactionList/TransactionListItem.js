@@ -44,14 +44,14 @@ export default function TransactionListItem(props) {
                         container
                         spacing={1}
                     >
-                        <Grid item xs={9} container 
+                        <Grid item xs={10} container 
                             justifyContent="flex-start"
                             alignItems="center"
                             onClick={() => {
                                 setExpanded(!expanded)
                             }}
                         >
-                            <Grid item xs={8} className="name">
+                            <Grid item xs={6} className="name">
                                 <Typography variant="h5" color="textPrimary" >
                                     {name}
                                 </Typography>
@@ -61,32 +61,25 @@ export default function TransactionListItem(props) {
                                     </Typography>
                                 </ButtonBase>
                             </Grid>
-                            <Grid>
+                            <Grid item xs={4}>
                                 <Typography variant="h6" color="textSecondary" className={clsx(expanded && classes.hide)}>
                                     {spentAt}
                                 </Typography>
                             </Grid>
-                        </Grid>
-                        <Grid item xs={1}
-                            container
-                            direction="row"
-                            justifyContent="flex-start"
-                            alignItems="center"
-                        >
-                            <Grid item>
+                            <Grid item xs={2}>
                                 <Typography variant="h4" color="secondary" className="amount">
                                     ${amount}
                                 </Typography>
                             </Grid>
                         </Grid>
-                            <Grid 
-                                item xs={2} 
-                                container
-                                justifyContent="flex-end"
-                                alignItems="center"
-                            >
-                              <SettingHover _id={_id}/>
-                            </Grid>
+                        <Grid 
+                            item xs={2} 
+                            container
+                            justifyContent="flex-end"
+                            alignItems="center"
+                        >
+                            <SettingHover _id={_id}/>
+                        </Grid>
                     </Grid>
                     <Divider variant="middle" />
                     <Collapse in={expanded} timeout="auto" >
