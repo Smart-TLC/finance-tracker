@@ -13,17 +13,13 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1),
         marginLeft: 75,
     },
-    title: {
-        color: 'secondary',
-        
-    }
 }));
 
 export default function CategoryDetailsPage() {
     const { cate } = useParams(); 
     const classes = useStyles();
 
-    return (
+    return (            
         <div className={classes.root}>
             <Sidebar />
             <Typography variant='h3'>

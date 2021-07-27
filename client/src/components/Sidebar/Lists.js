@@ -5,13 +5,23 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import {ListItemData} from './ListItemData';
 import CategoryList from '../Category/CategoryList';
+import {makeStyles} from '@material-ui/core/styles';
 
-function Lists() {
+const useStyles = makeStyles((theme) => ({
+  list: {
+    color: theme.palette.secondary.dark,
+  }
+
+}));
+
+export default function Lists() {
+  const classes = useStyles();
+
     return (
         <List>
           {ListItemData.map((text, index) => (
             <ListItem key={index} button onClick={() => {window.location.pathname = text.link}}>
-              <ListItemIcon>{text.icon}</ListItemIcon>
+              <ListItemIcon className={classes.list}>{text.icon}</ListItemIcon>
               <ListItemText primary={text.title} />
             </ListItem>
           ))}
@@ -19,5 +29,3 @@ function Lists() {
         </List>
     )
 }
-
-export default Lists;

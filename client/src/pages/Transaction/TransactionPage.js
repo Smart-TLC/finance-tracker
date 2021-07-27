@@ -1,9 +1,7 @@
 import React from 'react'
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import TransactionList from "../../components/TransactionList/TransactionList";
-import Form02 from "../../components/TransactionForm/Form02";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,11 +21,7 @@ export default function TransactionPage() {
     return (
         <div className={classes.root}>
             <Sidebar />
-            <Typography variant='h3' className={classes.title}>
-                Transaction Page
-            </Typography>
             <TransactionList />
-            <Form02 />
         </div>
   );
 }

@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     nested: {
         paddingLeft: theme.spacing(4),
     },
+    list: {
+        color: theme.palette.secondary.dark,
+    },
 }));
 
 export default function CategoryList() {
@@ -23,7 +26,7 @@ export default function CategoryList() {
     return (
         <List>
             <ListItem button onClick={() => setOpen(!open)}>
-              <ListItemIcon> <CardTravelIcon/> </ListItemIcon>
+              <ListItemIcon className={classes.list}> <CardTravelIcon/> </ListItemIcon>
               <ListItemText primary="Category" />
               {open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
@@ -35,7 +38,7 @@ export default function CategoryList() {
                         button onClick={() => {window.location.pathname = text.link}}
                         className={classes.nested}
                     >
-                        <ListItemIcon>{text.icon}</ListItemIcon>
+                        <ListItemIcon className={classes.list}>{text.icon}</ListItemIcon>
                         <ListItemText primary={text.title} />
                     </ListItem>
                 ))}

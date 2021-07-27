@@ -14,7 +14,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Lists from './Lists';
 import UserButton from './UserButton';
 
-const drawerWidth = 240;
+const drawerWidth = 215;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,15 +26,8 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    backgroundColor: theme.palette.secondary.dark,
   },
-  // appBarShift: {
-  //   marginLeft: drawerWidth,
-  //   width: `calc(100% - ${drawerWidth}px)`,
-  //   transition: theme.transitions.create(['width', 'margin'], {
-  //     easing: theme.transitions.easing.sharp,
-  //     duration: theme.transitions.duration.enteringScreen,
-  //   }),
-  // },
   menuButton: {
     marginRight: 15,
   },
@@ -109,7 +102,7 @@ export default function Sidebar() {
           <Typography className={classes.title} variant="h6" noWrap>
                 Finance Tracker
           </Typography>
-          <UserButton />
+          <UserButton/>
         </Toolbar>
       </AppBar>
       <Drawer

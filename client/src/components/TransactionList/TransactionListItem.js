@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
-import { deleteTransaction, updateTransaction } from "../../actions/transactionAction";
-import { useDispatch } from "react-redux";
 import "../../index.css";
 import { 
     Grid,
@@ -9,15 +7,11 @@ import {
     CardContent,
     Collapse,
     Typography,
-    IconButton,
     ButtonBase,
-    ButtonGroup,
-    Fade,
+    Divider,
 } from "@material-ui/core";
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import {makeStyles} from "@material-ui/core/styles";
+import SettingHover from './SettingHover';
 
 const useStyles = makeStyles((theme) => ({
     hide: {
@@ -25,12 +19,11 @@ const useStyles = makeStyles((theme) => ({
     },
     card : {
         "&:hover": {
-            backgroundColor: "#00b0ff",
+            backgroundColor: theme.palette.primary.light,
         },
     },
     btnColor: {
-        // display: 'none',
-        backgroundColor: "#ffeb3b",
+        backgroundColor: theme.palette.secondary.dark,
     },
     vert: {
         "&:hover": {
@@ -43,12 +36,10 @@ export default function TransactionListItem(props) {
     const {_id, name, category, spentAt, amount, note} = props.item;
     const classes = useStyles();
     const [expanded, setExpanded] = useState(false);
-    const [setting, setSetting] = useState(false);
-    const dispatch = useDispatch();
     
     return (
             <Grid item key={_id} xs={12}>
-                <Card className="card">
+                <Card className={classes.card}>
                     <Grid 
                         container
                         spacing={1}
@@ -57,12 +48,11 @@ export default function TransactionListItem(props) {
                             justifyContent="flex-start"
                             alignItems="center"
                             onClick={() => {
-                                if(!expanded){setSetting(false)} 
                                 setExpanded(!expanded)
-                            }}>
-                            <Grid item xs={1}></Grid>
-                            <Grid item xs={7}>
-                                <Typography variant="h5" color="textPrimary">
+                            }}
+                        >
+                            <Grid item xs={8} className="name">
+                                <Typography variant="h5" color="textPrimary" >
                                     {name}
                                 </Typography>
                                 <ButtonBase>
@@ -80,11 +70,11 @@ export default function TransactionListItem(props) {
                         <Grid item xs={2}
                             container
                             direction="row"
-                            justifyContent="flex-end"
+                            justifyContent="flex-start"
                             alignItems="center"
                         >
                             <Grid item>
-                                <Typography variant="h4" color="primary">
+                                <Typography variant="h4" color="secondary" className="amount">
                                     ${amount}
                                 </Typography>
                             </Grid>
@@ -95,42 +85,10 @@ export default function TransactionListItem(props) {
                                 justifyContent="flex-end"
                                 alignItems="center"
                             >
-                            <Grid item >
-                                <IconButton 
-                                    // className={classes.vert}
-                                    onClick={() => {
-                                        setSetting(!setting) 
-                                        setExpanded(false)
-                                        }
-                                    }
-                                    className={clsx(setting && classes.hide)}
-                                >
-                                    <MoreVertIcon/>
-                                </IconButton>
-                            </Grid>
-                                <Fade in={setting} unmountOnExit>
-                                <ButtonGroup
-                                    orientation="vertical"
-                                    color="primary"
-                                    variant="contained"
-                                    className={classes.btnColor}
-                                > 
-                                    <IconButton size="small" onClick={() => {setSetting(!setting)}}>
-                                        <EditOutlinedIcon />
-                                    </IconButton>
-                                    <IconButton 
-                                        size="small" 
-                                        onClick={(e) => {
-                                        e.preventDefault()
-                                        dispatch(deleteTransaction(_id))
-                                        setSetting(false)
-                                    }}>
-                                        <DeleteOutlinedIcon />
-                                    </IconButton>
-                                </ButtonGroup>
-                                </Fade>
+                              <SettingHover _id={_id}/>
                             </Grid>
                     </Grid>
+                    <Divider variant="middle" />
                     <Collapse in={expanded} timeout="auto" >
                         <CardContent>
                             <Typography  variant="body2" color="secondary">

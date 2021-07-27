@@ -120,6 +120,7 @@ export default function AddTransaction() {
                       label="Category"
                       onChange={formik.handleChange}
                     >
+                      <option value="none">None</option>
                       <option value="entertainment">Entertainment</option>
                       <option value="education">Education</option>
                       <option value="shopping">Shopping</option>

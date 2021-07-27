@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core';
 import { getTransactions } from "../../actions/transactionAction";
 import { useDispatch, useSelector } from "react-redux";
+import Form02 from "../TransactionForm/Form02"
 
 export default function TransactionList() {
     const dispatch = useDispatch();
@@ -21,11 +22,14 @@ export default function TransactionList() {
       }, []);
 
     return (
-        <Container>
-            <Grid container spacing={1} className="container">
+        <Container className="scrollbar scrollbar-primary">
+            <Grid container spacing={2} className="force-overflow">
                 {state.data.transactions.map((item, id) => (
                      <TransactionListItem item={item} />  
                 ))}    
+            </Grid>
+            <Grid>
+                <Form02 />
             </Grid>
         </Container>
     )
