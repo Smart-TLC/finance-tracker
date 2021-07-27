@@ -4,7 +4,6 @@ import {
     IconButton,
     Grid,
     Slide,
-    Zoom,
 } from '@material-ui/core';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
@@ -41,42 +40,39 @@ export default function SettingHover(props) {
 
     return (
     <div>
-    <Grid item>
-        <Zoom
-            id="mouse-over-popover"
-            in={!open}
-            unmountOnExit
-        >
+    <Grid item container 
+        direction="row"
+    >
             <IconButton 
                 aria-owns={open ? 'mouse-over-popover' : undefined}
                 aria-haspopup="true"
-                onMouseEnter={handlePopoverOpen} 
+                onClick={handlePopoverOpen} 
             >
                 <MoreVertIcon/>
-            </IconButton>
-        </Zoom>
+            </IconButton> 
         <Slide
             id="mouse-over-popover"
             in={open}
             unmountOnExit
-            direction="right"
+            direction="left"
         >
             <ButtonGroup
-                orientation="vertical"
                 color="primary"
-                variant="contained"
-                className={classes.btnColor}
+                // variant="container"
+                // className={classes.btnColor}
                 onMouseLeave={handlePopoverClose}
+                size='medium'
+                fullHeight={true}
             > 
                 <IconButton onClick={handlePopoverClose}>
-                    <EditOutlinedIcon fontSize="small" />
+                    <EditOutlinedIcon fontSize="large"/>
                 </IconButton>
                 <IconButton 
                     onClick={(e) => {
                         e.preventDefault()
                         dispatch(deleteTransaction(_id))
                     }}>
-                    <DeleteOutlinedIcon fontSize="small"/>
+                    <DeleteOutlinedIcon fontSize="large"/>
                 </IconButton>
             </ButtonGroup>
         </Slide>

@@ -23,7 +23,7 @@ export default function TransactionList() {
 
     return (
         <Container className="scrollbar scrollbar-primary">
-            <Grid container spacing={2} className="force-overflow">
+            <Grid container spacing={1} className="force-overflow">
                 {state.data.transactions.map((item, id) => (
                      <TransactionListItem item={item} />  
                 ))}    

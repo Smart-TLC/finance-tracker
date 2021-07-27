@@ -67,7 +67,7 @@ export default function TransactionListItem(props) {
                                 </Typography>
                             </Grid>
                         </Grid>
-                        <Grid item xs={2}
+                        <Grid item xs={1}
                             container
                             direction="row"
                             justifyContent="flex-start"
@@ -80,7 +80,7 @@ export default function TransactionListItem(props) {
                             </Grid>
                         </Grid>
                             <Grid 
-                                item xs={1} 
+                                item xs={2} 
                                 container
                                 justifyContent="flex-end"
                                 alignItems="center"
