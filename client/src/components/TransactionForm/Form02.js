@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AddIcon from '@material-ui/icons/Add';
-import { makeStyles, Button, Fab, Tooltip, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core';
+import { makeStyles, Button, Fab, Tooltip, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, InputLabel, FormControl, Select } from '@material-ui/core';
 import { addTransaction } from "../../actions/transactionAction";
 import { useFormik } from "formik";
 
@@ -40,6 +40,7 @@ export default function AddTransaction() {
       note: "",
       amount: "",
       category: "",
+      spentAt: "",
     },
     onSubmit: (values) => {
       dispatch(addTransaction({...values, owner: state.auth.user.id}));
@@ -119,6 +120,7 @@ export default function AddTransaction() {
                       label="Category"
                       onChange={formik.handleChange}
                     >
+                      <option value="none">None</option>
                       <option value="entertainment">Entertainment</option>
                       <option value="education">Education</option>
                       <option value="shopping">Shopping</option>
@@ -135,7 +137,6 @@ export default function AddTransaction() {
                     Additional Details
                   </DialogContentText>
                   <TextField
-                    className={classes.field}
                     id="note"
                     name="note"
                     label="Note"

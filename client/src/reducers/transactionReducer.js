@@ -10,7 +10,7 @@ const initialState = {
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default function (state = initialState, action) {
+export default function transactionReducer(state = initialState, action) {
   switch (action.type) {
     case GET_TRANSACTION:
       return {
@@ -22,7 +22,7 @@ export default function (state = initialState, action) {
       };
     case DELETE_TRANSACTION:
       return {
-        transactions: state.transactions.filter((item) => item._id != action.payload),
+        transactions: state.transactions.filter((item) => item._id !== action.payload),
       };
     case UPDATE_TRANSACTION:
       return {

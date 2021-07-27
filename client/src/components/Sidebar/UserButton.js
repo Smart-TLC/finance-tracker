@@ -13,7 +13,7 @@ import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import Brightness2Icon from '@material-ui/icons/Brightness2';
 
 import { logoutUser } from "../../actions/authActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const StyledMenu = withStyles({
   paper: {
@@ -58,16 +58,22 @@ export default function UserButton() {
   };
 
   const dispatch = useDispatch();
+  
+  const state = useSelector((state) => ({
+    auth: state.auth,
+    errors: state.errors,
+    data: state.data,
+  }));
+
   return (
     <div>
       <Button
-        aria-controls="customized-menu"
-        aria-haspopup="true"
-        // variant="contained"
         onClick={handleClick}
       >
         <PermIdentityIcon />
-        <Typography variant='subtitle2'>UserName</ Typography>
+        <Typography variant='subtitle1'>
+            {state.auth.user.name}
+        </ Typography>
         <ExpandMore />
       </Button>
       <StyledMenu

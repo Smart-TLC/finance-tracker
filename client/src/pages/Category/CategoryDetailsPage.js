@@ -15,10 +15,6 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1),
         marginLeft: 75,
     },
-    title: {
-        color: 'secondary',
-        
-    }
 }));
 
 export default function CategoryDetailsPage() {
@@ -42,10 +38,10 @@ export default function CategoryDetailsPage() {
     const cateData = state.data.transactions.filter((transaction) => transaction.category === cate);
     console.log(cateData);
 
-    return (
+    return (            
         <div className={classes.root}>
             <Sidebar />
-            <Typography variant='h3' className={classes.title}>
+            <Typography variant='h3'>
                 {cate} Page
             </Typography>
             <div>
