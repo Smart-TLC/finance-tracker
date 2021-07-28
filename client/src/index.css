@@ -44,9 +44,9 @@ code {
   margin-bottom: 25px;
   }
 
-.force-overflow {
+/* .force-overflow {
 min-height: 450px;
-}
+} */
 
 .scrollbar-primary::-webkit-scrollbar {
   width: 12px;
