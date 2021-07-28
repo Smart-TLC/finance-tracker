@@ -82,7 +82,7 @@ export default function TransactionListItem(props) {
                         </Grid>
                     </Grid>
                     <Divider variant="middle" />
-                    <Collapse in={expanded} timeout="auto" >
+                    <Collapse in={expanded} timeout="auto" onClick={() => {setExpanded(!expanded)}}>
                         <CardContent>
                             <Typography  variant="body2" color="secondary">
                                 {spentAt}

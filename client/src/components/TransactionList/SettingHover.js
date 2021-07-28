@@ -58,11 +58,8 @@ export default function SettingHover(props) {
         >
             <ButtonGroup
                 color="primary"
-                // variant="container"
-                // className={classes.btnColor}
                 onMouseLeave={handlePopoverClose}
                 size='medium'
-                fullHeight={true}
             > 
                 <IconButton onClick={handlePopoverClose}>
                     <EditOutlinedIcon fontSize="large"/>

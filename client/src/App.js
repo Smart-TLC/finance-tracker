@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import checkTokenExpire from "./utils/checkTokenExpire";
 import store from "./store";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 
 import Login from "./components/auth/login";
@@ -15,7 +15,7 @@ import PrivateRoute from "./components/auth/privateRoute";
 export default function App() {
   checkTokenExpire();
 
-  const theme = createMuiTheme({
+  const theme = createTheme({
       palette: {
         primary: {
           main: '#26c6da',

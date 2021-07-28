@@ -67,7 +67,7 @@ export default function AddTransaction() {
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <form onSubmit={formik.handleSubmit} >
                 <DialogTitle id="form-dialog-title" align="center">
-                  <h3 style={{color: "white", fontFamily: "Arial", backgroundColor: "deeppink", padding: 4,}}>EXPENSE ADDITION FORM</h3>
+                  <h3 style={{color: "white", fontFamily: "Arial", backgroundColor: "deeppink", padding: 4}}>EXPENSE ADDITION FORM</h3>
                 </DialogTitle>
                 <DialogContent>
                   <DialogContentText style={{color: "navy", fontWeight: 'bold'}}>
