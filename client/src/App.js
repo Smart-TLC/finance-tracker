@@ -10,6 +10,7 @@ import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import TransactionPage from './pages/Transaction/TransactionPage';
 import CategoryDetailsPage from './pages/Category/CategoryDetailsPage';
+import MonthlyTransPage from './pages/MonthlyTrans/MonthlyTransPage';
 import PrivateRoute from "./components/auth/privateRoute";
 
 export default function App() {
@@ -45,6 +46,7 @@ export default function App() {
         <Route exact path="/auth/login" component={Login} />
         <Switch>
           <PrivateRoute exact path="/transaction" component={TransactionPage} />
+          <PrivateRoute exact path="/monthlytransaction" component={MonthlyTransPage} />
           <PrivateRoute path="/category/:cate" component={CategoryDetailsPage} /> 
         </Switch>
       </ThemeProvider>
