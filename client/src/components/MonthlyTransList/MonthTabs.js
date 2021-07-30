@@ -1,7 +1,5 @@
 import React from 'react'
 import {
-    Card,
-    CardContent,
     Paper,
     Grid,
     Typography,
@@ -10,6 +8,7 @@ import {
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import {makeStyles} from '@material-ui/core/styles';
+import "../../index.css";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,25 +27,32 @@ export default function MonthTabs() {
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
-                <Grid container spacing={1}
+                <Grid
+                    item
+                    container
+                    xs={12}
                     direction="row"
-                    justifyContent="flex-end"
-                    alignItems="flex-end"
+                    justifyContent="space-between"
+                    alignItems="center"
                 >
                     <Grid item xs={1}>
                         <IconButton>
                             <ArrowBackIosIcon />
                         </IconButton>
                     </Grid>
-                    <Grid item >
-                        <Grid item>
+                    <Grid item container
+                        direction="column"
+                        alignItems="center"
+                        xs={10}
+                    >
+                        <Grid item xs>
                             <Typography variant="h6">month</Typography>
                         </Grid>
-                        <Grid item>
-                            <Typography variant="h6">year</Typography>
+                        <Grid item xs>
+                            <Typography variant="body1">year</Typography>
                         </Grid>
                     </Grid>
-                    <Grid item xs={1}>
+                    <Grid item xs className='arrowforward'>
                         <IconButton>
                             <ArrowForwardIosIcon />
                         </IconButton>
