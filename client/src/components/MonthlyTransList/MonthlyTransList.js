@@ -17,12 +17,12 @@ import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        padding: 30,
+        padding: 23,
     },
     paper: {
-        padding: theme.spacing(1),
-        margin: 'auto',
-        // maxWidth: 1800,
+        padding: theme.spacing(0),
+        marginRight: 25,
+        maxWidth: 879,
         backgroundColor: theme.palette.secondary.light,
     },
 }))
@@ -100,11 +100,13 @@ export default function MonthlyTransList() {
                 </Grid>
             </Paper>
             </Grid>
-            <Grid container spacing={1} className="scrollbar scrollbar-primary">
+            <Container className="scrollbar scrollbar-primary">
+            <Grid container spacing={1}>
                 {monthData.map((item, id) => (
                      <TransactionListItem item={item} />  
                 ))}    
             </Grid>
+            </Container>
         </Container>
     )
 }

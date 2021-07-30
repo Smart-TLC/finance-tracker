@@ -59,17 +59,17 @@ export default function SettingHover(props) {
             <ButtonGroup
                 color="primary"
                 onMouseLeave={handlePopoverClose}
-                size='medium'
+                size='large'
             > 
                 <IconButton onClick={handlePopoverClose}>
-                    <EditOutlinedIcon fontSize="large"/>
+                    <EditOutlinedIcon fontSize="small"/>
                 </IconButton>
                 <IconButton 
                     onClick={(e) => {
                         e.preventDefault()
                         dispatch(deleteTransaction(_id))
                     }}>
-                    <DeleteOutlinedIcon fontSize="large"/>
+                    <DeleteOutlinedIcon fontSize="small"/>
                 </IconButton>
             </ButtonGroup>
         </Slide>

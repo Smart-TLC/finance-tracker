@@ -38,7 +38,7 @@ export default function TransactionListItem(props) {
     const [expanded, setExpanded] = useState(false);
     
     return (
-            <Grid item key={_id} xs={12}>
+            <Grid item key={_id} xs={9}>
                 <Card className={classes.card}>
                     <Grid 
                         container
@@ -52,22 +52,22 @@ export default function TransactionListItem(props) {
                             }}
                         >
                             <Grid item xs={6} className="name">
-                                <Typography variant="h5" color="textPrimary" >
+                                <Typography variant="h6" color="textPrimary" >
                                     {name}
                                 </Typography>
                                 <ButtonBase>
-                                    <Typography variant="h6" color="secondary" onClick={() => {window.location.pathname = `/category/${category}`}}>
+                                    <Typography variant="subtitle1" color="secondary" onClick={() => {window.location.pathname = `/category/${category}`}}>
                                         {category}
                                     </Typography>
                                 </ButtonBase>
                             </Grid>
                             <Grid item xs={4}>
-                                <Typography variant="h6" color="textSecondary" className={clsx(expanded && classes.hide)}>
+                                <Typography variant="subtitle1" color="textSecondary" className={clsx(expanded && classes.hide)}>
                                     {spentAt}
                                 </Typography>
                             </Grid>
                             <Grid item xs={2}>
-                                <Typography variant="h4" color="secondary" className="amount">
+                                <Typography variant="h5" color="secondary" className="amount">
                                     ${amount}
                                 </Typography>
                             </Grid>

@@ -6,14 +6,9 @@ import EventIcon from '@material-ui/icons/Event';
 
 export const ListItemData =  [
     {
-        title: "Home",
-        icon: <HomeIcon />,
-        link: "/home"
-    },
-    {
         title: "Transactions",
         icon: <AssignmentIcon />,
-        link: "/transaction"
+        link: "/home"
     },
     {
         title: "Monthly Transactions",

@@ -45,7 +45,7 @@ export default function App() {
         <Route exact path="/auth/register" component={Register} />
         <Route exact path="/auth/login" component={Login} />
         <Switch>
-          <PrivateRoute exact path="/transaction" component={TransactionPage} />
+          <PrivateRoute exact path="/home" component={TransactionPage} />
           <PrivateRoute exact path="/monthlytransaction" component={MonthlyTransPage} />
           <PrivateRoute path="/category/:cate" component={CategoryDetailsPage} /> 
         </Switch>
