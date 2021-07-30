@@ -1,0 +1,121 @@
+{
+    "transactions": [
+        {
+            "id": 1,
+            "type": "income",
+            "name": "Netflix",
+            "category": "Entertainment",
+            "date": "14/12/2021",
+            "money": 68,
+            "note" :"phí xem netflix 2 tháng"
+        },
+        {
+            "id": 2,
+            "type": "income",
+            "name": "Lottery",
+            "category": "Entertainment",
+            "date": "13/12/2021",
+            "money": 120,
+            "note": "trúng giải nhất"
+        },
+        {
+            "id": 3,
+            "type": "expense",
+            "name": "Extra classes",
+            "category": "Education",
+            "date": "22/11/2021",
+            "money": 40,
+            "note":"tiền học vẽ"
+        },
+        {
+            "id": 3,
+            "type": "income",
+            "name":"Bao hiem nhan tho",
+            "category": "Insurance",
+            "date": "19/10/2021",
+            "money": 160,
+            "note": "ngã xe, gãy mịa kính"
+        },
+        {
+            "id": 4,
+            "type": "income",
+            "name": "Cancer treatment cost",
+            "category": "Emergency",
+            "date": "15/10/2021",
+            "money": 205,
+            "note": "tiền họ hàng cho"
+        },
+        {
+            "id": 5,
+            "type": "expense",
+            "name": "School",
+            "category": "Education",
+            "date": "09/10/2021",
+            "money": 50,
+            "note": "Tiền học kì 2"
+        },
+        {
+            "id": 6,
+            "type": "income",
+            "name": "Clothes",
+            "category": "Shopping",
+            "date": "15/09/2021",
+            "money": 15,
+            "note": "mẹ cho tiền mua sắm"
+        },
+        {
+            "id": 7,
+            "type": "expense",
+            "name": "Traffic violations",
+            "category": "Entertainment",
+            "date": "10/09/2021",
+            "money": 20,
+            "note": "bốc đầu xe máy, tạt đầu oto"
+        },
+        {
+            "id": 8,
+            "type": "expense",
+            "name": "Furniture",
+            "category": "Shopping",
+            "date": "05/07/2021",
+            "money": 30,
+            "note": "mua các thiết bị, đồ dùng trong nhà"
+        },
+        {
+            "id": 9,
+            "type": "expense",
+            "name": "Extra classes",
+            "category": "Education",
+            "date": "02/07/2021",
+            "money": 23,
+            "note": "tiền học nhảy"
+        },
+        {
+            "id": 10,
+            "type": "income",
+            "name": "Casino",
+            "category": "Entertainment",
+            "date": "16/06/2021",
+            "money": 100,
+            "note": "thắng poker"
+        },
+        {
+            "id": 11,
+            "type": "expense",
+            "name": "Housing",
+            "category": "Housing",
+            "date": "13/06/2021",
+            "money": 150,
+            "note": "đóng tiền nhà 6 tháng"
+        },
+        {
+            "id": 12,
+            "type": "income",
+            "name": "Loans",
+            "category": "Emergency",
+            "date": "02/06/2021",
+            "money": 200,
+            "note": "mượn tiền đóng tiền nhà"
+        }
+    ]
+}

@@ -12,6 +12,7 @@ import {
   Button,
   FormHelperText,
 } from "@material-ui/core";
+import Particles from 'react-particles-js';
 
 const ValidationSchema = yup.object({
   name: yup.string().required("Username is required"),
@@ -31,19 +32,31 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     background: "#fcfcfc",
     padding: 0,
-    justifyContent: "space-between",
+    justifyContent: "center",
     height: "100%",
+    alignItems: "center",
+    margin: 0,
   },
   mg10: {
     margin: 10,
   },
   side: {
-    width: "60%",
-    backgroundColor: "aquamarine",
+    position:"fixed",
+    left:0,
+    top:0,
+    maxWidth: "100%",
+    width:"100%",
+    height:"100%",
+    backgroundColor: theme.palette.primary.main
   },
   form: {
     display: "flex",
     textAlign: "center",
+
+    borderRadius: 10,
+    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+    backgroundColor: "white",
+    padding: 10,
   },
   submitBtn: {
     margin: 10,
@@ -55,7 +68,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 15,
   },
 }));
-
 const Register = () => {
   const classes = useStyles();
 
@@ -70,7 +82,7 @@ const Register = () => {
 
   // if account is already set
   if (state.auth.isAuthenticated) {
-    history.push("/home");
+    history.push("/transaction");
   }
 
   const dispatch = useDispatch();
@@ -90,7 +102,30 @@ const Register = () => {
   });
   return (
     <Container maxWidth={false} className={classes.formContainer}>
-      <Container className={classes.side}></Container>
+      <Container className={classes.side}>
+      <Particles
+        params={{
+	        "particles": {
+	          "number": {
+	            "value": 80,
+	          },
+	          "size": {
+	            "value": 8
+	          } 
+	        },
+	        "interactivity": {
+	          "events": {
+	            "onhover": {
+	                "enable": true,
+	                "mode": "repulse"
+	            }
+	          }
+	        }
+	      }} 
+        height = "100vh"
+        // width = "100vh"
+      />
+      </Container>
       <form
         onSubmit={formik.handleSubmit}
         style={{ width: "30%", padding: "5%" }}
@@ -167,11 +202,6 @@ const Register = () => {
     </Container>
   );
 };
-// const mapStateToProps = (state) => ({
-//   auth: state.auth,
-//   errors: state.errors,
-// });
 
-// export default connect(mapStateToProps, { registerUser })(Register);
 
 export default Register;
