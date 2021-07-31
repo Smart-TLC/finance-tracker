@@ -35,7 +35,7 @@ export const loginUser = (userData, history) => (dispatch) => {
       // Set current user
       dispatch(setCurrentUser(decoded));
 
-      history.push("/home")
+      history.push("/transaction")
     })
     .catch((err) => {
       dispatch({
