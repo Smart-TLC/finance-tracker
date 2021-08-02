@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import "../../index.css";
 import TransactionListItem from "../TransactionList/TransactionListItem";
+import StartScreenPage from "../../pages/StartScreen/StartScreenPage";
+import Ranking from './Ranking';
 import { 
     Container,
     Grid,
     Paper, 
     Typography,
     IconButton,
+    Card,
 } from '@material-ui/core';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -22,8 +25,11 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(0),
         marginRight: 25,
-        maxWidth: 879,
+        maxWidth: 840,
         backgroundColor: theme.palette.secondary.light,
+    },
+    ranking: {
+        padding: theme.spacing(0),
     },
 }))
 
@@ -38,18 +44,9 @@ export default function MonthlyTransList() {
 
     const [value, setValue] = useState(moment());
 
-    function currMonth() {
-        return value.format("MMMM");
-    }
-
-    function currYear() {
-        return value.format("YYYY");
-    }
-
     function prevMonth() {
         return value.clone().subtract(1, "month");
     }
-
     function nextMonth() {
         return value.clone().add(1, "month");
     } 
@@ -64,7 +61,9 @@ export default function MonthlyTransList() {
     const monthData = state.data.transactions.filter((transaction) => transaction.spentAt.slice(0,7) === mon);
 
     return (
-        <Container>
+        // <>
+        // {(monthData.length>0) ? (
+            <Container>
             <Grid className={classes.root}>
             <Paper className={classes.paper}>
                 <Grid
@@ -86,10 +85,10 @@ export default function MonthlyTransList() {
                         xs={10}
                     >
                         <Grid item xs>
-                            <Typography variant="h6">{currMonth()}</Typography>
+                            <Typography variant="h6">{value.format("MMMM")}</Typography>
                         </Grid>
                         <Grid item xs>
-                            <Typography variant="body1">{currYear()}</Typography>
+                            <Typography variant="body1">{value.format("YYYY")}</Typography>
                         </Grid>
                     </Grid>
                     <Grid item xs className='arrowforward'>
@@ -100,14 +99,34 @@ export default function MonthlyTransList() {
                 </Grid>
             </Paper>
             </Grid>
-            <Container className="scrollbar scrollbar-primary">
-            <Grid container spacing={1}>
-                {monthData.map((item, id) => (
-                     <TransactionListItem item={item} />  
-                ))}    
+            <Grid 
+                container
+                xs={12}
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="flex-start"
+                spacing={5}
+            >
+                <Grid item xs={9}>
+                    <Container className="scrollbar scrollbar-primary">
+                        <Grid container spacing={1}>
+                            {monthData.map((item, id) => (
+                                <TransactionListItem item={item} key={id}/>  
+                            ))}    
+                        </Grid>
+                    </Container>
+                </Grid>
+                <Grid item xs={3}>
+                    <Card className={classes.ranking}>
+                        <Ranking/>
+                    </Card>
+                </Grid>
             </Grid>
-            </Container>
         </Container>
+        // ):(
+        //     <StartScreenPage/>
+        // )}
+    // </>  
     )
 }
 

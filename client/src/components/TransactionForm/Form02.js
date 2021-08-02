@@ -1,6 +1,26 @@
 import React, { useState } from 'react';
 import AddIcon from '@material-ui/icons/Add';
-import { makeStyles, Button, Fab, Tooltip, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, InputLabel, FormControl, Select } from '@material-ui/core';
+import { 
+  makeStyles,
+  Button, 
+  Fab, 
+  Tooltip, 
+  TextField, 
+  Dialog, 
+  DialogActions, 
+  DialogContent, 
+  DialogContentText, 
+  DialogTitle, 
+  InputLabel, 
+  FormControl, 
+  Select,
+  Paper, 
+  Grid, 
+  Typography, 
+  ButtonBase,
+  Card,
+} from '@material-ui/core';
+import '../../index.css';
 import { addTransaction } from "../../actions/transactionAction";
 import { useFormik } from "formik";
 
@@ -22,6 +42,13 @@ const useStyles = makeStyles((theme) => ({
       marginRight: theme.spacing(1),
       width: 240,
     },
+    paper: {
+      padding: theme.spacing(1),
+      maxWidth: 800,
+      backgroundColor: theme.palette.secondary.light,
+      cursor: 'pointer',
+      borderRadius: 16,
+  },
   }));
 
 export default function AddTransaction() {
@@ -59,11 +86,21 @@ export default function AddTransaction() {
 
   return (
     <div>
-        <Tooltip title="Add Expense" aria-label="add">
+        {/* <Tooltip title="Add Expense" aria-label="add">
             <Fab color="secondary" className={classes.absolute} onClick={handleClickOpen}>
                 <AddIcon />
             </Fab>
-        </Tooltip>
+        </Tooltip> */}
+        <Card className='add' className={classes.paper} onClick={handleClickOpen}>
+          <Grid container xs={12}
+              justifyContent="center"
+              alignItems="center"
+          >
+            <Typography variant="h5">
+              New Transaction
+            </Typography>
+          </Grid>
+        </Card>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <form onSubmit={formik.handleSubmit} >
                 <DialogTitle id="form-dialog-title" align="center">

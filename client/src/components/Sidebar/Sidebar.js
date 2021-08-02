@@ -73,9 +73,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
-  logoImage: {
-    marginRight: 70,
-  },
 }));
 
 export default function Sidebar() {

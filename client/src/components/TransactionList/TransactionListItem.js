@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             backgroundColor: theme.palette.primary.light,
         },
+        cursor: 'pointer',
     },
     btnColor: {
         backgroundColor: theme.palette.secondary.dark,
@@ -38,7 +39,7 @@ export default function TransactionListItem(props) {
     const [expanded, setExpanded] = useState(false);
     
     return (
-            <Grid item key={_id} xs={9}>
+            <Grid item key={_id} xs={12}>
                 <Card className={classes.card}>
                     <Grid 
                         container

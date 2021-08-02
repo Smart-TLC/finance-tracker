@@ -13,6 +13,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     color: "secondary",
   },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
 }));
 
 export default function TransactionPage() {
@@ -21,7 +25,7 @@ export default function TransactionPage() {
     return (
         <div className={classes.root}>
             <Sidebar />
-            <TransactionList />
+            <TransactionList className={classes.content}/>
         </div>
   );
 }
