@@ -1,17 +1,6 @@
-import React from 'react'
-import { Tabs, useTabState, Panel } from '@bumaga/tabs';
-import {
-    List,
-    ListItem,
-    ListItemText,
-    ListItemIcon,
-    Divider,
-    ListItemAvatar,
-    Avatar,
-} from '@material-ui/core';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
-import { makeStyles } from '@material-ui/core/styles';
-import "../../index.css";
+import React, { useState, useRef, useEffect} from 'react'
+import { Tabs, useTabState, Panel } from '@bumaga/tabs'
+import { motion } from 'framer-motion'
 
 const cn = (...args) => args.filter(Boolean).join(' ')
 
@@ -25,79 +14,72 @@ const Tab = ({ children }) => {
   )
 }
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        maxWidth: 200,
-        backgroundColor: theme.palette.background.paper,
-    },
-  }));
+const PanelList = ({ state, children }) => {
+  const panelRef = useRef()
+  const [height, set] = useState(0)
+  const [activeIndex] = state
 
-export default function Ranking() {
-    const classes = useStyles();
+  useEffect(() => {
+    set(panelRef.current.offsetHeight)
+  }, [activeIndex, set])
 
-    return (
-    <Tabs>
-        <div className='tabs'>
+  return (
+    <motion.div animate={{ height }} style={{ overflow: 'hidden' }}>
+      <div ref={panelRef}>
+        {/* {React.cloneElement(children[activeIndex], { active: true })} */}
+      </div>
+    </motion.div>
+  )
+}
+
+export default () => {
+  const state = useState(0)
+
+  return (
+    <Tabs state={state}>
+      <div className='tabs'>
         <div className='tab-list'>
-            <Tab>Date</Tab>
+          <Tab>Tab 1</Tab>
 
-            <Tab>Month</Tab>
+          <Tab>Tab 2</Tab>
 
-            <Tab>Year</Tab>
+          <Tab>Tab 3</Tab>
         </div>
 
         <div className='tab-progress' />
 
-        <Panel>
-            <List component="nav" className={classes.root}>
-            {/* {ListItemData.map((text, index) => ( */}
-                <ListItem button>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <BeachAccessIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Education"/>
-                </ListItem>
-                <Divider/>
-                <ListItem button>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <BeachAccessIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Education"/>
-                </ListItem>
-                <Divider />
-                <ListItem button>
-                    <ListItemAvatar>
-                        <Avatar>
-                            <BeachAccessIcon />
-                        </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Education"/>
-                </ListItem>
-                <Divider />
-            {/* ))} */}
-            </List>
-        </Panel>
-
-        <Panel>
+        <PanelList state={state}>
+          <Panel>
             <p>
-            The input range must be a linear series of numbers. The output range
-            can be any value type supported by Framer Motion: numbers, colors,
-            shadows, etc.
+              In sociology, anthropology, and linguistics, structuralism is the
+              methodology that implies elements of human culture must be
+              understood by way of their relationship to a broader, overarching
+              system or structure. It works to uncover the structures that
+              underlie all the things that humans do, think, perceive, and feel.
+              Alternatively, as summarized by philosopher Simon Blackburn,
+              structuralism is "the belief that phenomena of human life are not
+              intelligible except through their interrelations. These relations
+              constitute a structure, and behind local variations in the surface
+              phenomena there are constant laws of abstract structure".
             </p>
-        </Panel>
+          </Panel>
 
-        <Panel>
+          <Panel>
             <p>
-            Creates a MotionValue that, when set, will use a spring animation to
-            animate to its new state.
+              The input range must be a linear series of numbers. The output
+              range can be any value type supported by Framer Motion: numbers,
+              colors, shadows, etc.
             </p>
-        </Panel>
-        </div>
+          </Panel>
+
+          <Panel>
+            <p>
+              Creates a MotionValue that, when set, will use a spring animation
+              to animate to its new state.
+            </p>
+          </Panel>
+        </PanelList>
+      </div>
     </Tabs>
-    );
+  )
 }

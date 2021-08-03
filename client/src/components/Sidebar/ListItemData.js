@@ -8,7 +8,7 @@ export const ListItemData =  [
     {
         title: "Transactions",
         icon: <AssignmentIcon />,
-        link: "/home"
+        link: "/transaction"
     },
     {
         title: "Monthly Transactions",

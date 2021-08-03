@@ -7,7 +7,6 @@ import Ranking from './Ranking';
 import { 
     Container,
     Grid,
-    Paper, 
     Typography,
     IconButton,
     Card,
@@ -17,20 +16,26 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { getTransactions } from "../../actions/transactionAction";
 import { useDispatch, useSelector } from "react-redux";
 import {makeStyles} from '@material-ui/core/styles';
+import Balance from '../TransactionList/Balance';
+import {motion} from 'framer-motion';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        padding: 23,
+        padding: 12,
     },
     paper: {
-        padding: theme.spacing(0),
-        marginRight: 25,
-        maxWidth: 840,
+        marginLeft: 25,
         backgroundColor: theme.palette.secondary.light,
+        borderRadius: 15,
+        maxWidth: 854,
+        marginBottom: 10,
     },
-    ranking: {
-        padding: theme.spacing(0),
+    container: {
+        backgroundColor: theme.palette.secondary.dark,
     },
+    arrow:{
+        marginLeft: 22,
+    }
 }))
 
 export default function MonthlyTransList() {
@@ -61,72 +66,77 @@ export default function MonthlyTransList() {
     const monthData = state.data.transactions.filter((transaction) => transaction.spentAt.slice(0,7) === mon);
 
     return (
-        // <>
-        // {(monthData.length>0) ? (
-            <Container>
-            <Grid className={classes.root}>
-            <Paper className={classes.paper}>
-                <Grid
-                    item
-                    container
-                    xs={12}
-                    direction="row"
-                    justifyContent="space-between"
-                    alignItems="center"
-                >
-                    <Grid item xs={1}>
-                        <IconButton onClick={() => {setValue(prevMonth())}}>
-                            <ArrowBackIosIcon />
-                        </IconButton>
-                    </Grid>
-                    <Grid item container
-                        direction="column"
-                        alignItems="center"
-                        xs={10}
-                    >
-                        <Grid item xs>
-                            <Typography variant="h6">{value.format("MMMM")}</Typography>
-                        </Grid>
-                        <Grid item xs>
-                            <Typography variant="body1">{value.format("YYYY")}</Typography>
-                        </Grid>
-                    </Grid>
-                    <Grid item xs className='arrowforward'>
-                        <IconButton onClick={() => {setValue(nextMonth())}}>
-                            <ArrowForwardIosIcon />
-                        </IconButton>
-                    </Grid>
-                </Grid>
-            </Paper>
-            </Grid>
+        <Container>
             <Grid 
                 container
-                xs={12}
                 direction="row"
-                justifyContent="flex-start"
                 alignItems="flex-start"
-                spacing={5}
+                spacing={4} 
             >
-                <Grid item xs={9}>
-                    <Container className="scrollbar scrollbar-primary">
-                        <Grid container spacing={1}>
-                            {monthData.map((item, id) => (
-                                <TransactionListItem item={item} key={id}/>  
-                            ))}    
+                <Grid 
+                    item container
+                    xs={9}
+                    direction="column"
+                >
+                    <Grid item>
+                        <Balance/>
+                    </Grid>
+                    <Grid
+                        item
+                        container
+                        xs={9}
+                        direction="row"
+                        justifyContent="center"
+                        alignItems="center"
+                        className={classes.paper}
+                    >
+                        <Grid item xs={1}>
+                            <IconButton onClick={() => {setValue(prevMonth())}}>
+                                <ArrowBackIosIcon />
+                            </IconButton>
                         </Grid>
-                    </Container>
+                        <Grid item container
+                            direction="column"
+                            alignItems="center"
+                            xs={10}
+                        >
+                            <Grid item xs>
+                                <Typography variant="h6">{value.format("MMMM")}</Typography>
+                            </Grid>
+                            <Grid item xs>
+                                <Typography variant="body1">{value.format("YYYY")}</Typography>
+                            </Grid>
+                        </Grid>
+                        <Grid item xs className={classes.arrow}>
+                            <IconButton onClick={() => {setValue(nextMonth())}}>
+                                <ArrowForwardIosIcon />
+                            </IconButton>
+                        </Grid>
+                    </Grid>
+                    <Grid item>
+                        <Container className="scrollbar scrollbar-primary">
+                            {(monthData.length>0) ? (
+                                <Grid container spacing={1}>
+                                    {monthData.map((item, id) => (
+                                        <TransactionListItem item={item} key={id}/>  
+                                    ))}    
+                                </Grid>
+                            ):(
+                                <Typography justifyContent="center">No transaction added</Typography>
+                            )}
+                        </Container> 
+                    </Grid>
                 </Grid>
-                <Grid item xs={3}>
-                    <Card className={classes.ranking}>
+                <Grid item xs={3} >
+                    <motion.h2>TOP EXPENSE</motion.h2>
+                    <Card height="100%">
                         <Ranking/>
                     </Card>
                 </Grid>
+            
             </Grid>
+            
         </Container>
-        // ):(
-        //     <StartScreenPage/>
-        // )}
-    // </>  
     )
 }
 

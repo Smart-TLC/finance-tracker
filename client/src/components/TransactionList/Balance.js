@@ -4,11 +4,9 @@ import {
     Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import {motion} from 'framer-motion';
 
 const useStyles = makeStyles((theme) => ({
-    paper: {
-        padding: theme.spacing(3),
-    },
     remain: {
         color: theme.palette.warning.light,
     },
@@ -20,25 +18,59 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const textVariants = {
+    hidden: {
+        opacity: 0,
+        x: -100,
+        y: -30,
+    },
+    visible: {
+        opacity: 1, 
+        x: 0,
+        y: -30,
+        transition: {
+            type: 'spring',
+            delay: 1.2,
+            stiffness: 200
+        }
+    }, 
+    hover: {
+        scale: 1.6,
+        textShadow: "0px 0px 8px rgb(255,255,255)"
+    }
+}
+
 export default function Balance() {
     const classes = useStyles();
     
     return (
-        <Grid container xs={9} className={classes.paper}>
+        <motion.div
+            variants={textVariants}
+            initial="hidden"
+            animate="visible"
+        >
+        <Grid container xs={10}>
             <Grid item xs={4}
                 container
                 direction="column"
                 alignItems="center"
             >
                 <Grid item>
-                    <Typography variant='h5' className={classes.remain}>
+                    <motion.h1 
+                        className={classes.remain}
+                        variants={textVariants}
+                        whileHover='hover'
+                    >
                         Remaining
-                    </Typography>
+                    </motion.h1>
                 </Grid>
                 <Grid item >
-                    <Typography variant='h6' className={classes.remain}>
+                    <motion.h2 
+                        className={classes.remain}
+                        variants={textVariants}
+                    >
                         $200
-                    </Typography>
+                    </motion.h2>
                 </Grid>
             </Grid>
             <Grid item xs={4}
@@ -47,14 +79,21 @@ export default function Balance() {
                 alignItems="center"
             >
                 <Grid item>
-                    <Typography variant='h5' className={classes.budget}>
+                    <motion.h1 
+                        className={classes.budget}
+                        variants={textVariants}
+                        whileHover='hover'
+                    >
                         Budget
-                    </Typography>
+                    </motion.h1>
                 </Grid>
                 <Grid item>
-                    <Typography variant='h6' className={classes.budget}>
+                    <motion.h2 
+                        className={classes.budget}
+                        variants={textVariants}
+                    >
                         $300
-                    </Typography>
+                    </motion.h2>
                 </Grid>
             </Grid>
             <Grid item xs={4}
@@ -63,16 +102,24 @@ export default function Balance() {
                 alignItems="center"
             >
                 <Grid item>
-                <Typography variant='h5' fontWeight="fontWeightMedium" className={classes.expense}>
-                    Expense
-                </Typography>
+                    <motion.h1 
+                        className={classes.expense}
+                        variants={textVariants}
+                        whileHover='hover'
+                    >
+                        Expense
+                    </motion.h1>
                 </Grid>
                 <Grid item>
-                <Typography variant='h6' className={classes.expense}>
-                    $100
-                </Typography>
+                    <motion.h2 
+                        className={classes.expense}
+                        variants={textVariants}
+                    >
+                        $100
+                    </motion.h2>
                 </Grid>
             </Grid>
         </Grid>
+    </motion.div>
     )
 }

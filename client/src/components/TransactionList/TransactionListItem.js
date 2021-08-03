@@ -24,12 +24,7 @@ const useStyles = makeStyles((theme) => ({
         cursor: 'pointer',
     },
     btnColor: {
-        backgroundColor: theme.palette.secondary.dark,
-    },
-    vert: {
-        "&:hover": {
-            display: 'none',
-        },
+        backgroundColor: theme.palette.secondary.light,
     },
 }));
 
@@ -45,7 +40,7 @@ export default function TransactionListItem(props) {
                         container
                         spacing={1}
                     >
-                        <Grid item xs={10} container 
+                        <Grid item xs={7} container 
                             justifyContent="flex-start"
                             alignItems="center"
                             onClick={() => {
@@ -67,19 +62,21 @@ export default function TransactionListItem(props) {
                                     {spentAt}
                                 </Typography>
                             </Grid>
-                            <Grid item xs={2}>
-                                <Typography variant="h5" color="secondary" className="amount">
-                                    ${amount}
-                                </Typography>
-                            </Grid>
                         </Grid>
                         <Grid 
-                            item xs={2} 
+                            item xs={5} 
                             container
                             justifyContent="flex-end"
                             alignItems="center"
                         >
-                            <SettingHover _id={_id}/>
+                            <Grid>
+                                <Typography variant="h5" color="secondary">
+                                    ${amount}
+                                </Typography>
+                            </Grid>
+                            <Grid>
+                                <SettingHover _id={_id}/>
+                            </Grid>
                         </Grid>
                     </Grid>
                     <Divider variant="middle" />

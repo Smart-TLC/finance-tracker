@@ -11,6 +11,20 @@ import { getTransactions } from "../../actions/transactionAction";
 import { useDispatch, useSelector } from "react-redux";
 import Form02 from "../TransactionForm/Form02";
 import Balance from './Balance';
+import {motion} from 'framer-motion'
+
+const textVariants = {
+    hidden: {
+        opacity: 0,
+        y: -100,
+        x: -70
+    },
+    visible: {
+        opacity: 1, 
+        y: -30,
+        x: -70
+    }
+}
 
 export default function TransactionList() {
     const dispatch = useDispatch();
@@ -26,7 +40,14 @@ export default function TransactionList() {
 
     return (
         <Container maxWidth="md" >
-            <Typography variant='h6'>Welcome back, {state.auth.user.name}</Typography>
+            <motion.h2
+                variants={textVariants}
+                initial = "hidden"
+                animate = "visible"
+                transition={{type: 'spring', delay: 0.5, stiffness: 300 }}
+            >
+                Welcome back, {state.auth.user.name}
+            </motion.h2>
             <Balance/>
             <Grid>
             <Typography variant='h6' className="typo">List of Expense</Typography>
@@ -39,7 +60,7 @@ export default function TransactionList() {
                     ))}    
                 </Grid>
             </Container>
-            <Form02 />
+            <Grid><Form02 /></Grid>
         </Container>
     )
 }

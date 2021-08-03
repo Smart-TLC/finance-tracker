@@ -10,9 +10,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     marginLeft: 75,
   },
-  title: {
-    color: "secondary",
-  },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),

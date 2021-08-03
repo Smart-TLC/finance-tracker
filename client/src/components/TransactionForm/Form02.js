@@ -14,10 +14,8 @@ import {
   InputLabel, 
   FormControl, 
   Select,
-  Paper, 
   Grid, 
-  Typography, 
-  ButtonBase,
+  Typography,
   Card,
 } from '@material-ui/core';
 import '../../index.css';
@@ -44,10 +42,11 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
       padding: theme.spacing(1),
-      maxWidth: 800,
+      maxWidth: 850,
       backgroundColor: theme.palette.secondary.light,
       cursor: 'pointer',
       borderRadius: 16,
+      marginLeft: 24,
   },
   }));
 

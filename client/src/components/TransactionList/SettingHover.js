@@ -39,17 +39,14 @@ export default function SettingHover(props) {
     const open = Boolean(anchorEl);
 
     return (
-    <div>
-    <Grid item container 
-        direction="row"
-    >
-            <IconButton 
-                aria-owns={open ? 'mouse-over-popover' : undefined}
-                aria-haspopup="true"
-                onClick={handlePopoverOpen} 
-            >
-                <MoreVertIcon/>
-            </IconButton> 
+      <Grid item xs>
+        <IconButton 
+            aria-owns={open ? 'mouse-over-popover' : undefined}
+            aria-haspopup="true"
+            onClick={handlePopoverOpen} 
+        >
+            <MoreVertIcon/>
+        </IconButton> 
         <Slide
             id="mouse-over-popover"
             in={open}
@@ -59,21 +56,19 @@ export default function SettingHover(props) {
             <ButtonGroup
                 color="primary"
                 onMouseLeave={handlePopoverClose}
-                size='large'
             > 
                 <IconButton onClick={handlePopoverClose}>
-                    <EditOutlinedIcon fontSize="small"/>
+                    <EditOutlinedIcon fontSize="medium"/>
                 </IconButton>
                 <IconButton 
                     onClick={(e) => {
                         e.preventDefault()
                         dispatch(deleteTransaction(_id))
                     }}>
-                    <DeleteOutlinedIcon fontSize="small"/>
+                    <DeleteOutlinedIcon fontSize="medium"/>
                 </IconButton>
             </ButtonGroup>
         </Slide>
     </Grid>
-    </div>
     );
 }
