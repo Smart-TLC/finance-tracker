@@ -22,7 +22,7 @@ export default function Lists() {
   return (
     <List>
       {ListItemData.map((text, index) => (
-        <Link to={text.link} key={index}>
+        <Link to={text.link} key={index} style={{textDecoration: 'none', color: 'black'}}>
           <ListItem key={index} button>
             <ListItemIcon className={classes.list}>{text.icon}</ListItemIcon>
             <ListItemText primary={text.title} />

@@ -4,11 +4,13 @@ import {
     List,
     ListItem,
     ListItemText,
-    Divider,
     ListItemAvatar,
+    ListItemIcon,
+    Divider,
     Avatar,
 } from '@material-ui/core';
 import BeachAccessIcon from '@material-ui/icons/BeachAccess';
+import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import { makeStyles } from '@material-ui/core/styles';
 import "../../index.css";
 
@@ -33,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     text: {
         JustifyContent: 'center',
         color: theme.palette.secondary.dark,
-    }
+    },
   }));
 
 export default function Ranking() {
@@ -63,7 +65,7 @@ export default function Ranking() {
                         <ListItemText className={classes.text}>$13</ListItemText>
                     </ListItem>
                     <Divider/>
-                    <ListItem button>
+                    <ListItem button > 
                         <ListItemAvatar>
                             <Avatar>
                                 <BeachAccessIcon />

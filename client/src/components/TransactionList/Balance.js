@@ -1,7 +1,6 @@
 import React from 'react'
 import {
     Grid,
-    Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import {motion} from 'framer-motion';
@@ -49,7 +48,7 @@ export default function Balance() {
             initial="hidden"
             animate="visible"
         >
-        <Grid container xs={10}>
+        <Grid container xs={12}>
             <Grid item xs={4}
                 container
                 direction="column"

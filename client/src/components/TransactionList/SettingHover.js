@@ -52,7 +52,7 @@ export default function SettingHover(props) {
                 props.handleFormOpen(_id);
               }}
             >
-              <EditOutlinedIcon fontSize="medium" />
+              <EditOutlinedIcon fontSize="large" />
             </IconButton>
             <IconButton
               onClick={(e) => {
@@ -60,7 +60,7 @@ export default function SettingHover(props) {
                 dispatch(deleteTransaction(_id));
               }}
             >
-              <DeleteOutlinedIcon fontSize="medium" />
+              <DeleteOutlinedIcon fontSize="large" />
             </IconButton>
           </ButtonGroup>
         </Slide>

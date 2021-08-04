@@ -11,7 +11,7 @@ export const ListItemData =  [
         link: "/transaction"
     },
     {
-        title: "Monthly Transactions",
+        title: "Monthly Deal",
         icon: <EventIcon />,
         link: "/monthlytransaction"
     },

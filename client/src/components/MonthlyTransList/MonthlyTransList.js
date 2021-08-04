@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
+import { Link } from 'react-router-dom';
 import moment from 'moment'
 import "../../index.css";
 import TransactionListItem from "../TransactionList/TransactionListItem";
+import TransactionForm from "../TransactionForm/TransactionForm";
 import Ranking from './Ranking';
 import { 
     Container,
@@ -9,12 +11,10 @@ import {
     Typography,
     IconButton,
     Card,
-    Link,
 } from '@material-ui/core';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import { getTransactions } from "../../actions/transactionAction";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {makeStyles} from '@material-ui/core/styles';
 import Balance from './Balance';
 import {motion} from 'framer-motion';
@@ -40,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MonthlyTransList() {
     const classes = useStyles();
-    const dispatch = useDispatch();
     const state = useSelector((state) => ({
         auth: state.auth,
         errors: state.errors,
@@ -48,6 +47,16 @@ export default function MonthlyTransList() {
     }));
 
     const [value, setValue] = useState(moment());
+    const [open, setOpen] = useState(false);
+    const [formId, setFormId] = useState("");
+    const handleClickOpen = (id) => {
+        setOpen(true);
+        setFormId(id);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     function prevMonth() {
         return value.clone().subtract(1, "month");
@@ -55,10 +64,6 @@ export default function MonthlyTransList() {
     function nextMonth() {
         return value.clone().add(1, "month");
     } 
-
-    useEffect(() => {
-        dispatch(getTransactions(state.auth.user.id));
-    }, []);
 
     const mon = `${value.format("MM")}-${value.format("YYYY")}`
 
@@ -117,8 +122,8 @@ export default function MonthlyTransList() {
                         <Container className="scrollbar scrollbar-primary">
                             {(monthData.length>0) ? (
                                 <Grid container spacing={1}>
-                                    {monthData.map((item, id) => (
-                                        <TransactionListItem item={item} key={id}/>  
+                                    {monthData.map((item) => (
+                                        <TransactionListItem item={item} key={item._id} handleClickOpen={handleClickOpen}/>  
                                     ))}    
                                 </Grid>
                             ):(
@@ -129,14 +134,10 @@ export default function MonthlyTransList() {
                     <Grid item container 
                         justifyContent="flex-end"
                     >
-                        <Link
-                            component="button"
-                            variant="h6"
-                            onClick={() => {
-                                console.info("I'm a button.");
-                            }}
-                        >
-                            View all transactions
+                        <Link to="/transaction" style={{ textDecoration: 'none' }}>
+                            <Typography variant="h6" color="success">
+                                View all transactions
+                            </Typography>
                         </Link>
                     </Grid>
                 </Grid>
@@ -146,9 +147,8 @@ export default function MonthlyTransList() {
                         <Ranking/>
                     </Card>
                 </Grid>
-            
+                <TransactionForm open={open} handleClose={handleClose} id={formId}/> 
             </Grid>
-            
         </Container>
     )
 }

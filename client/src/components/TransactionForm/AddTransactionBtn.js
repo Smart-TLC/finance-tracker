@@ -1,12 +1,11 @@
 import React from 'react'
-import AddIcon from '@material-ui/icons/Add';
-import { Card, Grid } from '@material-ui/core';
+import { Card, Grid, Typography } from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(1),
-        maxWidth: 850,
+        maxWidth: 1170,
         backgroundColor: theme.palette.secondary.light,
         cursor: 'pointer',
         borderRadius: 16,
@@ -18,7 +17,7 @@ const AddTransactionBtn = (props) => {
     const classes = useStyles();  
     
     return (
-        <Card className='add' className={classes.paper} onClick={() => {props.handleClickOpen("")}}>
+        <Card className={classes.paper} onClick={() => {props.handleClickOpen("")}}>
             <Grid container xs={12}
                 justifyContent="center"
                 alignItems="center"

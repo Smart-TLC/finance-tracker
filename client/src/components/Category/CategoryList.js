@@ -28,7 +28,7 @@ export default function CategoryList() {
             <Collapse in={open} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 {CategoryListData.map((text, index) => (
-                    <Link to={text.link} key={index}>
+                    <Link to={text.link} key={index} style={{textDecoration: 'none', color: 'black'}}>
                       <ListItem 
                         key={index} 
                         button

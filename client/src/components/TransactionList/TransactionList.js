@@ -7,7 +7,6 @@ import {
     Typography,
     Divider,
 } from '@material-ui/core';
-import { getTransactions } from "../../actions/transactionAction";
 import { useSelector } from "react-redux";
 import TransactionForm from "../TransactionForm/TransactionForm";
 import AddTransactionBtn from "../TransactionForm/AddTransactionBtn";
@@ -18,12 +17,12 @@ const textVariants = {
     hidden: {
         opacity: 0,
         y: -100,
-        x: -70
+        x: -20
     },
     visible: {
         opacity: 1, 
-        y: -30,
-        x: -70
+        y: -33,
+        x: -20
     }
 }
 

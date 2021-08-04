@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 import "../../index.css";
 import { 
     Grid,
@@ -7,7 +8,6 @@ import {
     CardContent,
     Collapse,
     Typography,
-    ButtonBase,
     Divider,
 } from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
@@ -51,11 +51,11 @@ export default function TransactionListItem(props) {
                                 <Typography variant="h6" color="textPrimary" >
                                     {name}
                                 </Typography>
-                                <ButtonBase>
-                                    <Typography variant="subtitle1" color="secondary" onClick={() => {window.location.pathname = `/category/${category}`}}>
+                                <Link to={`/category/${category}`} style={{ textDecoration: 'none' }}>
+                                    <Typography variant="subtitle1" color="secondary">
                                         {category}
                                     </Typography>
-                                </ButtonBase>
+                                </Link>
                             </Grid>
                             <Grid item xs={4}>
                                 <Typography variant="subtitle1" color="textSecondary" className={clsx(expanded && classes.hide)}>
@@ -68,18 +68,13 @@ export default function TransactionListItem(props) {
                             container
                             justifyContent="flex-end"
                             alignItems="center"
-                            className={classes.btnColor}
                             // onClick={() => {
                             //     setExpanded(false)
                             // }}
                         >
-                            <Grid >
-                                <Typography variant="h5" color="secondary">
-                                    ${amount}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Grid >
+                            <Typography variant="h5" color="secondary">
+                                ${amount}
+                            </Typography>
                             <SettingHover _id={_id} handleFormOpen={props.handleClickOpen} />
                         </Grid>
                     </Grid>
