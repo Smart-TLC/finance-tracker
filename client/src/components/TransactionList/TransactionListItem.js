@@ -34,7 +34,7 @@ export default function TransactionListItem(props) {
     const [expanded, setExpanded] = useState(false);
     
     return (
-            <Grid item key={_id} xs={12}>
+            <Grid item xs={12}>
                 <Card className={classes.card}>
                     <Grid 
                         container
@@ -78,9 +78,9 @@ export default function TransactionListItem(props) {
                                     ${amount}
                                 </Typography>
                             </Grid>
-                            <Grid >
-                                <SettingHover _id={_id} />
-                            </Grid>
+                        </Grid>
+                        <Grid >
+                            <SettingHover _id={_id} handleFormOpen={props.handleClickOpen} />
                         </Grid>
                     </Grid>
                     <Divider variant="middle" />

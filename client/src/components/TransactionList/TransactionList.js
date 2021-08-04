@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, {useState} from 'react'
 import "../../index.css";
 import TransactionListItem from "./TransactionListItem";
 import { 
@@ -8,8 +8,9 @@ import {
     Divider,
 } from '@material-ui/core';
 import { getTransactions } from "../../actions/transactionAction";
-import { useDispatch, useSelector } from "react-redux";
-import Form02 from "../TransactionForm/Form02";
+import { useSelector } from "react-redux";
+import TransactionForm from "../TransactionForm/TransactionForm";
+import AddTransactionBtn from "../TransactionForm/AddTransactionBtn";
 import Balance from './Balance';
 import {motion} from 'framer-motion'
 
@@ -27,16 +28,23 @@ const textVariants = {
 }
 
 export default function TransactionList() {
-    const dispatch = useDispatch();
     const state = useSelector((state) => ({
         auth: state.auth,
         errors: state.errors,
         data: state.data,
     }));
 
-    useEffect(() => {
-        dispatch(getTransactions(state.auth.user.id));
-      }, []);
+    // open action of form 
+    const [open, setOpen] = useState(false);
+    const [formId, setFormId] = useState("");
+    const handleClickOpen = (id) => {
+        setOpen(true);
+        setFormId(id);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     return (
         <Container maxWidth="lg" disableGutters={false}>
@@ -55,12 +63,15 @@ export default function TransactionList() {
             
             <Container className="scrollbar scrollbar-winter-neva">
                 <Grid container spacing={1}>
-                    {state.data.transactions.map((item, id) => (
-                        <TransactionListItem item={item} key={id}/>  
+                    {state.data.transactions.map((item) => (
+                        <TransactionListItem item={item} key={item._id} handleClickOpen={handleClickOpen}/>  
                     ))}    
                 </Grid>
             </Container>
-            <Grid><Form02 /></Grid>
+            <Grid> 
+                <AddTransactionBtn handleClickOpen={handleClickOpen} />
+                <TransactionForm open={open} handleClose={handleClose} id={formId}/>                   
+            </Grid>
         </Container>
     )
 }

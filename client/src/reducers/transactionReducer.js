@@ -26,9 +26,9 @@ export default function transactionReducer(state = initialState, action) {
       };
     case UPDATE_TRANSACTION:
       return {
-        transactions: state.map((item) => {
-          if (item.id === action.payload.id) {
-            return action.payload;
+        transactions: state.transactions.map((item) => {
+          if (item._id === action.payload.data._id) {
+            return action.payload.data;
           }
           return item;
         }),
