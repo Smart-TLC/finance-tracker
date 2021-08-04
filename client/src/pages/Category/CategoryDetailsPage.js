@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Card, CardContent} from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTransactions, deleteTransaction } from "../../actions/transactionAction";
+import { deleteTransaction } from "../../actions/transactionAction";
 
 
 
@@ -26,13 +26,6 @@ export default function CategoryDetailsPage() {
       errors: state.errors,
       data: state.data
     }))
-
-    console.log(state);
-
-    // load user transactions data at the beginning
-    useEffect(() => {
-      dispatch(getTransactions(state.auth.user.id));
-    }, []);
 
     // Filter transactions based on each category
     const cateData = state.data.transactions.filter((transaction) => transaction.category === cate);

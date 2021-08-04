@@ -73,7 +73,7 @@ export const updateTransaction = (data) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: UPDATE_TRANSACTION,
-        payload: data,
+        payload: res.data,
       });
     })
     .catch((err) => {
