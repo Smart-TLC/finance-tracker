@@ -39,7 +39,7 @@ export default function TransactionList() {
       }, []);
 
     return (
-        <Container maxWidth="md" >
+        <Container maxWidth="lg" disableGutters={false}>
             <motion.h2
                 variants={textVariants}
                 initial = "hidden"
@@ -49,10 +49,10 @@ export default function TransactionList() {
                 Welcome back, {state.auth.user.name}
             </motion.h2>
             <Balance/>
-            <Grid>
+            
             <Typography variant='h6' className="typo">List of Expense</Typography>
             {/* <Divider p={2}/> */}
-            </Grid>
+            
             <Container className="scrollbar scrollbar-winter-neva">
                 <Grid container spacing={1}>
                     {state.data.transactions.map((item, id) => (

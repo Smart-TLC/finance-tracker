@@ -39,7 +39,7 @@ export default function SettingHover(props) {
     const open = Boolean(anchorEl);
 
     return (
-      <Grid item xs>
+      <Grid item >
         <IconButton 
             aria-owns={open ? 'mouse-over-popover' : undefined}
             aria-haspopup="true"

@@ -11854,10 +11854,10 @@
   "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.3.0.tgz"
   "version" "2.3.0"
 
-"tsparticles@^1.30.0":
-  "integrity" "sha512-sz614zmnfi1D6iPmu6YIEeKWAPUP/Q8KLFcMUrtBFsTJFkSJvk4imtfYDG0M1krE8TKlm1bRrYp/xegInSuzoQ=="
-  "resolved" "https://registry.npmjs.org/tsparticles/-/tsparticles-1.32.0.tgz"
-  "version" "1.32.0"
+"tsparticles@^1.30.0", "tsparticles@^1.33.2":
+  "integrity" "sha512-/oLQWdwyaz9GXTl9j/xckdcIerVlbSlGVd6jT8h8QKPkkkMaqcLlVtVBMLF3542FaH2RUevceTIS7O2JncVdUA=="
+  "resolved" "https://registry.npmjs.org/tsparticles/-/tsparticles-1.33.2.tgz"
+  "version" "1.33.2"
   optionalDependencies:
     "pathseg" "^1.2.0"
 

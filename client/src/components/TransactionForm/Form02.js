@@ -128,7 +128,7 @@ export default function AddTransaction() {
                     name="spentAt"
                     label="Date"
                     type="date"
-                    defaultValue=""
+                    value={formik.values.spentAt}
                     className={classes.textField}
                     InputLabelProps={{
                       shrink: true,

@@ -68,14 +68,18 @@ export default function TransactionListItem(props) {
                             container
                             justifyContent="flex-end"
                             alignItems="center"
+                            className={classes.btnColor}
+                            // onClick={() => {
+                            //     setExpanded(false)
+                            // }}
                         >
-                            <Grid>
+                            <Grid >
                                 <Typography variant="h5" color="secondary">
                                     ${amount}
                                 </Typography>
                             </Grid>
-                            <Grid>
-                                <SettingHover _id={_id}/>
+                            <Grid >
+                                <SettingHover _id={_id} />
                             </Grid>
                         </Grid>
                     </Grid>

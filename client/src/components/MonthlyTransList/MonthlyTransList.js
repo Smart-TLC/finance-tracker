@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import "../../index.css";
 import TransactionListItem from "../TransactionList/TransactionListItem";
-import StartScreenPage from "../../pages/StartScreen/StartScreenPage";
 import Ranking from './Ranking';
 import { 
     Container,
@@ -10,13 +9,14 @@ import {
     Typography,
     IconButton,
     Card,
+    Link,
 } from '@material-ui/core';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { getTransactions } from "../../actions/transactionAction";
 import { useDispatch, useSelector } from "react-redux";
 import {makeStyles} from '@material-ui/core/styles';
-import Balance from '../TransactionList/Balance';
+import Balance from './Balance';
 import {motion} from 'framer-motion';
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 25,
         backgroundColor: theme.palette.secondary.light,
         borderRadius: 15,
-        maxWidth: 854,
+        maxWidth: 888,
         marginBottom: 10,
     },
     container: {
@@ -60,13 +60,13 @@ export default function MonthlyTransList() {
         dispatch(getTransactions(state.auth.user.id));
     }, []);
 
-    const mon = `${value.format("YYYY")}-${value.format("MM")}`
+    const mon = `${value.format("MM")}-${value.format("YYYY")}`
 
     // Filter transactions based on each month
-    const monthData = state.data.transactions.filter((transaction) => transaction.spentAt.slice(0,7) === mon);
+    const monthData = state.data.transactions.filter((transaction) => transaction.spentAt.slice(3,10) === mon);
 
     return (
-        <Container>
+        <Container disableGutters={true}>
             <Grid 
                 container
                 direction="row"
@@ -122,9 +122,22 @@ export default function MonthlyTransList() {
                                     ))}    
                                 </Grid>
                             ):(
-                                <Typography justifyContent="center">No transaction added</Typography>
+                                <Typography justifyContent="center">No transactions added</Typography>
                             )}
                         </Container> 
+                    </Grid>
+                    <Grid item container 
+                        justifyContent="flex-end"
+                    >
+                        <Link
+                            component="button"
+                            variant="h6"
+                            onClick={() => {
+                                console.info("I'm a button.");
+                            }}
+                        >
+                            View all transactions
+                        </Link>
                     </Grid>
                 </Grid>
                 <Grid item xs={3} >

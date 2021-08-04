@@ -84,9 +84,9 @@ code {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 280px;
+  width: 295px;
 
-  padding: 20px 16px;
+  padding: 20px 24px;
 
   margin: 4px 2;
 }
