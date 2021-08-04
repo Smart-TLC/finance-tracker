@@ -164,6 +164,7 @@ export default function TransactionForm(props) {
               onChange={formik.handleChange}
               error={Boolean(formik.errors.category)}
             >
+              <option value=""></option>
               <option value="entertainment">Entertainment</option>
               <option value="education">Education</option>
               <option value="shopping">Shopping</option>
