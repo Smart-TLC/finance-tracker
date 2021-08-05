@@ -1,23 +1,32 @@
 import React from 'react'
-import AddIcon from '@material-ui/icons/Add';
-import { makeStyles, Fab, Tooltip } from '@material-ui/core';
+import { Card, Grid, Typography } from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-    absolute: {
-      position: 'absolute',
-      bottom: theme.spacing(1),
-      right: theme.spacing(1),
+    paper: {
+        padding: theme.spacing(1),
+        maxWidth: 1170,
+        backgroundColor: theme.palette.secondary.light,
+        cursor: 'pointer',
+        borderRadius: 16,
+        marginLeft: 24,
     },
 }));
 
 const AddTransactionBtn = (props) => {
     const classes = useStyles();  
+    
     return (
-        <Tooltip title="Add Expense" aria-label="add">
-            <Fab color="secondary" className={classes.absolute} onClick={() => {props.handleClickOpen("")}}>
-                <AddIcon />
-            </Fab>
-        </Tooltip>
+        <Card className={classes.paper} onClick={() => {props.handleClickOpen("")}}>
+            <Grid container xs={12}
+                justifyContent="center"
+                alignItems="center"
+            >
+            <Typography variant="h5">
+                New Transaction
+            </Typography>
+            </Grid>
+      </Card>
     )
 }
 

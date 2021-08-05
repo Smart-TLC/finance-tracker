@@ -21,15 +21,15 @@ const textVariants = {
     hidden: {
         opacity: 0,
         x: -100,
-        y: -30,
+        y: -25,
     },
     visible: {
         opacity: 1, 
         x: 0,
-        y: -30,
+        y: -25,
         transition: {
             type: 'spring',
-            delay: 1.2,
+            delay: 0.5,
             stiffness: 200
         }
     }, 
@@ -64,7 +64,7 @@ export default function Balance() {
                     </motion.h1>
                 </Grid>
                 <Grid item >
-                    <motion.h2 
+                    <motion.h2
                         className={classes.remain}
                         variants={textVariants}
                     >
