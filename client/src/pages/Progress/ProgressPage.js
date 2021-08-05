@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ProgressPage() {
+function ProgressPage() {
   return (
     <div>
       
@@ -8,5 +8,4 @@ export default function ProgressPage() {
   )
 }
 
-
-
+export default ProgressPage

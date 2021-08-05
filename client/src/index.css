@@ -134,3 +134,92 @@ code {
   color: white;
   cursor: default;
 }
+
+.svg-animation-container {
+  width: 380px;
+}
+
+.svg-animation-container svg {
+  width: 100%;
+}
+
+#Money_2 {
+  animation: bounce 1s infinite
+  alternate;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(-90px);
+  }
+}
+
+#LeftArm {
+  animation: rotateL 2s infinite
+  alternate;
+  transform-origin: top left;
+  transform-box: fill-box;
+}
+
+@keyframes rotateL {
+  0% {
+    transform: rotate(-3deg);
+  }
+  70% {
+    transform: rotate(10deg);
+  }
+}
+
+#Group1
+{
+  animation: scale1 3s infinite
+  alternate;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+
+@keyframes scale1 {
+  0% {
+    transform: scaleY(1);
+  }
+  70% {
+    transform: scaleY(2.5);
+  }
+}
+
+#Group2
+{
+  animation: scale2 2.5s infinite
+  alternate;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+
+@keyframes scale2 {
+  0% {
+    transform: scaleY(1);
+  }
+  60% {
+    transform: scaleY(2);
+  }
+}
+
+#Group3
+{
+  animation: scale3 3s infinite
+  alternate;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+
+@keyframes scale3 {
+  0% {
+    transform: scaleY(1.5);
+  }
+  70% {
+    transform: scaleY(0.5);
+  }
+}
