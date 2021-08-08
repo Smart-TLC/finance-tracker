@@ -26,15 +26,15 @@ export default function TransactionPage() {
     return (
         <div className={classes.root}>
             <Sidebar />
-            <Grid container xs={12}
+            <Grid container
               direction='row'
               justifyContent='space-between'
               alignItems="flex-start"
             >
-              <Grid item xs={8}>
+              <Grid item xs={12} lg={8}>
                 <TransactionList className={classes.content}/>
               </Grid>
-              <Grid item container xs={4}
+              <Grid item container xs={12} lg={4}
                 direction='column'
                 justifyContent=''
                 alignItems="center"

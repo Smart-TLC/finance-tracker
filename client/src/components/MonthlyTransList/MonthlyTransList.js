@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 25,
         backgroundColor: theme.palette.secondary.light,
         borderRadius: 15,
-        maxWidth: 888,
+        maxWidth: 890,
         marginBottom: 10,
     },
     container: {
@@ -80,7 +80,7 @@ export default function MonthlyTransList() {
             >
                 <Grid 
                     item container
-                    xs={9}
+                    xs={11} lg={9}
                     direction="column"
                 >
                     <Grid item>
@@ -89,13 +89,13 @@ export default function MonthlyTransList() {
                     <Grid
                         item
                         container
-                        xs={9}
                         direction="row"
                         justifyContent="center"
                         alignItems="center"
+                        xs='auto'
                         className={classes.paper}
                     >
-                        <Grid item xs={1}>
+                        <Grid item xs={1} lg={1}>
                             <IconButton onClick={() => {setValue(prevMonth())}}>
                                 <ArrowBackIosIcon />
                             </IconButton>
@@ -103,7 +103,8 @@ export default function MonthlyTransList() {
                         <Grid item container
                             direction="column"
                             alignItems="center"
-                            xs={10}
+                            xs={9}
+                            lg={10}
                         >
                             <Grid item xs>
                                 <Typography variant="h6">{value.format("MMMM")}</Typography>
@@ -141,7 +142,9 @@ export default function MonthlyTransList() {
                         </Link>
                     </Grid>
                 </Grid>
-                <Grid item xs={3} >
+                <Grid item 
+                    xs='auto' lg={3}
+                >
                     <motion.h2>TOP EXPENSE</motion.h2>
                     <Card height="100%">
                         <Ranking/>

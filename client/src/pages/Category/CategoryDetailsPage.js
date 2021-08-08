@@ -28,7 +28,7 @@ export default function CategoryDetailsPage() {
     }))
 
     // Filter transactions based on each category
-    const cateData = state.data.transactions.filter((transaction) => transaction.category === `${cate[0].toUpperCase()}${cate.slice(1)}`);
+    const cateData = state.data.transactions.filter((transaction) => transaction.category === cate);
     console.log(cateData);
 
     return (            

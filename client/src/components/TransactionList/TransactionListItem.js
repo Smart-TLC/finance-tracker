@@ -40,14 +40,14 @@ export default function TransactionListItem(props) {
                         container
                         spacing={1}
                     >
-                        <Grid item xs={7} container 
+                        <Grid item xs={6} lg={7} container 
                             justifyContent="flex-start"
                             alignItems="center"
                             onClick={() => {
                                 setExpanded(!expanded)
                             }}
                         >
-                            <Grid item xs={6} className="name">
+                            <Grid item xs={6} lg={8} className="name">
                                 <Typography variant="h6" color="textPrimary" >
                                     {name}
                                 </Typography>
@@ -57,14 +57,14 @@ export default function TransactionListItem(props) {
                                     </Typography>
                                 </Link>
                             </Grid>
-                            <Grid item xs={4}>
+                            <Grid item xs={6} lg={4}>
                                 <Typography variant="subtitle1" color="textSecondary" className={clsx(expanded && classes.hide)}>
                                     {spentAt}
                                 </Typography>
                             </Grid>
                         </Grid>
                         <Grid 
-                            item xs={5} 
+                            item xs={6} lg={5}
                             container
                             justifyContent="flex-end"
                             alignItems="center"
@@ -72,7 +72,7 @@ export default function TransactionListItem(props) {
                             //     setExpanded(false)
                             // }}
                         >
-                            <Typography variant="h5" color="secondary">
+                            <Typography variant="h5" color="secondary" >
                                 ${amount}
                             </Typography>
                             <SettingHover _id={_id} handleFormOpen={props.handleClickOpen} />
