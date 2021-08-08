@@ -5,8 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTransactions, deleteTransaction } from "../../actions/transactionAction";
-import {CategoryItem} from '../../components/CategoryList/CategoryItem';
+import { deleteTransaction } from "../../actions/transactionAction";
+import CategoryItem from '../../components/CategoryList/CategoryItem';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,28 +45,10 @@ export default function CategoryDetailsPage() {
                 {cate} Page
             </Typography>
             <div>
-          {cateData.map((item) => {
-            return (
-              <Card key={item._id}> 
-                <CardContent>
-                  <h4>Name: {item.name}</h4>
-                  <p>Note: {item.note}</p>
-                  <p>Amount: {item.amount}</p>
-                  <p>CreatedAt: {item.createdAt}</p>
-                  <p>Category: {item.category}</p>
-                  <p>Owner: {item.owner}</p>
-                  <button onClick={(e) => {
-                    e.preventDefault();
-                    dispatch(deleteTransaction(item._id))
-                  }}>Delete</button>
-                  <button>Change</button> 
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-
-
+              {cateData.map((item) => {
+                <CategoryItem item = {item}/>
+              })}
+            </div>        
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 import "../../index.css";
 import { 
     Grid,
@@ -7,7 +8,6 @@ import {
     CardContent,
     Collapse,
     Typography,
-    ButtonBase,
     Divider,
 } from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
@@ -21,14 +21,10 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             backgroundColor: theme.palette.primary.light,
         },
+        cursor: 'pointer',
     },
     btnColor: {
-        backgroundColor: theme.palette.secondary.dark,
-    },
-    vert: {
-        "&:hover": {
-            display: 'none',
-        },
+        backgroundColor: theme.palette.secondary.light,
     },
 }));
 
@@ -38,58 +34,52 @@ export default function TransactionListItem(props) {
     const [expanded, setExpanded] = useState(false);
     
     return (
-            <Grid item key={_id} xs={12}>
+            <Grid item xs={12}>
                 <Card className={classes.card}>
                     <Grid 
                         container
                         spacing={1}
                     >
-                        <Grid item xs={9} container 
+                        <Grid item xs={7} container 
                             justifyContent="flex-start"
                             alignItems="center"
                             onClick={() => {
                                 setExpanded(!expanded)
                             }}
                         >
-                            <Grid item xs={8} className="name">
-                                <Typography variant="h5" color="textPrimary" >
+                            <Grid item xs={6} className="name">
+                                <Typography variant="h6" color="textPrimary" >
                                     {name}
                                 </Typography>
-                                <ButtonBase>
-                                    <Typography variant="h6" color="secondary" onClick={() => {window.location.pathname = `/category/${category}`}}>
+                                <Link to={`/category/${category}`} style={{ textDecoration: 'none' }}>
+                                    <Typography variant="subtitle1" color="secondary">
                                         {category}
                                     </Typography>
-                                </ButtonBase>
+                                </Link>
                             </Grid>
-                            <Grid>
-                                <Typography variant="h6" color="textSecondary" className={clsx(expanded && classes.hide)}>
+                            <Grid item xs={4}>
+                                <Typography variant="subtitle1" color="textSecondary" className={clsx(expanded && classes.hide)}>
                                     {spentAt}
                                 </Typography>
                             </Grid>
                         </Grid>
-                        <Grid item xs={1}
+                        <Grid 
+                            item xs={5} 
                             container
-                            direction="row"
-                            justifyContent="flex-start"
+                            justifyContent="flex-end"
                             alignItems="center"
+                            // onClick={() => {
+                            //     setExpanded(false)
+                            // }}
                         >
-                            <Grid item>
-                                <Typography variant="h4" color="secondary" className="amount">
-                                    ${amount}
-                                </Typography>
-                            </Grid>
+                            <Typography variant="h5" color="secondary">
+                                ${amount}
+                            </Typography>
+                            <SettingHover _id={_id} handleFormOpen={props.handleClickOpen} />
                         </Grid>
-                            <Grid 
-                                item xs={2} 
-                                container
-                                justifyContent="flex-end"
-                                alignItems="center"
-                            >
-                              <SettingHover _id={_id}/>
-                            </Grid>
                     </Grid>
                     <Divider variant="middle" />
-                    <Collapse in={expanded} timeout="auto" >
+                    <Collapse in={expanded} timeout="auto" onClick={() => {setExpanded(!expanded)}}>
                         <CardContent>
                             <Typography  variant="body2" color="secondary">
                                 {spentAt}

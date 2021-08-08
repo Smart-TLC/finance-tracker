@@ -35,13 +35,13 @@ const deleteTransaction = async (data) => {
 }
 
 const updateTransaction = async (data) => {
-  const transaction = await Transaction.findById(data.id);
+  const transaction = await Transaction.findByIdAndUpdate(data._id, data, { new: true });
 
   if(!transaction) {
     throw new Error(ERROR.TRANSACTION_NOT_FOUND);
   }
 
-  return Transaction.findByIdAndUpdate(data.id, data, { new: true })
+  return transaction;
 
 }
 

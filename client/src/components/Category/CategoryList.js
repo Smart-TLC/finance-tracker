@@ -1,14 +1,9 @@
 import React from 'react'
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import Collapse from '@material-ui/core/Collapse';
+import { Link } from 'react-router-dom';
+import { CategoryListData } from '../Category/CategoryListData';
+import { makeStyles, List, ListItem, ListItemIcon, ListItemText, Collapse } from '@material-ui/core';
+import { ExpandLess, ExpandMore } from '@material-ui/icons';
 import CardTravelIcon from '@material-ui/icons/CardTravel';
-import {CategoryListData} from '../Category/CategoryListData';
-import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     nested: {
@@ -30,17 +25,20 @@ export default function CategoryList() {
               <ListItemText primary="Category" />
               {open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse in={open} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
                 {CategoryListData.map((text, index) => (
-                    <ListItem 
+                    <Link to={text.link} key={index} style={{textDecoration: 'none', color: 'black'}}>
+                      <ListItem 
                         key={index} 
-                        button onClick={() => {window.location.pathname = text.link}}
+                        button
                         className={classes.nested}
-                    >
+                      >
                         <ListItemIcon className={classes.list}>{text.icon}</ListItemIcon>
                         <ListItemText primary={text.title} />
-                    </ListItem>
+                      </ListItem>                      
+                    </Link>
+
                 ))}
               </List>
           </Collapse>

@@ -11,43 +11,28 @@ code {
     monospace;
 }
 
-.card{
-  max-width: 1100px;
-}
-
-.card:hover {
-  background-color: #ab47bc;
-  cursor: pointer;
-}
-
 .container{
   padding-left: 55px;
-  max-height: 600px;
+  max-height: 900px;
   overflow-y: auto;
 }
 
 .amount{
-  padding-left: 60px;
+  padding-left: 65px;
 }
 
 .name{
   padding-left: 20px;
 }
 .scrollbar {
-  margin-left: 30px;
-  margin-top: 15px;
+  margin-left: 0px;
   float: left;
-  height: 500px;
-  width: 1300px;
+  height: 345px;
+  width: 100px;
   background: #fff;
   overflow-y: scroll;
   margin-bottom: 25px;
-  }
-
-.force-overflow {
-min-height: 450px;
 }
-
 .scrollbar-primary::-webkit-scrollbar {
   width: 12px;
   background-color: #f3f0f0;
@@ -56,4 +41,185 @@ min-height: 450px;
 .scrollbar-primary::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #4285F4; 
+}
+
+.scrollbar-winter-neva::-webkit-scrollbar-track {
+  background-color: #F5F5F5;
+  border-radius: 10px; }
+  
+.scrollbar-winter-neva::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5; 
+}
+
+.scrollbar-winter-neva::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-image: -webkit-linear-gradient(330deg, #a1c4fd 0%, #c2e9fb 100%);
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%); }
+
+.line {
+  width: 350px;
+  height: 150px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 15px;
+  background-color:#666;
+}
+
+.typo {
+  padding-left: 25px;
+  padding-bottom: 10px;
+}
+
+.form02 {
+  padding-left: 20px;
+}
+
+.add {
+  padding-left: 30px;
+}
+
+.tabs {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 295px;
+
+  padding: 20px 24px;
+
+  margin: 4px 2;
+}
+
+.tab-list {
+  display: flex;
+  padding-bottom: 3px;
+}
+
+.tab-progress {
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: 60px;
+  height: 4px;
+  z-index: 0;
+
+  background-color: #492796;
+  transform-origin: 0%;
+}
+
+.tab {
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 8px 15px;
+  color: #492796;
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
+  margin-right: 14px;
+
+  transition: color 0.16s ease-in-out, background-color 0.16s ease-in-out,
+    border-color 0.16s ease-in-out;
+}
+
+.tab:hover {
+  background-color: #492796;
+  color: #fff;
+}
+
+.tab.active {
+  background-color: #492796;
+  border-color: #492796;
+  color: white;
+  cursor: default;
+}
+
+.svg-animation-container {
+  width: 380px;
+}
+
+.svg-animation-container svg {
+  width: 100%;
+}
+
+#Money_2 {
+  animation: bounce 1s infinite
+  alternate;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(-90px);
+  }
+}
+
+#LeftArm {
+  animation: rotateL 2s infinite
+  alternate;
+  transform-origin: top left;
+  transform-box: fill-box;
+}
+
+@keyframes rotateL {
+  0% {
+    transform: rotate(-3deg);
+  }
+  70% {
+    transform: rotate(10deg);
+  }
+}
+
+#Group1
+{
+  animation: scale1 3s infinite
+  alternate;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+
+@keyframes scale1 {
+  0% {
+    transform: scaleY(1);
+  }
+  70% {
+    transform: scaleY(2.5);
+  }
+}
+
+#Group2
+{
+  animation: scale2 2.5s infinite
+  alternate;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+
+@keyframes scale2 {
+  0% {
+    transform: scaleY(1);
+  }
+  60% {
+    transform: scaleY(2);
+  }
+}
+
+#Group3
+{
+  animation: scale3 3s infinite
+  alternate;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+
+@keyframes scale3 {
+  0% {
+    transform: scaleY(1.5);
+  }
+  70% {
+    transform: scaleY(0.5);
+  }
 }

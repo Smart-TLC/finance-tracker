@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
+import {
+  Drawer,
+  AppBar,
+  Toolbar,
+  CssBaseline,
+  Typography,
+  IconButton,
+  Avatar,
+} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import Avatar from '@material-ui/core/Avatar';
-
-
+import {motion} from 'framer-motion';
 import Lists from './Lists';
 import UserButton from './UserButton';
 
@@ -37,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+    cursor: 'pointer',
   },
   drawer: {
     width: drawerWidth,
@@ -73,9 +75,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
-  logoImage: {
-    marginRight: 70,
-  },
 }));
 
 export default function Sidebar() {
@@ -99,9 +98,16 @@ export default function Sidebar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+          {/* <Typography className={classes.title} variant="h6" noWrap>
                 Finance Tracker
-          </Typography>
+          </Typography> */}
+          <motion.h2 className={classes.title}
+            drag
+            dragConstraints={{left:0, top:0, right:0, bottom:0}}
+            dragElastic={1}
+          >
+            Finance Tracker
+          </motion.h2>
           <UserButton/>
         </Toolbar>
       </AppBar>
