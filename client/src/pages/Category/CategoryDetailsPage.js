@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTransactions, deleteTransaction } from "../../actions/transactionAction";
-
+import {CategoryItem} from '../../components/CategoryList/CategoryItem';
 
 
 const useStyles = makeStyles((theme) => ({
