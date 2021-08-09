@@ -26,8 +26,6 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function PieChartContainer({ cateAllTransactions, sumOfCosts }) {
-  console.log(cateAllTransactions);
-  console.log(sumOfCosts);
   const classes = useStyles();
   return (
     <Container disableGutters={true} className={classes.root}>
@@ -50,7 +48,7 @@ export default function PieChartContainer({ cateAllTransactions, sumOfCosts }) {
               text-anchor="middle"
               style={{ fontSize: 3, fontWeight: 'bold' }}
             >
-              {dataEntry.title}
+              {dataEntry.percentage > 0.05 ? dataEntry.title: ""}
             </text>
           )}
         />;

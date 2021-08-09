@@ -40,10 +40,10 @@ export default function CategoryDetails({ cateAllTransactions, sumOfCosts }) {
               <Typography className={classes.category}>{category.title}</Typography>
             </Grid>
             <Grid item container xs={4}>
-              <Grid item xs={6}>
+              <Grid item xs={5}>
                 <Typography className={classes.category}>{category.percentage * 100} %</Typography>
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={7}>
                 <Typography className={classes.category}>$ {category.value}</Typography>
               </Grid>
             </Grid>
@@ -53,10 +53,9 @@ export default function CategoryDetails({ cateAllTransactions, sumOfCosts }) {
           <Grid item container xs={8}>
           </Grid>
           <Grid item container xs={4}>
-            <Grid item xs={6}>
-              <Typography className={classes.category}>100 %</Typography>
+            <Grid item xs={5}>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={7}>
               <Typography className={classes.category}>$ {sumOfCosts}</Typography>
             </Grid>
           </Grid>

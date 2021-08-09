@@ -1,4 +1,4 @@
-export const CATEGORIES = {
+export const Categories = {
   ENTERTAINMENT: "Entertainment",
   EDUCATION: "Education",
   SHOPPING: "Shopping",

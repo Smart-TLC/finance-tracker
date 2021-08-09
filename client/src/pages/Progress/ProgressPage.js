@@ -5,8 +5,8 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import PieChartContainer from '../../components/Progress/PieChartContainer';
 import CategoryDetails from '../../components/Progress/CategoryDetails';
 import { useSelector } from 'react-redux';
-import { CATEGORIES } from '../../types/categories';
-import { COLORS } from '../../types/categoriesColors';
+import { Categories } from '../../types/categories';
+import { Colors } from '../../types/categoriesColors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,16 +33,16 @@ export default function ProgressPage() {
   }))
 
   let cateAllTransactions = [];
-  for (const key in CATEGORIES) {
-    let CateData = state.data.transactions.filter((transaction) => transaction.category === CATEGORIES[key]);
+  for (const key in Categories) {
+    let CateData = state.data.transactions.filter((transaction) => `${transaction.category[0].toUpperCase()}${transaction.category.slice(1)}` === Categories[key]);
     let sum = 0;
     for (let i = 0; i < CateData.length; i++) {
       sum += CateData[i].amount
     }
     let cateObject = {
-      title: CATEGORIES[key],
+      title: Categories[key],
       value: sum,
-      color: COLORS[key]
+      color: Colors[key]
     }
     cateAllTransactions.push(cateObject);
   }

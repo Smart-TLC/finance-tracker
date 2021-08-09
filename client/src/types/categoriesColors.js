@@ -1,4 +1,4 @@
-export const COLORS = {
+export const Colors = {
   ENTERTAINMENT: "#DE3163",
   EDUCATION: "#6495ED",
   SHOPPING: "#40E0D0",
