@@ -1,8 +1,7 @@
 import React from 'react';
 import { 
   Container,
-  Grid,
-  Typography
+  Grid
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { PieChart } from 'react-minimal-pie-chart';
@@ -26,8 +25,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function PieChartContainer({ cateAllTransactions }) {
+export default function PieChartContainer({ cateAllTransactions, sumOfCosts }) {
   console.log(cateAllTransactions);
+  console.log(sumOfCosts);
   const classes = useStyles();
   return (
     <Container disableGutters={true} className={classes.root}>
@@ -37,39 +37,23 @@ export default function PieChartContainer({ cateAllTransactions }) {
         alignItems="flex-start"
         spacing={4} 
       >
-          <Grid 
-            item container
-            xs={6}
-            direction="column"
-          >
-
-          <PieChart
-            data={cateAllTransactions}
-            // label={({ dataEntry }) => dataEntry.title}
-            label={({ x, y, dx, dy, dataEntry }) => (
-              <text
-                x={x}
-                y={y}
-                dx={dx}
-                dy={dy}
-                dominant-baseline="central"
-                text-anchor="middle"
-                style={{ fontSize: 3, fontWeight: 'bold' }}
-              >
-                {dataEntry.title}
-              </text>
-            )}
-          />;
-          </Grid>
-        
-            <Grid item container 
-              justifyContent="flex-end"
+        <PieChart
+          data={cateAllTransactions}
+          // label={({ dataEntry }) => dataEntry.title}
+          label={({ x, y, dx, dy, dataEntry }) => (
+            <text
+              x={x}
+              y={y}
+              dx={dx}
+              dy={dy}
+              dominant-baseline="central"
+              text-anchor="middle"
+              style={{ fontSize: 3, fontWeight: 'bold' }}
             >
-               
-            </Grid>
-        <Grid item xs={6} >
-          
-        </Grid>
+              {dataEntry.title}
+            </text>
+          )}
+        />;
       </Grid>
     </Container>
   )

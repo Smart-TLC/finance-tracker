@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
+import { Grid } from '@material-ui/core';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import PieChartContainer from '../../components/Progress/PieChartContainer';
+import CategoryDetails from '../../components/Progress/CategoryDetails';
 import { useSelector } from 'react-redux';
 import { CATEGORIES } from '../../types/categories';
 import { COLORS } from '../../types/categoriesColors';
@@ -17,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(2),
   },
+  categoryDetails: {
+    padding: 10,
+  }
 }));
 
 export default function ProgressPage() {
@@ -43,11 +48,32 @@ export default function ProgressPage() {
   }
 
   cateAllTransactions = cateAllTransactions.filter((transaction) => transaction.value !== 0)
+  
+  let sumOfCosts = 0;
+  for (let i = 0; i < cateAllTransactions.length; i ++) {
+    sumOfCosts += cateAllTransactions[i].value;
+  }
+
+  for (let i = 0; i < cateAllTransactions.length; i++) {
+    cateAllTransactions[i].percentage = (cateAllTransactions[i].value / sumOfCosts).toFixed(2);
+  }
 
   return (
     <div className={classes.root}>
-        <Sidebar />
-        <PieChartContainer cateAllTransactions={cateAllTransactions} />
+      <Sidebar />
+      <Grid 
+        container xs={12}
+        direction='row'
+        justifyContent='space-between'
+        alignItems="flex-start"
+      >
+        <Grid item container xs={6} direction="column">
+          <PieChartContainer cateAllTransactions={cateAllTransactions} sumOfCosts={sumOfCosts} />
+        </Grid>
+        <Grid item xs={5} spacing={0.5} direction="column" className={classes.categoryDetails}>
+          <CategoryDetails cateAllTransactions={cateAllTransactions} sumOfCosts={sumOfCosts} /> 
+        </Grid>
+      </Grid>
     </div>
   );
 }
