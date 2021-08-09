@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import TransactionList from "../../components/TransactionList/TransactionList";
 import MoneyMan from "../../components/Svg_image/MoneyMan";
 import {
   Grid,
+  Switch,
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,11 +21,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TransactionPage() {
+export default function TransactionPage(props) {
+  const [darkMode, setDarkMode] = useState(props.darkMode);
   const classes = useStyles();
 
     return (
         <div className={classes.root}>
+            
             <Sidebar />
             <Grid container
               direction='row'
@@ -40,6 +43,7 @@ export default function TransactionPage() {
                 alignItems="center"
               >
                 <Grid item >
+                <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)}/>
                   <MoneyMan/>
                 </Grid>
               </Grid>

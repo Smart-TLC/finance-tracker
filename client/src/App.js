@@ -1,11 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import { Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import checkTokenExpire from "./utils/checkTokenExpire";
 import store from "./store";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-
-
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import TransactionPage from './pages/Transaction/TransactionPage';
@@ -15,9 +13,11 @@ import ProgressPage from './pages/Progress/ProgressPage';
 import PrivateRoute from "./components/auth/privateRoute";
 
 export default function App() {
+  const [darkMode, setDarkMode] = useState(true);
+
   checkTokenExpire();
 
-  const theme = createTheme({
+  const lightTheme = createTheme({
       palette: {
         primary: {
           main: '#26c6da',
@@ -38,15 +38,40 @@ export default function App() {
         }
       }
     }
-  )
+  );
+
+  const darkTheme = createTheme({
+    palette: {
+      type: "dark",
+      primary: {
+        main: '#ff9100',
+        light: '#ff6d00',
+        // dark: '#424242',
+      },
+      secondary: {
+        main: '#fbc02d',
+        light: '#ffeb3b',
+        // dark: '#424242',
+      },
+      typography: {
+        fontFamily: 'Poppins',
+        fontWeightLight: '200',
+        fontWeightRegular: '300',
+        fontWeightMedium: '400',
+        fontWeightBold: '500',
+      }
+    }
+  }
+)
+console.log(darkMode);
 
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <Route exact path="/auth/register" component={Register} />
         <Route exact path="/auth/login" component={Login} />
         <Switch>
-          <PrivateRoute exact path="/transaction" component={TransactionPage} />
+          <PrivateRoute exact path="/transaction" component={TransactionPage} darkMode={darkMode}/>
           <PrivateRoute exact path="/monthlytransaction" component={MonthlyTransPage} />
           <PrivateRoute path="/category/:cate" component={CategoryDetailsPage} /> 
           <PrivateRoute exact path="/progress" component={ProgressPage} />

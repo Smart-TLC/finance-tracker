@@ -60,7 +60,7 @@ export default function TransactionList() {
             <Typography variant='h6' className="typo">List of Expense</Typography>
             {/* <Divider p={2}/> */}
             
-            <Container className="scrollbar scrollbar-winter-neva">
+            <Container fixed>
                 <Grid container spacing={1}>
                     {state.data.transactions.map((item) => (
                         <TransactionListItem item={item} key={item._id} handleClickOpen={handleClickOpen}/>  

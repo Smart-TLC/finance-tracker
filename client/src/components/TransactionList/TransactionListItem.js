@@ -53,6 +53,7 @@ export default function TransactionListItem(props) {
                                 </Typography>
                                 <Link to={`/category/${category}`} style={{ textDecoration: 'none' }}>
                                     <Typography variant="subtitle1" color="secondary">
+                                        {/* {category[0].toUpperCase()+category.slice(1)} */}
                                         {category}
                                     </Typography>
                                 </Link>

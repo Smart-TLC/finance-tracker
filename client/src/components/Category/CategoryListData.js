@@ -9,32 +9,32 @@ export const CategoryListData =  [
     {
         title: "Entertainment",
         icon: <SportsEsportsIcon />,
-        link: "/category/Entertainment"
+        link: "/category/entertainment"
     },
     {
         title: "Education",
         icon: <SchoolIcon />,
-        link: "/category/Education"
+        link: "/category/education"
     },
     {
         title: "Shopping",
         icon: <ShoppingBasketIcon />,
-        link: "/category/Shopping"
+        link: "/category/shopping"
     },
     {
         title: "Insurance",
         icon: <LocalHospitalIcon />,
-        link: "/category/Insurance"
+        link: "/category/insurance"
     },
     {
         title: "Meal",
         icon: <FastfoodIcon />,
-        link: "/category/Meal"
+        link: "/category/meal"
     },
     {
         title: "Emergency",
         icon: <WarningIcon />,
-        link: "/category/Emergency"
+        link: "/category/emergency"
     }
 ]
 
