@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
   },
   categoryDetails: {
     padding: 10,
+  },
+  pieChartContainer: {
+    padding: 10
   }
 }));
 
@@ -34,7 +37,7 @@ export default function ProgressPage() {
 
   let cateAllTransactions = [];
   for (const key in Categories) {
-    let CateData = state.data.transactions.filter((transaction) => `${transaction.category[0].toUpperCase()}${transaction.category.slice(1)}` === Categories[key]);
+    let CateData = state.data.transactions.filter((transaction) => transaction.category === Categories[key]);
     let sum = 0;
     for (let i = 0; i < CateData.length; i++) {
       sum += CateData[i].amount
@@ -67,10 +70,10 @@ export default function ProgressPage() {
         justifyContent='space-between'
         alignItems="flex-start"
       >
-        <Grid item container xs={6} direction="column">
+        <Grid item container lg={6} xs={12} className={classes.pieChartContainer}>
           <PieChartContainer cateAllTransactions={cateAllTransactions} sumOfCosts={sumOfCosts} />
         </Grid>
-        <Grid item xs={5} spacing={0.5} direction="column" className={classes.categoryDetails}>
+        <Grid item lg={6} xs={12} className={classes.categoryDetails}>
           <CategoryDetails cateAllTransactions={cateAllTransactions} sumOfCosts={sumOfCosts} /> 
         </Grid>
       </Grid>

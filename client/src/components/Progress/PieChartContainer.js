@@ -51,6 +51,7 @@ export default function PieChartContainer({ cateAllTransactions, sumOfCosts }) {
               {dataEntry.percentage > 0.05 ? dataEntry.title: ""}
             </text>
           )}
+          radius={40}
         />;
       </Grid>
     </Container>

@@ -17,6 +17,7 @@ const TransactionSchema = new mongoose.Schema({
   },
   category: {
     type: String,
+    set: s => `${s[0].toUpperCase()}${s.slice(1)}`,
     required: [true, 'Please choose a category']
   },
   createdAt: {
