@@ -5,13 +5,13 @@ import {
     Container,
     Grid,
     Typography,
-    Divider,
 } from '@material-ui/core';
 import { useSelector } from "react-redux";
 import TransactionForm from "../TransactionForm/TransactionForm";
 import AddTransactionBtn from "../TransactionForm/AddTransactionBtn";
 import Balance from './Balance';
 import {motion} from 'framer-motion'
+import { Scrollbars } from 'react-custom-scrollbars';
 
 const textVariants = {
     hidden: {
@@ -60,13 +60,18 @@ export default function TransactionList() {
             <Typography variant='h6' className="typo">List of Expense</Typography>
             {/* <Divider p={2}/> */}
             
-            <Container fixed>
+            <Scrollbars 
+                style={{ height: 350, weight: 800 }}
+                autoHide
+                autoHideTimeout={1000}
+                autoHideDuration={200}
+            >
                 <Grid container spacing={1}>
                     {state.data.transactions.map((item) => (
                         <TransactionListItem item={item} key={item._id} handleClickOpen={handleClickOpen}/>  
                     ))}    
                 </Grid>
-            </Container>
+            </Scrollbars>
             <Grid> 
                 <AddTransactionBtn handleClickOpen={handleClickOpen} />
                 <TransactionForm open={open} handleClose={handleClose} id={formId}/>                   

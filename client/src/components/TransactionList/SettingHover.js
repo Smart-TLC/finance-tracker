@@ -40,8 +40,6 @@ export default function SettingHover(props) {
         <Slide id="mouse-over-popover" in={open} unmountOnExit direction="left">
           <ButtonGroup
             color="primary"
-            // variant="container"
-            // className={classes.btnColor}
             onMouseLeave={handlePopover}
             size="medium"
             fullHeight={true}

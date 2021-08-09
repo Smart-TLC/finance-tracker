@@ -22,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: theme.palette.primary.light,
         },
         cursor: 'pointer',
+        marginLeft: 10,
+        marginRight: 10,
     },
     btnColor: {
         backgroundColor: theme.palette.secondary.light,

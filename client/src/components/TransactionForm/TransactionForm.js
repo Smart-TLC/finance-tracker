@@ -18,7 +18,6 @@ import {
   updateTransaction,
 } from "../../actions/transactionAction";
 import { useFormik } from "formik";
-
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 
@@ -204,7 +203,7 @@ export default function TransactionForm(props) {
             color="primary"
           >
             Save
-          </Button>
+          </Button> 
         </DialogActions>
       </form> 
     </Dialog>

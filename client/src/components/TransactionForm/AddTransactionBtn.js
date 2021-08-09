@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.light,
         cursor: 'pointer',
         borderRadius: 16,
-        marginLeft: 24,
+        marginTop: 20,
     },
 }));
 

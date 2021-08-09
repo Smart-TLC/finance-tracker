@@ -11,7 +11,6 @@ import { deleteTransaction } from "../../actions/transactionAction";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        backgroundColor: theme.palette.success.main,
         padding: theme.spacing(1),
         marginLeft: 75,
     },

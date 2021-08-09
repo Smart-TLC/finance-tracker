@@ -18,16 +18,15 @@ import { useSelector } from "react-redux";
 import {makeStyles} from '@material-ui/core/styles';
 import Balance from './Balance';
 import {motion} from 'framer-motion';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         padding: 12,
     },
     paper: {
-        marginLeft: 25,
         backgroundColor: theme.palette.secondary.light,
         borderRadius: 15,
-        maxWidth: 890,
         marginBottom: 10,
     },
     container: {
@@ -120,7 +119,12 @@ export default function MonthlyTransList() {
                         </Grid>
                     </Grid>
                     <Grid item>
-                        <Container className="scrollbar scrollbar-primary">
+                        <Scrollbars 
+                            style={{ height: 350, weight: 800 }}
+                            autoHide
+                            autoHideTimeout={1000}
+                            autoHideDuration={200}
+                        >
                             {(monthData.length>0) ? (
                                 <Grid container spacing={1}>
                                     {monthData.map((item) => (
@@ -130,7 +134,7 @@ export default function MonthlyTransList() {
                             ):(
                                 <Typography justifyContent="center">No transactions added</Typography>
                             )}
-                        </Container> 
+                        </Scrollbars>
                     </Grid>
                     <Grid item container 
                         justifyContent="flex-end"

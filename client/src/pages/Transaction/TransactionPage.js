@@ -43,7 +43,7 @@ export default function TransactionPage(props) {
                 alignItems="center"
               >
                 <Grid item >
-                <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)}/>
+                {/* <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)}/> */}
                   <MoneyMan/>
                 </Grid>
               </Grid>
