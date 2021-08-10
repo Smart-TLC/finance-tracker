@@ -3,7 +3,8 @@ import {
     Grid,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     remain: {
@@ -41,7 +42,19 @@ const textVariants = {
 
 export default function Balance() {
     const classes = useStyles();
-    
+    const state = useSelector((state) => ({
+        data: state.data,
+    }));
+    const transactions = state.data.transactions;
+    var expenseMoney = 0;
+    var budgetMoney = 0;
+    var remainingMoney = 0;
+    if (transactions && transactions.length) {
+        expenseMoney = transactions.filter(item => item.type === "expense").reduce((res, cur) => res.amount + cur.amount) 
+        budgetMoney = transactions.filter(item => item.type === "budget").reduce((res, cur) => res.amount + cur.amount) 
+        remainingMoney = budgetMoney - expenseMoney;
+    }
+
     return (
         <motion.div
             variants={textVariants}
@@ -68,7 +81,7 @@ export default function Balance() {
                         className={classes.remain}
                         variants={textVariants}
                     >
-                        $200
+                        ${remainingMoney}
                     </motion.h2>
                 </Grid>
             </Grid>
@@ -91,7 +104,7 @@ export default function Balance() {
                         className={classes.budget}
                         variants={textVariants}
                     >
-                        $300
+                        ${budgetMoney}
                     </motion.h2>
                 </Grid>
             </Grid>
@@ -114,7 +127,7 @@ export default function Balance() {
                         className={classes.expense}
                         variants={textVariants}
                     >
-                        $100
+                        ${expenseMoney}
                     </motion.h2>
                 </Grid>
             </Grid>
