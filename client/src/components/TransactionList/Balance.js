@@ -45,14 +45,20 @@ export default function Balance() {
     const state = useSelector((state) => ({
         data: state.data,
     }));
-    const transactions = state.data.transactions;
-    var expenseMoney = 0;
-    var budgetMoney = 0;
-    var remainingMoney = 0;
-    if (transactions && transactions.length) {
-        expenseMoney = transactions.filter(item => item.type === "expense").reduce((res, cur) => res.amount + cur.amount) 
-        budgetMoney = transactions.filter(item => item.type === "budget").reduce((res, cur) => res.amount + cur.amount) 
-        remainingMoney = budgetMoney - expenseMoney;
+
+    const budgetData = state.data.transactions.filter(item => item.type === "budget");
+    const expenseData = state.data.transactions.filter(item => item.type === "expense");
+    var budgetMoney = 0
+    if (budgetData) {
+        for (var i = 0; i < budgetData.length; i++) {
+            budgetMoney += budgetData[i].amount;
+        }
+    }
+    var expenseMoney = 0
+    if (expenseData) {
+        for (var i = 0; i < expenseData.length; i++) {
+            expenseMoney += expenseData[i].amount;
+        }
     }
 
     return (
@@ -81,7 +87,7 @@ export default function Balance() {
                         className={classes.remain}
                         variants={textVariants}
                     >
-                        ${remainingMoney}
+                        ${budgetMoney - expenseMoney}
                     </motion.h2>
                 </Grid>
             </Grid>
