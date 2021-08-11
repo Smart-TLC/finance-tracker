@@ -8,7 +8,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deleteTransaction } from "../../actions/transactionAction";
 
 
-
 const useStyles = makeStyles((theme) => ({
     root: {
         backgroundColor: theme.palette.success.main,
@@ -35,7 +34,7 @@ export default function CategoryDetailsPage() {
         <div className={classes.root}>
             <Sidebar />
             <Typography variant='h3'>
-                {cate} Page
+                {`${cate[0].toUpperCase()}${cate.slice(1)}`} Page
             </Typography>
             <div>
           {cateData.map((item) => {
