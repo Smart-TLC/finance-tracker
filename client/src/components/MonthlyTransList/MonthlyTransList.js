@@ -15,9 +15,9 @@ import {
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { useSelector } from "react-redux";
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Balance from './Balance';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const useStyles = makeStyles((theme) => ({
     root: {
