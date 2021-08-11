@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
 import { Container } from '@material-ui/core';
@@ -32,7 +32,12 @@ export default function CalendarContainer() {
   })
 
   state.data.transactions.forEach((transaction) => {
-    dailySpent[transaction.spentAt] += transaction.amount;
+    if (transaction.type === "budget") {
+      dailySpent[transaction.spentAt] += transaction.amount;
+    } else if (transaction.type === "expense") {
+      dailySpent[transaction.spentAt] -= transaction.amount;
+    }
+    
   })
   console.log(dailySpent);
 
@@ -41,38 +46,24 @@ export default function CalendarContainer() {
     const date = parseInt(timeArray[0]);
     const month = parseInt(timeArray[1]);
     const year = parseInt(timeArray[2]);
+    const value = (dailySpent[key] >= 0) ? `+ $ ${dailySpent[key]}` : `- $ ${-dailySpent[key]}`
     return ({
-      'title': `- $ ${dailySpent[key]}`,
+      'value': dailySpent[key],
+      'title': value,
       'start': new Date(year, month-1, date),
       'end': new Date(year, month-1, date)
     })
   })
 
-
-  console.log(newEvents);
-
   const classes = useStyles();
-  const [dateState, setDateState] = useState(new Date());
-  const handleNavigate = (date) => {
-    console.log(date)
-  }
-
-  const handleSelectSlot = (e) => {
-    setDateState(e.slots[0]);
-    console.log(dateState);
-  }
-
-  const handleChange = (e) => {
-    console.log(e);
-  }
-
-  const eventStyleGetter = () => {
+  const eventStyleGetter = (event) => {
+    console.log(event.value);
     const style = {
         justifyContent: 'center',
         backgroundColor: 'white',
         borderRadius: '0px',
         opacity: 0.8,
-        color: 'red',
+        color: (event.value >= 0) ? 'green': 'red',
         border: '0px',
         display: 'flex',
         padding: '7px',
@@ -89,9 +80,6 @@ export default function CalendarContainer() {
       <Calendar
         selectable
         localizer={localizer}
-        onNavigate={handleNavigate}
-        onSelectSlot={handleSelectSlot}
-        onChange={handleChange}
         eventPropGetter={eventStyleGetter}
         events={newEvents}
         views={allViews}
