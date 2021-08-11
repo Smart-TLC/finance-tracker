@@ -4,5 +4,6 @@ export const Categories = {
   SHOPPING: "shopping",
   INSURANCE: "insurance",
   MEAL: "meal",
-  EMERGENCY: "emergency"
+  EMERGENCY: "emergency",
+  OTHER: "other",
 }

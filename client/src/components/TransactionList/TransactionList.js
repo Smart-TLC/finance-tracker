@@ -38,21 +38,9 @@ export default function TransactionList() {
     data: state.data,
   }));
 
-<<<<<<< HEAD
-    console.log(state.data.transactions);
-
-    // open action of form 
-    const [open, setOpen] = useState(false);
-    const [formId, setFormId] = useState("");
-    const handleClickOpen = (id) => {
-        setOpen(true);
-        setFormId(id);
-    };
-=======
   const [open, setOpen] = useState(false);
   const [formId, setFormId] = useState("");
   const [type, setType] = useState("expense");
->>>>>>> 927e67e0998d869f8ad37b293de869f5cc13bf04
 
   // open action of form
   const handleClickOpen = (id) => {
