@@ -33,6 +33,8 @@ export default function TransactionList() {
         data: state.data,
     }));
 
+    console.log(state.data.transactions);
+
     // open action of form 
     const [open, setOpen] = useState(false);
     const [formId, setFormId] = useState("");
