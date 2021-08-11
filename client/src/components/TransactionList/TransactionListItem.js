@@ -10,8 +10,9 @@ import {
     Typography,
     Divider,
 } from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import SettingHover from './SettingHover';
+import { capitalizeString } from "../../utils/transactionFunc";
 
 const useStyles = makeStyles((theme) => ({
     hide: {
@@ -53,7 +54,7 @@ export default function TransactionListItem(props) {
                   </Typography>
                   <Link to={`/category/${category}`} style={{ textDecoration: 'none' }}>
                       <Typography variant="subtitle1" color="secondary">
-                          {category}
+                          {capitalizeString(category)}
                       </Typography>
                   </Link>
               </Grid>

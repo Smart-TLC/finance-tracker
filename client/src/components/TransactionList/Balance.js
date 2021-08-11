@@ -4,7 +4,6 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { motion } from 'framer-motion';
-import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     remain: {
@@ -40,26 +39,9 @@ const textVariants = {
     }
 }
 
-export default function Balance() {
+export default function Balance(props) {
     const classes = useStyles();
-    const state = useSelector((state) => ({
-        data: state.data,
-    }));
-
-    const budgetData = state.data.transactions.filter(item => item.type === "budget");
-    const expenseData = state.data.transactions.filter(item => item.type === "expense");
-    var budgetMoney = 0
-    if (budgetData) {
-        for (var i = 0; i < budgetData.length; i++) {
-            budgetMoney += budgetData[i].amount;
-        }
-    }
-    var expenseMoney = 0
-    if (expenseData) {
-        for (var i = 0; i < expenseData.length; i++) {
-            expenseMoney += expenseData[i].amount;
-        }
-    }
+    const {expenseMoney, budgetMoney} = props;
 
     return (
         <motion.div

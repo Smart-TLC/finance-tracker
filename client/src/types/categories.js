@@ -1,8 +1,8 @@
 export const Categories = {
-  ENTERTAINMENT: "Entertainment",
-  EDUCATION: "Education",
-  SHOPPING: "Shopping",
-  INSURANCE: "Insurance",
-  MEAL: "Meal",
-  EMERGENCY: "Emergency"
+  ENTERTAINMENT: "entertainment",
+  EDUCATION: "education",
+  SHOPPING: "shopping",
+  INSURANCE: "insurance",
+  MEAL: "meal",
+  EMERGENCY: "emergency"
 }

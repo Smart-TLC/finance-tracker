@@ -1,31 +1,16 @@
 import React, { useState } from "react";
 import "../../index.css";
 import TransactionListItem from "./TransactionListItem";
-import {
-  makeStyles,
-  Container,
-  Grid,
-  Typography,
-  Divider,
-  Tabs,
-  Tab,
-} from "@material-ui/core";
-import {
-  Timeline,
-  TimelineItem,
-  TimelineSeparator,
-  TimelineDot,
-  TimelineConnector,
-  TimelineContent,
-  TimelineOppositeContent,
-} from "@material-ui/lab";
+import { makeStyles, Container, Grid, Typography } from "@material-ui/core";
+import { Timeline } from "@material-ui/lab";
 import { useSelector } from "react-redux";
 import TransactionForm from "../TransactionForm/TransactionForm";
 import AddTransactionBtn from "../TransactionForm/AddTransactionBtn";
 import Balance from "./Balance";
 import { motion } from "framer-motion";
-import { isSooner } from "../../utils/transactionFunc";
+import { isSooner, calculateBalance } from "../../utils/transactionFunc";
 import BudgetItem from "./BudgetItem";
+import TransactionTab from "./TransactionTab";
 
 const textVariants = {
   hidden: {
@@ -41,31 +26,9 @@ const textVariants = {
 };
 
 const useStyles = makeStyles((theme) => ({
-  tabs: {
-    marginTop: "-4%",
-    marginBottom: 10,
-    marginLeft: "3%",
-  },
-  tab: {
-    fontSize: "1.2em",
-    fontWeight: "bold",
-    minWidth: "90px",
-  },
   timeline: {
     padding: 0,
   },
-  timelineItem: {
-    "&::before": {
-      padding: 0,
-      flex: 0,
-    },
-  },
-  timelineItemOpposite: {
-    paddingTop: 0,
-    flexGrow: 0.15,
-    height: "10%",
-    paddingLeft: 0,
-  }
 }));
 
 export default function TransactionList() {
@@ -98,6 +61,8 @@ export default function TransactionList() {
     .filter((item) => item.type == type)
     .sort((item1, item2) => isSooner(item1.spentAt, item2.spentAt));
 
+  const balance = calculateBalance(state.data.transactions);
+
   return (
     <Container maxWidth="lg" disableGutters={false}>
       <motion.h2
@@ -108,20 +73,11 @@ export default function TransactionList() {
       >
         Welcome back, {state.auth.user.name}
       </motion.h2>
-      <Balance />
-      <Tabs
-        id="type"
-        value={type}
-        className={classes.tabs}
-        indicatorColor="primary"
-        textColor="primary"
-        onChange={handleTabChange}
-      >
-        <Tab className={classes.tab} label="Expense" value="expense" />
-        <Tab className={classes.tab} label="Budget" value="budget" />
-      </Tabs>
-      {/* <Typography variant='h6' className="typo">List of Expense</Typography> */}
-      {/* <Divider p={2}/> */}
+      <Balance expenseMoney={balance[1]} budgetMoney={balance[0]}/>
+      <TransactionTab
+        transactionType={type}
+        handleTabChange={handleTabChange}
+      />
 
       <Container className="scrollbar scrollbar-winter-neva">
         {type == "expense" ? (
@@ -137,20 +93,12 @@ export default function TransactionList() {
         ) : (
           <Timeline className={classes.timeline}>
             {data.map((item, id) => (
-              <TimelineItem key={item._id} className={classes.timelineItem}>
-                <TimelineOppositeContent className={classes.timelineItemOpposite}>
-                  <Typography variant="subtitle1" color="textSecondary">
-                    {item.spentAt}
-                  </Typography>
-                </TimelineOppositeContent>
-                <TimelineSeparator>
-                  <TimelineDot />
-                  {id != data.length - 1 ? <TimelineConnector /> : <></>}
-                </TimelineSeparator>
-                <TimelineContent>
-                  <BudgetItem item={item} handleClickOpen={handleClickOpen} />
-                </TimelineContent>
-              </TimelineItem>
+              <BudgetItem
+                item={item}
+                handleClickOpen={handleClickOpen}
+                id={id}
+                dataLength={data.length}
+              />
             ))}
           </Timeline>
         )}
