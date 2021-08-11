@@ -7,6 +7,7 @@ import CategoryDetails from '../../components/Progress/CategoryDetails';
 import { useSelector } from 'react-redux';
 import { Categories } from '../../types/categories';
 import { Colors } from '../../types/categoriesColors';
+import { capitalizeString } from '../../utils/transactionFunc';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +44,7 @@ export default function ProgressPage() {
       sum += CateData[i].amount
     }
     let cateObject = {
-      title: Categories[key],
+      title: capitalizeString(Categories[key]),
       value: sum,
       color: Colors[key]
     }

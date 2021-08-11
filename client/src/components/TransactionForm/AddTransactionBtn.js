@@ -22,11 +22,11 @@ const AddTransactionBtn = (props) => {
                 justifyContent="center"
                 alignItems="center"
             >
-            <Typography variant="h5">
-                New Transaction
-            </Typography>
+                <Typography variant="h5">
+                    New Transaction
+                </Typography>
             </Grid>
-      </Card>
+        </Card>
     )
 }
 
