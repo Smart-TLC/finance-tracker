@@ -4,5 +4,6 @@ export const Colors = {
   SHOPPING: "#40E0D0",
   INSURANCE: "#FFBF00",
   MEAL: "#DFFF00",
-  EMERGENCY: "#9FE2BF"
+  EMERGENCY: "#9FE2BF",
+  OTHER: "#F4A460"
 }

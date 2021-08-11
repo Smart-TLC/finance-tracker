@@ -12,6 +12,7 @@ import TransactionPage from './pages/Transaction/TransactionPage';
 import CategoryDetailsPage from './pages/Category/CategoryDetailsPage';
 import MonthlyTransPage from './pages/MonthlyTrans/MonthlyTransPage';
 import ProgressPage from './pages/Progress/ProgressPage';
+import CalendarPage from './pages/Calendar/CalendarPage';
 import PrivateRoute from "./components/auth/privateRoute";
 
 export default function App() {
@@ -50,6 +51,7 @@ export default function App() {
           <PrivateRoute exact path="/monthlytransaction" component={MonthlyTransPage} />
           <PrivateRoute path="/category/:cate" component={CategoryDetailsPage} /> 
           <PrivateRoute exact path="/progress" component={ProgressPage} />
+          <PrivateRoute exact path="/calendar" component={CalendarPage} />
         </Switch>
       </ThemeProvider>
     </Provider>
