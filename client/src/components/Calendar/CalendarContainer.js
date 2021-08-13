@@ -8,7 +8,6 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 const localizer = momentLocalizer(moment);
 
-console.log(Object.keys(Views));
 let allViews = Object.keys(Views).filter(k => k === "MONTH").map(k => Views[k])
 
 const useStyles = makeStyles(() => ({
@@ -39,7 +38,6 @@ export default function CalendarContainer() {
     }
     
   })
-  console.log(dailySpent);
 
   const newEvents = Object.keys(dailySpent).map((key) => {
     const timeArray = key.split("-");
