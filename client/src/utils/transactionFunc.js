@@ -41,3 +41,43 @@ export const calculateBalance = (transactionData) => {
   }
   return [budgetMoney, expenseMoney]
 };
+
+export const costsSum = (cateAllTransactions) => {
+  let sum = 0;
+  for (let i = 0; i < cateAllTransactions.length; i++) {
+    sum += cateAllTransactions[i].value;
+  }
+
+  return sum;
+}
+
+export const calculatePercentage = (cateAllTransactions, sumOfCosts) => {
+  for (let i = 0; i < cateAllTransactions.length; i++) {
+    cateAllTransactions[i].percentage = (cateAllTransactions[i].value / sumOfCosts).toFixed(2);
+  }
+}
+
+export const removeZeroValueTransactions = (transactions) => {
+  const newTransactions = transactions.filter((transaction) => transaction.value !== 0);
+  return newTransactions
+}
+
+export const cateTransactions = (transactions, categories, colors) => {
+  let cateAllTransactions = [];
+  for (const key in categories) {
+    let CateData = transactions.filter((transaction) => transaction.category === categories[key]);
+    let sum = 0;
+    for (let i = 0; i < CateData.length; i++) {
+      sum += CateData[i].amount
+    }
+    let cateObject = {
+      title: capitalizeString(categories[key]),
+      value: sum,
+      color: colors[key]
+    }
+    cateAllTransactions.push(cateObject);
+  }
+  return cateAllTransactions
+}
+
+
