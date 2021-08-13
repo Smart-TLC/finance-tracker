@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../index.css";
 import TransactionListItem from "./TransactionListItem";
-import { makeStyles, Container, Grid, Typography } from "@material-ui/core";
+import { makeStyles, Container, Grid } from "@material-ui/core";
 import { Timeline } from "@material-ui/lab";
 import { useSelector } from "react-redux";
 import TransactionForm from "../TransactionForm/TransactionForm";
@@ -58,7 +58,7 @@ export default function TransactionList() {
   };
 
   const data = state.data.transactions
-    .filter((item) => item.type == type)
+    .filter((item) => item.type === type)
     .sort((item1, item2) => isSooner(item1.spentAt, item2.spentAt));
 
   const balance = calculateBalance(state.data.transactions);
@@ -80,7 +80,7 @@ export default function TransactionList() {
       />
 
       <Container className="scrollbar scrollbar-winter-neva">
-        {type == "expense" ? (
+        {type === "expense" ? (
           <Grid container spacing={1}>
             {data.map((item) => (
               <TransactionListItem

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import MonthlyTransList from '../../components/MonthlyTransList/MonthlyTransList';
@@ -17,11 +18,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MonthlyTransPage() {
   const classes = useStyles();
+  const state = useSelector((state) => ({
+    auth: state.auth,
+    data: state.data,
+  }));
 
-    return (
-        <div className={classes.root}>
-            <Sidebar />
-            <MonthlyTransList/>
-        </div>
+  console.log(state.data.transactions);
+
+  // Group transactions on each category
+
+  const categoryDailyData = {};
+
+  // Group transactions on each category on month and then sum it all
+
+  // Group transactions on each category on year and then some it all
+
+  return (
+    <div className={classes.root}>
+      <Sidebar />
+      <MonthlyTransList/>
+    </div>
   );
 }

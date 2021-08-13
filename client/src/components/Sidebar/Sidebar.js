@@ -6,7 +6,6 @@ import {
   AppBar,
   Toolbar,
   CssBaseline,
-  Typography,
   IconButton,
   Avatar,
 } from '@material-ui/core';

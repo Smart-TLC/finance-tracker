@@ -86,7 +86,7 @@ export default function MonthlyTransList() {
     (transaction) => transaction.spentAt.slice(3, 10) === mon
   );
   const data = monthData
-    .filter((item) => item.type == type)
+    .filter((item) => item.type === type)
     .sort((item1, item2) => isSooner(item1.spentAt, item2.spentAt));
 
   const balance = calculateBalance(monthData);
@@ -141,7 +141,7 @@ export default function MonthlyTransList() {
             />
             <Container className="scrollbar scrollbar-primary">
               {data.length > 0 ? (
-                type == "expense" ? (
+                type === "expense" ? (
                   <Grid container spacing={1}>
                     {data.map((item) => (
                       <TransactionListItem
