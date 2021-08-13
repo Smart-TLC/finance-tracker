@@ -3,7 +3,6 @@ import "../../index.css";
 import TransactionListItem from "./TransactionListItem";
 import { makeStyles, Container, Grid } from "@material-ui/core";
 import { Timeline } from "@material-ui/lab";
-import MuiAlert from '@material-ui/lab/Alert';
 import { useSelector } from "react-redux";
 import TransactionForm from "../TransactionForm/TransactionForm";
 import AddTransactionBtn from "../TransactionForm/AddTransactionBtn";
