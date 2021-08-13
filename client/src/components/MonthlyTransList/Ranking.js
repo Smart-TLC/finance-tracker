@@ -30,7 +30,7 @@ const Tab = ({ children }) => {
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
-        maxWidth: 330,
+        maxWidth: 360,
         backgroundColor: theme.palette.background.paper,
     },
     text: {
@@ -46,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
       textAlign: 'center',
       padding: 4,
+    },
+    listItem: {
+      width: '100%',
+      paddingLeft: 0,
+      paddingRight: 0
     }
   }));
 
@@ -66,17 +71,17 @@ export default function Ranking({ dailyTransactions, monthlyTransactions, yearly
                 <Typography className={classes.noTransactions}>No transactions today.</Typography>
               ) : (
                 dailyTransactions.map((transaction) => (
-                  <ListItem button>
+                  <ListItem button className={classes.listItem}>
                     <ListItemAvatar>
                       <Avatar>
                         {categoriesIcons[transaction.category]}
                       </Avatar>
                     </ListItemAvatar>
                     <Grid container>
-                      <Grid item xs={6} >
+                      <Grid item xs={8} >
                         <ListItemText primary={capitalizeString(transaction.category)} />
                       </Grid>
-                      <Grid item xs={6} >
+                      <Grid item xs={4} >
                         <ListItemText className={classes.amount}>{`$ ${transaction.amount}`}</ListItemText>
                       </Grid>
                     </Grid>
@@ -95,17 +100,17 @@ export default function Ranking({ dailyTransactions, monthlyTransactions, yearly
                 <Typography className={classes.noTransactions}>No transactions this month.</Typography>
               ) : (
                 monthlyTransactions.map((transaction) => (
-                  <ListItem button>
+                  <ListItem button className={classes.listItem}>
                     <ListItemAvatar>
                       <Avatar>
                         {categoriesIcons[transaction.category]}
                       </Avatar>
                     </ListItemAvatar>
                     <Grid container>
-                      <Grid item xs={6} >
+                      <Grid item xs={8} >
                         <ListItemText primary={capitalizeString(transaction.category)} />
                       </Grid>
-                      <Grid item xs={6} >
+                      <Grid item xs={4} >
                         <ListItemText className={classes.amount}>{`$ ${transaction.amount}`}</ListItemText>
                       </Grid>
                     </Grid>
@@ -121,17 +126,17 @@ export default function Ranking({ dailyTransactions, monthlyTransactions, yearly
                 <Typography className={classes.noTransactions}>No transactions this year.</Typography>
               ) : (
                 yearlyTransactions.map((transaction) => (
-                  <ListItem button>
+                  <ListItem button className={classes.listItem}>
                     <ListItemAvatar>
                       <Avatar>
                         {categoriesIcons[transaction.category]}
                       </Avatar>
                     </ListItemAvatar>
                     <Grid container>
-                      <Grid item xs={6} >
+                      <Grid item xs={8} >
                         <ListItemText primary={capitalizeString(transaction.category)} />
                       </Grid>
-                      <Grid item xs={6} >
+                      <Grid item xs={4} >
                         <ListItemText className={classes.amount}>{`$ ${transaction.amount}`}</ListItemText>
                       </Grid>
                     </Grid>
