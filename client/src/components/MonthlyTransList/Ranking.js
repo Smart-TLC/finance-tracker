@@ -7,6 +7,7 @@ import {
     ListItemAvatar,
     Grid,
     Avatar,
+    Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import "../../index.css";
@@ -40,6 +41,11 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.secondary.dark,
       marginRight: 0,
       paddingRight: 0,
+    },
+    noTransactions: {
+      justifyContent: 'center',
+      textAlign: 'center',
+      padding: 4,
     }
   }));
 
@@ -57,7 +63,7 @@ export default function Ranking({ dailyTransactions, monthlyTransactions, yearly
           <Panel className='daily-panel'>
             <List component="nav" className={classes.root}>
               {_.isEmpty(dailyTransactions) ? (
-                <p>No transactions today.</p>
+                <Typography className={classes.noTransactions}>No transactions today.</Typography>
               ) : (
                 dailyTransactions.map((transaction) => (
                   <ListItem button>
@@ -86,7 +92,7 @@ export default function Ranking({ dailyTransactions, monthlyTransactions, yearly
           <Panel>
             <List component="nav" className={classes.root}>
               {_.isEmpty(monthlyTransactions) ? (
-                <p>No transactions this month.</p>
+                <Typography className={classes.noTransactions}>No transactions this month.</Typography>
               ) : (
                 monthlyTransactions.map((transaction) => (
                   <ListItem button>
@@ -112,7 +118,7 @@ export default function Ranking({ dailyTransactions, monthlyTransactions, yearly
           <Panel>
             <List component="nav" className={classes.root}>
               {_.isEmpty(yearlyTransactions) ? (
-                <p>No transactions this year.</p>
+                <Typography className={classes.noTransactions}>No transactions this year.</Typography>
               ) : (
                 yearlyTransactions.map((transaction) => (
                   <ListItem button>
