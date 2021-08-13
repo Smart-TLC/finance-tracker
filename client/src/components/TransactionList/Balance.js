@@ -48,7 +48,7 @@ export default function Balance() {
             initial="hidden"
             animate="visible"
         >
-        <Grid container xs={12}>
+        <Grid container>
             <Grid item xs={4}
                 container
                 direction="column"

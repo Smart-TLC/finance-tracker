@@ -46,7 +46,7 @@ export default function TransactionList() {
     };
 
     return (
-        <Container maxWidth="lg" disableGutters={false}>
+        <Container maxWidth="lg">
             <motion.h2
                 variants={textVariants}
                 initial = "hidden"
@@ -61,7 +61,7 @@ export default function TransactionList() {
             {/* <Divider p={2}/> */}
             
             <Scrollbars 
-                style={{ height: 350, weight: 800 }}
+                style={{ height: 350}}
                 autoHide
                 autoHideTimeout={1000}
                 autoHideDuration={200}

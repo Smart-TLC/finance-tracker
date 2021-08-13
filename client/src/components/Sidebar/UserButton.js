@@ -1,19 +1,23 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
+import {
+  Button,
+  Menu, 
+  MenuItem,
+  ListItemIcon,
+  Typography,
+  ListItemText,
+
+} from '@material-ui/core';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import Brightness2Icon from '@material-ui/icons/Brightness2';
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
 
 import { logoutUser } from "../../actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
+import {SWITCH_MODE} from '../../actions/types';
 
 const StyledMenu = withStyles({
   paper: {
@@ -45,6 +49,7 @@ const StyledMenuItem = withStyles((theme) => ({
     },
   },
 }))(MenuItem);
+
 
 export default function UserButton() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -83,17 +88,24 @@ export default function UserButton() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem>
-          <ListItemIcon>
-            <AccountCircleIcon fontSize="small" />
+        <StyledMenuItem onClick={(e) => {
+          e.preventDefault();
+          dispatch({type: SWITCH_MODE, payload: !state.auth.setting.darkMode})
+        }}>
+          {state.auth.setting.darkMode ? (
+            <ListItemIcon>
+            <WbSunnyIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Profile" />
-        </StyledMenuItem>
-        <StyledMenuItem>
-          <ListItemIcon>
-            <Brightness2Icon fontSize="small" />
-          </ListItemIcon>
-          <ListItemText primary="Night Mode" />
+          ) : (
+            <ListItemIcon>
+              <Brightness2Icon fontSize="small" />
+            </ListItemIcon>
+          )}
+          {state.auth.setting.darkMode ? (
+            <ListItemText primary="Light Mode"/>
+          ) : (
+            <ListItemText primary="Dark Mode"/>
+          )}
         </StyledMenuItem>
         <StyledMenuItem onClick={(e) => {
             e.preventDefault();

@@ -8,6 +8,8 @@ import {
 } from "@material-ui/core";
 import { ListItemData } from "./ListItemData";
 import { Link } from "react-router-dom";
+import {useSelector} from 'react-redux';
+
 import CategoryList from '../Category/CategoryList';
 
 const useStyles = makeStyles((theme) => ({
@@ -18,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Lists() {
   const classes = useStyles();
+
+  const state = useSelector((state) => ({
+    auth: state.auth,
+    errors: state.errors,
+    data: state.data,
+  }));
 
   return (
     <List>

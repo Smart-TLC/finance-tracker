@@ -17,7 +17,7 @@ const svgVariants = {
 
 export default function MoneyMan() {
   return (
-    <motion.div class="svg-animation-container"
+    <motion.div className="svg-animation-container"
       variants={svgVariants}
       initial = "hidden"
       animate = "visible"

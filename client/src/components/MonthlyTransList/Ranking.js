@@ -5,12 +5,10 @@ import {
     ListItem,
     ListItemText,
     ListItemAvatar,
-    ListItemIcon,
     Divider,
     Avatar,
 } from '@material-ui/core';
 import BeachAccessIcon from '@material-ui/icons/BeachAccess';
-import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import { makeStyles } from '@material-ui/core/styles';
 import "../../index.css";
 

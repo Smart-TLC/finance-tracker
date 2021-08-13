@@ -6,14 +6,13 @@ import {
   AppBar,
   Toolbar,
   CssBaseline,
-  Typography,
   IconButton,
   Avatar,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import {motion} from 'framer-motion';
 import Lists from './Lists';
 import UserButton from './UserButton';
+import Hacker from './Hacker';
 
 const drawerWidth = 215;
 
@@ -78,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Sidebar() {
+  // const {darkMode, setDarkMode} = props;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -98,16 +98,7 @@ export default function Sidebar() {
           >
             <MenuIcon />
           </IconButton>
-          {/* <Typography className={classes.title} variant="h6" noWrap>
-                Finance Tracker
-          </Typography> */}
-          <motion.h2 className={classes.title}
-            drag
-            dragConstraints={{left:0, top:0, right:0, bottom:0}}
-            dragElastic={1}
-          >
-            Finance Tracker
-          </motion.h2>
+          <Hacker className={classes.title}/>
           <UserButton/>
         </Toolbar>
       </AppBar>

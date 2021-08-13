@@ -1,4 +1,3 @@
-import HomeIcon from '@material-ui/icons/Home';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
