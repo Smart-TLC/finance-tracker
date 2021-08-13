@@ -13,7 +13,7 @@ export const isSooner = (d1, d2) => {
 
 // Capitalize string (used for categories)
 export const capitalizeString = (s) => {
-  if (s.length) {
+  if (s !== "") {
     return s[0].toUpperCase() + s.slice(1);
   }
   return "";
@@ -80,4 +80,10 @@ export const cateTransactions = (transactions, categories, colors) => {
   return cateAllTransactions
 }
 
+// Sort transactions value from large to small 
+export const sortTransactions = (transactions) => {
+  let newTransactions = [];
+  newTransactions = transactions.sort((a , b) => b.amount - a.amount);
+  return newTransactions
+}
 

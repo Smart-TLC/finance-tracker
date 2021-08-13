@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MonthlyTransList() {
+export default function MonthlyTransList({ dailyTransactions, monthlyTransactions, yearlyTransactions }) {
   const classes = useStyles();
   const state = useSelector((state) => ({
     auth: state.auth,
@@ -181,7 +181,11 @@ export default function MonthlyTransList() {
         <Grid item xs={3}>
           <motion.h2>TOP EXPENSE</motion.h2>
           <Card height="100%">
-            <Ranking />
+            <Ranking 
+              dailyTransactions={dailyTransactions} 
+              monthlyTransactions={monthlyTransactions}
+              yearlyTransactions={yearlyTransactions}
+            />
           </Card>
         </Grid>
         <TransactionForm open={open} handleClose={handleClose} id={formId} />

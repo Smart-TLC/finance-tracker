@@ -41,8 +41,6 @@ export default function ProgressPage() {
   cateAllTransactions = removeZeroValueTransactions(cateAllTransactions);
   const sumOfCosts = costsSum(cateAllTransactions);
   calculatePercentage(cateAllTransactions, sumOfCosts);
-
-  console.log(cateAllTransactions);
   
   return (
     <div className={classes.root}>

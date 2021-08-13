@@ -5,12 +5,14 @@ import {
     ListItem,
     ListItemText,
     ListItemAvatar,
-    Divider,
+    Grid,
     Avatar,
 } from '@material-ui/core';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
 import { makeStyles } from '@material-ui/core/styles';
 import "../../index.css";
+import { categoriesIcons } from '../../types/categoriesIcons';
+import { capitalizeString } from '../../utils/transactionFunc';
+import _ from 'lodash';
 
 const cn = (...args) => args.filter(Boolean).join(' ')
 
@@ -34,9 +36,14 @@ const useStyles = makeStyles((theme) => ({
         JustifyContent: 'center',
         color: theme.palette.secondary.dark,
     },
+    amount: {
+      color: theme.palette.secondary.dark,
+      marginRight: 0,
+      paddingRight: 0,
+    }
   }));
 
-export default function Ranking() {
+export default function Ranking({ dailyTransactions, monthlyTransactions, yearlyTransactions }) {
     const classes = useStyles();
     return (
       <Tabs>
@@ -47,95 +54,85 @@ export default function Ranking() {
             <Tab>Year</Tab>
           </div>
           <div className='tab-progress' />
-          <Panel className='panel'>
+          <Panel className='daily-panel'>
             <List component="nav" className={classes.root}>
-            {/* {ListItemData.map((text, index) => ( */}
-                <ListItem button>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <BeachAccessIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary="Education"/>
-                  <ListItemText className={classes.text}>$13</ListItemText>
-                </ListItem>
-                <Divider/>
-                <ListItem button > 
-                  <ListItemAvatar>
-                    <Avatar>
-                      <BeachAccessIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary="Education"/>
-                  <ListItemText className={classes.text}>$13</ListItemText>
-                </ListItem>
-                <Divider />
-                <ListItem button>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <BeachAccessIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary="Education"/>
-                  <ListItemText className={classes.text}>$13</ListItemText>
-                </ListItem>
-                <Divider />
-                <ListItem button>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <BeachAccessIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary="Education"/>
-                  <ListItemText className={classes.text}>$13</ListItemText>
-                </ListItem>
-                <Divider />
-                <ListItem button>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <BeachAccessIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary="Education"/>
-                  <ListItemText className={classes.text}>$13</ListItemText>
-                </ListItem>
-                <Divider />
-                <ListItem button>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <BeachAccessIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary="Education"/>
-                  <ListItemText className={classes.text}>$13</ListItemText>
-                </ListItem>
-                <Divider />
-                <ListItem button>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <BeachAccessIcon />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary="Education"/>
-                  <ListItemText className={classes.text}>$13</ListItemText>
-                </ListItem>
+              {_.isEmpty(dailyTransactions) ? (
+                <p>No transactions today.</p>
+              ) : (
+                dailyTransactions.map((transaction) => (
+                  <ListItem button>
+                    <ListItemAvatar>
+                      <Avatar>
+                        {categoriesIcons[transaction.category]}
+                      </Avatar>
+                    </ListItemAvatar>
+                    <Grid container>
+                      <Grid item xs={6} >
+                        <ListItemText primary={capitalizeString(transaction.category)} />
+                      </Grid>
+                      <Grid item xs={6} >
+                        <ListItemText className={classes.amount}>{`$ ${transaction.amount}`}</ListItemText>
+                      </Grid>
+                    </Grid>
+                  </ListItem>
+                ))
+              )}
+                
+                
             {/* ))} */}
             </List>
           </Panel>
 
           <Panel>
-            <p>
-            The input range must be a linear series of numbers. The output range
-            can be any value type supported by Framer Motion: numbers, colors,
-            shadows, etc.
-            </p>
+            <List component="nav" className={classes.root}>
+              {_.isEmpty(monthlyTransactions) ? (
+                <p>No transactions this month.</p>
+              ) : (
+                monthlyTransactions.map((transaction) => (
+                  <ListItem button>
+                    <ListItemAvatar>
+                      <Avatar>
+                        {categoriesIcons[transaction.category]}
+                      </Avatar>
+                    </ListItemAvatar>
+                    <Grid container>
+                      <Grid item xs={6} >
+                        <ListItemText primary={capitalizeString(transaction.category)} />
+                      </Grid>
+                      <Grid item xs={6} >
+                        <ListItemText className={classes.amount}>{`$ ${transaction.amount}`}</ListItemText>
+                      </Grid>
+                    </Grid>
+                  </ListItem>
+                ))
+              ) }
+            </List>
           </Panel>
 
           <Panel>
-            <p>
-            Creates a MotionValue that, when set, will use a spring animation to
-            animate to its new state.
-            </p>
+            <List component="nav" className={classes.root}>
+              {_.isEmpty(yearlyTransactions) ? (
+                <p>No transactions this year.</p>
+              ) : (
+                yearlyTransactions.map((transaction) => (
+                  <ListItem button>
+                    <ListItemAvatar>
+                      <Avatar>
+                        {categoriesIcons[transaction.category]}
+                      </Avatar>
+                    </ListItemAvatar>
+                    <Grid container>
+                      <Grid item xs={6} >
+                        <ListItemText primary={capitalizeString(transaction.category)} />
+                      </Grid>
+                      <Grid item xs={6} >
+                        <ListItemText className={classes.amount}>{`$ ${transaction.amount}`}</ListItemText>
+                      </Grid>
+                    </Grid>
+                  </ListItem>
+                ))
+              )}
+            </List>
           </Panel>
         </div>
       </Tabs>

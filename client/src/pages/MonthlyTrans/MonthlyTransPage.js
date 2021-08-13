@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import MonthlyTransList from '../../components/MonthlyTransList/MonthlyTransList';
+import { sortTransactions } from '../../utils/transactionFunc';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,20 +24,29 @@ export default function MonthlyTransPage() {
     data: state.data,
   }));
 
-  console.log(state.data.transactions);
+  const dailyTransactions = sortTransactions(state.data.transactions)
+    .slice(0, 7).filter((transaction) => transaction.category !== "")
+    .filter((transaction) => transaction.spentAt.split("-")[0] === (new Date()).getDate().toString());
 
-  // Group transactions on each category
+  const currentMonth = (new Date()).getMonth() + 1;
+  const monthString = currentMonth < 10 ? `0${currentMonth.toString()}` : currentMonth.toString()
 
-  const categoryDailyData = {};
+  const monthlyTransactions = sortTransactions(state.data.transactions)
+  .slice(0, 7).filter((transaction) => transaction.category !== "")
+  .filter((transaction) => transaction.spentAt.split("-")[1] === monthString);
 
-  // Group transactions on each category on month and then sum it all
-
-  // Group transactions on each category on year and then some it all
+  const yearlyTransactions = sortTransactions(state.data.transactions)
+  .slice(0, 7).filter((transaction) => transaction.category !== "")
+  .filter((transaction) => transaction.spentAt.split("-")[2] === (new Date()).getFullYear().toString());
 
   return (
     <div className={classes.root}>
       <Sidebar />
-      <MonthlyTransList/>
+      <MonthlyTransList 
+        dailyTransactions={dailyTransactions} 
+        monthlyTransactions={monthlyTransactions} 
+        yearlyTransactions={yearlyTransactions}
+      />
     </div>
   );
 }
