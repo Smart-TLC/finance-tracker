@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MonthlyTransList() {
+export default function MonthlyTransList({ dailyTransactions, monthlyTransactions, yearlyTransactions }) {
   const classes = useStyles();
   const state = useSelector((state) => ({
     auth: state.auth,
@@ -86,7 +86,7 @@ export default function MonthlyTransList() {
     (transaction) => transaction.spentAt.slice(3, 10) === mon
   );
   const data = monthData
-    .filter((item) => item.type == type)
+    .filter((item) => item.type === type)
     .sort((item1, item2) => isSooner(item1.spentAt, item2.spentAt));
 
   const balance = calculateBalance(monthData);
@@ -141,7 +141,7 @@ export default function MonthlyTransList() {
             />
             <Container className="scrollbar scrollbar-primary">
               {data.length > 0 ? (
-                type == "expense" ? (
+                type === "expense" ? (
                   <Grid container spacing={1}>
                     {data.map((item) => (
                       <TransactionListItem
@@ -181,7 +181,11 @@ export default function MonthlyTransList() {
         <Grid item xs={3}>
           <motion.h2>TOP EXPENSE</motion.h2>
           <Card height="100%">
-            <Ranking />
+            <Ranking 
+              dailyTransactions={dailyTransactions} 
+              monthlyTransactions={monthlyTransactions}
+              yearlyTransactions={yearlyTransactions}
+            />
           </Card>
         </Grid>
         <TransactionForm open={open} handleClose={handleClose} id={formId} />

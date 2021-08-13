@@ -7,7 +7,7 @@ import CategoryDetails from '../../components/Progress/CategoryDetails';
 import { useSelector } from 'react-redux';
 import { Categories } from '../../types/categories';
 import { Colors } from '../../types/categoriesColors';
-import { capitalizeString } from '../../utils/transactionFunc';
+import { costsSum, calculatePercentage, removeZeroValueTransactions, cateTransactions } from '../../utils/transactionFunc';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,31 +37,11 @@ export default function ProgressPage() {
   }))
 
   let cateAllTransactions = [];
-  for (const key in Categories) {
-    let CateData = state.data.transactions.filter((transaction) => transaction.category === Categories[key]);
-    let sum = 0;
-    for (let i = 0; i < CateData.length; i++) {
-      sum += CateData[i].amount
-    }
-    let cateObject = {
-      title: capitalizeString(Categories[key]),
-      value: sum,
-      color: Colors[key]
-    }
-    cateAllTransactions.push(cateObject);
-  }
-
-  cateAllTransactions = cateAllTransactions.filter((transaction) => transaction.value !== 0)
+  cateAllTransactions = cateTransactions(state.data.transactions, Categories, Colors);
+  cateAllTransactions = removeZeroValueTransactions(cateAllTransactions);
+  const sumOfCosts = costsSum(cateAllTransactions);
+  calculatePercentage(cateAllTransactions, sumOfCosts);
   
-  let sumOfCosts = 0;
-  for (let i = 0; i < cateAllTransactions.length; i ++) {
-    sumOfCosts += cateAllTransactions[i].value;
-  }
-
-  for (let i = 0; i < cateAllTransactions.length; i++) {
-    cateAllTransactions[i].percentage = (cateAllTransactions[i].value / sumOfCosts).toFixed(2);
-  }
-
   return (
     <div className={classes.root}>
       <Sidebar />
