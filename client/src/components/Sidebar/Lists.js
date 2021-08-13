@@ -9,7 +9,6 @@ import {
 import { ListItemData } from "./ListItemData";
 import { Link } from "react-router-dom";
 import {useSelector} from 'react-redux';
-
 import CategoryList from '../Category/CategoryList';
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +29,7 @@ export default function Lists() {
   return (
     <List>
       {ListItemData.map((text, index) => (
-        <Link to={text.link} key={index} style={{textDecoration: 'none', color: 'black'}}>
+        <Link to={text.link} key={index} style={{textDecoration: 'none', color: state.auth.setting.darkMode ? 'white': 'black'}}>
           <ListItem key={index} button>
             <ListItemIcon className={classes.list}>{text.icon}</ListItemIcon>
             <ListItemText primary={text.title} />

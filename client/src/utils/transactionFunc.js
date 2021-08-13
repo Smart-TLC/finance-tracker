@@ -2,8 +2,8 @@
 export const isSooner = (d1, d2) => {
   var arr1 = d1.split("-").map((item) => parseInt(item));
   var arr2 = d2.split("-").map((item) => parseInt(item));
-  if (arr1[2] == arr2[2]) {
-    if (arr1[1] == arr2[1]) {
+  if (arr1[2] === arr2[2]) {
+    if (arr1[1] === arr2[1]) {
       return arr2[0] - arr1[0];
     }
     return arr2[1] - arr1[1];
@@ -35,8 +35,8 @@ export const calculateBalance = (transactionData) => {
   }
   var expenseMoney = 0;
   if (expenseData) {
-    for (var i = 0; i < expenseData.length; i++) {
-      expenseMoney += expenseData[i].amount;
+    for (var j = 0; j < expenseData.length; j++) {
+      expenseMoney += expenseData[j].amount;
     }
   }
   return [budgetMoney, expenseMoney]

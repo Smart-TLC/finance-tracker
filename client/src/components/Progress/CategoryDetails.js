@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Card, Box, Typography } from '@material-ui/core';
+import { Grid, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,10 +20,19 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     textAlign: 'center',
     justifyContent: 'center',
-    padding: 10
+    padding: 10,
   },
   categoryItem: {
-    padding: 5
+    padding: 5,
+  },
+  total: {
+    paddingLeft: 20,
+  }, 
+  totalmoney: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center',
+    paddingLeft: 50,
   }
 }))
 
@@ -41,22 +50,23 @@ export default function CategoryDetails({ cateAllTransactions, sumOfCosts }) {
             </Grid>
             <Grid item container xs={4}>
               <Grid item xs={5}>
-                <Typography className={classes.category}>{category.percentage * 100} %</Typography>
+                <Typography className={classes.category}>{category.percentage * 100}%</Typography>
               </Grid>
               <Grid item xs={7}>
-                <Typography className={classes.category}>$ {category.value}</Typography>
+                <Typography className={classes.category}>${category.value}</Typography>
               </Grid>
             </Grid>
           </Grid>
         ))}
         <Grid container>
-          <Grid item container xs={8}>
+          <Grid item container xs={1}>
           </Grid>
-          <Grid item container xs={4}>
-            <Grid item xs={5}>
+          <Grid item container xs={11}>
+            <Grid item xs={9}>
+              <Typography variant="h6" className={classes.total}>TOTAL</Typography>
             </Grid>
-            <Grid item xs={7}>
-              <Typography className={classes.category}>$ {sumOfCosts}</Typography>
+            <Grid item xs={2}>
+              <Typography className={classes.totalmoney}>${sumOfCosts}</Typography>
             </Grid>
           </Grid>
         </Grid>

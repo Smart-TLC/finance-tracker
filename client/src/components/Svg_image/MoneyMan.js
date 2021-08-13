@@ -5,12 +5,12 @@ import {motion} from 'framer-motion';
 const svgVariants = {
   hidden: {
       opacity: 0,
-      y: -10,
+      y: -60,
       x: 150
   },
   visible: {
       opacity: 1, 
-      y: -10,
+      y: -60,
       x: 0
   }
 }

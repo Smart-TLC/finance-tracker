@@ -69,7 +69,7 @@ export default function Balance(props) {
                         className={classes.remain}
                         variants={textVariants}
                     >
-                        ${budgetMoney - expenseMoney}
+                        {(budgetMoney - expenseMoney) >= 0 ? `$${budgetMoney - expenseMoney}` : `-$${expenseMoney - budgetMoney}`}
                     </motion.h2>
                 </Grid>
             </Grid>

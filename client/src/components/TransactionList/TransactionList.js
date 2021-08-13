@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "../../index.css";
 import TransactionListItem from "./TransactionListItem";
-import { makeStyles, Container, Grid, Typography } from "@material-ui/core";
+import { makeStyles, Container, Grid } from "@material-ui/core";
 import { Timeline } from "@material-ui/lab";
+import MuiAlert from '@material-ui/lab/Alert';
 import { useSelector } from "react-redux";
 import TransactionForm from "../TransactionForm/TransactionForm";
 import AddTransactionBtn from "../TransactionForm/AddTransactionBtn";
@@ -32,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function TransactionList() {
   const classes = useStyles();
   const state = useSelector((state) => ({
@@ -52,28 +54,28 @@ export default function TransactionList() {
   const handleClose = () => {
     setOpen(false);
   };
-
   // change tab action: expense and budget
   const handleTabChange = (event, newValue) => {
     setType(newValue);
   };
 
   const data = state.data.transactions
-    .filter((item) => item.type == type)
+    .filter((item) => item.type === type)
     .sort((item1, item2) => isSooner(item1.spentAt, item2.spentAt));
 
   const balance = calculateBalance(state.data.transactions);
 
+  console.log(state.auth);
   return (
-    <Container maxWidth="lg">
-      {/* <motion.h2
+    <Container>
+      <motion.h2
         variants={textVariants}
         initial="hidden"
         animate="visible"
         transition={{ type: "spring", delay: 0.5, stiffness: 300 }}
       >
         Welcome back, {state.auth.user.name}
-      </motion.h2> */}
+      </motion.h2>
       <Balance expenseMoney={balance[1]} budgetMoney={balance[0]}/>
       <TransactionTab
         transactionType={type}
@@ -86,7 +88,7 @@ export default function TransactionList() {
           autoHideTimeout={1000}
           autoHideDuration={200}
         >
-        {type == "expense" ? (
+        {type === "expense" ? (
           <Grid container spacing={1}>
             {data.map((item) => (
               <TransactionListItem

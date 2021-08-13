@@ -18,11 +18,9 @@ import { Timeline } from "@material-ui/lab";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { useSelector } from "react-redux";
-import {makeStyles} from '@material-ui/core/styles';
 import {motion} from 'framer-motion';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Balance from "../TransactionList/Balance";
-import { motion } from "framer-motion";
 import BudgetItem from "../TransactionList/BudgetItem";
 import { isSooner, calculateBalance } from "../../utils/transactionFunc";
 
@@ -43,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
     },
     timeline: {
       padding: 0,
+    },
+    list: {
+      paddingTop: 30,
     },
 }))
 
@@ -87,14 +88,14 @@ export default function MonthlyTransList() {
     (transaction) => transaction.spentAt.slice(3, 10) === mon
   );
   const data = monthData
-    .filter((item) => item.type == type)
+    .filter((item) => item.type === type)
     .sort((item1, item2) => isSooner(item1.spentAt, item2.spentAt));
 
   const balance = calculateBalance(monthData);
 
   return (
     <Container>
-      <Grid container direction="row" alignItems="flex-start" spacing={4}>
+      <Grid container direction="row" alignItems="flex-start" spacing={5}>
         <Grid item container xs={11} lg={9} direction="column">
           <Grid item>
             <Balance expenseMoney={balance[1]} budgetMoney={balance[0]} />
@@ -135,16 +136,16 @@ export default function MonthlyTransList() {
               </IconButton>
             </Grid>
           </Grid>
-          <Grid item>
+          <Grid item className={classes.list}>
             <TransactionTab
               transactionType={type}
               handleTabChange={handleTabChange}
             />
              <Scrollbars 
-                style={{ height: 350, weight: 800 }} autoHide autoHideTimeout={1000} autoHideDuration={200}
+                style={{ height: 350 }} autoHide autoHideTimeout={1000} autoHideDuration={200}
               >
               {data.length > 0 ? (
-                type == "expense" ? (
+                type === "expense" ? (
                   <Grid container spacing={1}>
                     {data.map((item) => (
                       <TransactionListItem

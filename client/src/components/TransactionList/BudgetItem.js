@@ -62,7 +62,7 @@ const BudgetItem = (props) => {
       </TimelineOppositeContent>
       <TimelineSeparator>
         <TimelineDot />
-        {props.id != props.dataLength - 1 ? <TimelineConnector /> : <></>}
+        {props.id !== props.dataLength - 1 ? <TimelineConnector /> : <></>}
       </TimelineSeparator>
       <TimelineContent>
         <Card

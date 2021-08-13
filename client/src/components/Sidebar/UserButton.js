@@ -14,7 +14,6 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import Brightness2Icon from '@material-ui/icons/Brightness2';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
-
 import { logoutUser } from "../../actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
 import {SWITCH_MODE} from '../../actions/types';

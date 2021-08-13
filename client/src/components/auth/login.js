@@ -11,6 +11,7 @@ import {
   FormControl,
   Button,
   FormHelperText,
+  Typography,
 } from "@material-ui/core";
 import Particles from 'react-particles-js';
 
@@ -26,7 +27,7 @@ const ValidationSchema = yup.object({
 const useStyles = makeStyles((theme) => ({
   formContainer: {
     display: "flex",
-    background: "#fcfcfc",
+    backgroundColor: "white",
     padding: 0,
     justifyContent: "center",
     height: "100%",
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     borderRadius: 10,
     boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-    backgroundColor: "white",
+    backgroundColor: theme.palette.background.paper,
     padding: 10
   },
   submitBtn: {
@@ -62,6 +63,10 @@ const useStyles = makeStyles((theme) => ({
     color: "red",
     fontSize: 15,
   },
+  title: {
+    color: theme.palette.text.primary,
+    marginBottom: 20,
+  }
 }));
 
 const Login = () => {
@@ -126,7 +131,8 @@ const Login = () => {
         onSubmit={formik.handleSubmit}
       >
         <FormControl className={classes.form}>
-          <h1 style={{ marginBottom: 30 }}>Welcome to Budgeto!</h1>
+          {/* <h1 style={{ marginBottom: 30, color: "black" }}>Welcome to Budgeto!</h1> */}
+          <Typography variant="h4" className={classes.title}>Welcome to Budgeto!</Typography>
           <FormHelperText className={classes.alert}>
             {isError ? state.errors.err : ""}
           </FormHelperText>

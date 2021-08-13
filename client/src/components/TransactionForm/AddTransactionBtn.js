@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Grid, Typography } from '@material-ui/core';
+import { Card, Grid, Typography} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -10,6 +10,12 @@ const useStyles = makeStyles((theme) => ({
         cursor: 'pointer',
         borderRadius: 16,
         marginTop: 20,
+    },
+    root: {
+        width: '100%',
+        '& > * + *': {
+            marginTop: theme.spacing(2),
+        },
     },
 }));
 
