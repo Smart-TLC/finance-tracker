@@ -53,7 +53,7 @@ export default function TransactionListItem(props) {
                                 </Typography>
                                 <Link to={`/category/${category}`} style={{ textDecoration: 'none' }}>
                                     <Typography variant="subtitle1" color="secondary">
-                                        {category}
+                                        {category[0].toUpperCase() + category.slice(1)}
                                     </Typography>
                                 </Link>
                             </Grid>
@@ -68,9 +68,6 @@ export default function TransactionListItem(props) {
                             container
                             justifyContent="flex-end"
                             alignItems="center"
-                            // onClick={() => {
-                            //     setExpanded(false)
-                            // }}
                         >
                             <Typography variant="h5" color="secondary">
                                 ${amount}

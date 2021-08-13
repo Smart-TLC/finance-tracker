@@ -40,8 +40,6 @@ export default function SettingHover(props) {
         <Slide id="mouse-over-popover" in={open} unmountOnExit direction="left">
           <ButtonGroup
             color="primary"
-            // variant="container"
-            // className={classes.btnColor}
             onMouseLeave={handlePopover}
             size="medium"
             fullHeight={true}
@@ -52,7 +50,7 @@ export default function SettingHover(props) {
                 props.handleFormOpen(_id);
               }}
             >
-              <EditOutlinedIcon fontSize="large" />
+              <EditOutlinedIcon/>
             </IconButton>
             <IconButton
               onClick={(e) => {
@@ -60,7 +58,7 @@ export default function SettingHover(props) {
                 dispatch(deleteTransaction(_id));
               }}
             >
-              <DeleteOutlinedIcon fontSize="large" />
+              <DeleteOutlinedIcon />
             </IconButton>
           </ButtonGroup>
         </Slide>
