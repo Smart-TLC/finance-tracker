@@ -82,7 +82,7 @@ export default function Ranking({ dailyTransactions, monthlyTransactions, yearly
                         <ListItemText primary={capitalizeString(transaction.category)} />
                       </Grid>
                       <Grid item xs={4} >
-                        <ListItemText className={classes.amount}>{`$ ${transaction.amount}`}</ListItemText>
+                        <ListItemText className={classes.amount}>{`$${transaction.amount}`}</ListItemText>
                       </Grid>
                     </Grid>
                   </ListItem>
@@ -108,7 +108,7 @@ export default function Ranking({ dailyTransactions, monthlyTransactions, yearly
                         <ListItemText primary={capitalizeString(transaction.category)} />
                       </Grid>
                       <Grid item xs={4} >
-                        <ListItemText className={classes.amount}>{`$ ${transaction.amount}`}</ListItemText>
+                        <ListItemText className={classes.amount}>{`$${transaction.amount}`}</ListItemText>
                       </Grid>
                     </Grid>
                   </ListItem>
@@ -134,7 +134,7 @@ export default function Ranking({ dailyTransactions, monthlyTransactions, yearly
                         <ListItemText primary={capitalizeString(transaction.category)} />
                       </Grid>
                       <Grid item xs={4} >
-                        <ListItemText className={classes.amount}>{`$ ${transaction.amount}`}</ListItemText>
+                        <ListItemText className={classes.amount}>{`$${transaction.amount}`}</ListItemText>
                       </Grid>
                     </Grid>
                   </ListItem>

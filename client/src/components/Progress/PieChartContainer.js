@@ -44,8 +44,8 @@ export default function PieChartContainer({ cateAllTransactions, sumOfCosts }) {
               y={y}
               dx={dx}
               dy={dy}
-              dominant-baseline="central"
-              text-anchor="middle"
+              dominantBaseline="central"
+              textAnchor="middle"
               style={{ fontSize: 3, fontWeight: 'bold' }}
             >
               {dataEntry.percentage > 0.05 ? dataEntry.title: ""}

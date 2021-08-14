@@ -38,10 +38,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function CategoryDetails({ cateAllTransactions, sumOfCosts }) {
+  console.log(cateAllTransactions)
   const classes = useStyles()
   return (
     <Grid container xs={12} className={classes.root}>
-      <Grid item xs={10} spacing={1}>
+      <Grid item container xs={10} spacing={1}>
         {cateAllTransactions.map((category) => (
           <Grid container className={classes.categoryItem}>
             <Grid item container xs={8}>
@@ -50,7 +51,7 @@ export default function CategoryDetails({ cateAllTransactions, sumOfCosts }) {
             </Grid>
             <Grid item container xs={4}>
               <Grid item xs={5}>
-                <Typography className={classes.category}>{category.percentage * 100}%</Typography>
+                <Typography className={classes.category}>{(category.percentage * 100).toFixed()}%</Typography>
               </Grid>
               <Grid item xs={7}>
                 <Typography className={classes.category}>${category.value}</Typography>

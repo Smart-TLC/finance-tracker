@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Container } from '@material-ui/core';
 import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
 import moment from 'moment';
-import 'react-big-calendar/lib/css/react-big-calendar.css'
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const localizer = momentLocalizer(moment);
 

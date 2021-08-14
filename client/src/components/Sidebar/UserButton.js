@@ -92,18 +92,19 @@ export default function UserButton() {
           dispatch({type: SWITCH_MODE, payload: !state.auth.setting.darkMode})
         }}>
           {state.auth.setting.darkMode ? (
-            <ListItemIcon>
-            <WbSunnyIcon fontSize="small" />
-          </ListItemIcon>
+            <>
+              <ListItemIcon>
+                <WbSunnyIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Light Mode"/>
+            </>
           ) : (
-            <ListItemIcon>
-              <Brightness2Icon fontSize="small" />
-            </ListItemIcon>
-          )}
-          {state.auth.setting.darkMode ? (
-            <ListItemText primary="Light Mode"/>
-          ) : (
-            <ListItemText primary="Dark Mode"/>
+            <>
+              <ListItemIcon>
+                <Brightness2Icon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary="Dark Mode"/>
+            </>
           )}
         </StyledMenuItem>
         <StyledMenuItem onClick={(e) => {

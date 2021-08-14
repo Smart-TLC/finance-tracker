@@ -46,12 +46,12 @@ export default function ProgressPage() {
     <div className={classes.root}>
       <Sidebar />
       <Grid 
-        container xs={12}
+        container
         direction='row'
         justifyContent='space-between'
         alignItems="flex-start"
       >
-        <Grid item container lg={6} xs={12} className={classes.pieChartContainer}>
+        <Grid item lg={6} xs={12} className={classes.pieChartContainer}>
           <PieChartContainer cateAllTransactions={cateAllTransactions} sumOfCosts={sumOfCosts} />
         </Grid>
         <Grid item lg={6} xs={12} className={classes.categoryDetails}>

@@ -63,8 +63,7 @@ export default function TransactionList() {
     .sort((item1, item2) => isSooner(item1.spentAt, item2.spentAt));
 
   const balance = calculateBalance(state.data.transactions);
-
-  console.log(state.auth);
+  
   return (
     <Container>
       <motion.h2
