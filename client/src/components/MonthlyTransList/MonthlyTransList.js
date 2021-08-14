@@ -11,18 +11,17 @@ import {
   Container,
   Grid,
   Typography,
-  IconButton,
   Card,
 } from "@material-ui/core";
 import { Timeline } from "@material-ui/lab";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { useSelector } from "react-redux";
 import {motion} from 'framer-motion';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Balance from "../TransactionList/Balance";
 import BudgetItem from "../TransactionList/BudgetItem";
-import { isSooner, calculateBalance } from "../../utils/transactionFunc";
+import { isSooner, calculateBalance, filterMonthTransaction } from "../../utils/transactionFunc";
+import MonthBar from "./MonthBar";
+import { filter } from "lodash";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,15 +46,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export default function MonthlyTransList({ dailyTransactions, monthlyTransactions, yearlyTransactions }) {
+export default function MonthlyTransList({
+  dailyTransactions,
+  monthlyTransactions,
+  yearlyTransactions,
+}) {
   const classes = useStyles();
   const state = useSelector((state) => ({
-    auth: state.auth,
-    errors: state.errors,
     data: state.data,
   }));
 
-  const [value, setValue] = useState(moment());
+  const [date, setDate] = useState(moment());
   const [open, setOpen] = useState(false);
   const [formId, setFormId] = useState("");
   const [type, setType] = useState("expense");
@@ -70,23 +71,18 @@ export default function MonthlyTransList({ dailyTransactions, monthlyTransaction
   };
 
   // change tab action: expense and budget
-  const handleTabChange = (event, newValue) => {
-    setType(newValue);
+  const handleTabChange = (event, newType) => {
+    setType(newType);
   };
 
   function prevMonth() {
-    return value.clone().subtract(1, "month");
+    setDate(date.clone().subtract(1, "month"));
   }
   function nextMonth() {
-    return value.clone().add(1, "month");
+    setDate(date.clone().add(1, "month"));
   }
 
-  const mon = `${value.format("MM")}-${value.format("YYYY")}`;
-
-  // Filter transactions based on each month
-  const monthData = state.data.transactions.filter(
-    (transaction) => transaction.spentAt.slice(3, 10) === mon
-  );
+  const monthData = filterMonthTransaction(state.data.transactions, date)
   const data = monthData
     .filter((item) => item.type === type)
     .sort((item1, item2) => isSooner(item1.spentAt, item2.spentAt));
@@ -109,32 +105,7 @@ export default function MonthlyTransList({ dailyTransactions, monthlyTransaction
             alignItems="center"
             className={classes.paper}
           >
-            <Grid item xs={1} lg={1}>
-              <IconButton
-                onClick={() => {
-                  setValue(prevMonth());
-                }}
-              >
-                <ArrowBackIosIcon />
-              </IconButton>
-            </Grid>
-            <Grid item container direction="column" alignItems="center" lg={10} xs={9}>
-              <Grid item xs>
-                <Typography variant="h6">{value.format("MMMM")}</Typography>
-              </Grid>
-              <Grid item xs>
-                <Typography variant="body1">{value.format("YYYY")}</Typography>
-              </Grid>
-            </Grid>
-            <Grid item xs className={classes.arrow}>
-              <IconButton
-                onClick={() => {
-                  setValue(nextMonth());
-                }}
-              >
-                <ArrowForwardIosIcon />
-              </IconButton>
-            </Grid>
+            <MonthBar date={date} prevMonth={prevMonth} nextMonth={nextMonth} />
           </Grid>
           <Grid item className={classes.list}>
             <TransactionTab
@@ -185,8 +156,8 @@ export default function MonthlyTransList({ dailyTransactions, monthlyTransaction
         <Grid item lg={3} xs='auto'>
           <motion.h2>TOP EXPENSE</motion.h2>
           <Card height="100%">
-            <Ranking 
-              dailyTransactions={dailyTransactions} 
+            <Ranking
+              dailyTransactions={dailyTransactions}
               monthlyTransactions={monthlyTransactions}
               yearlyTransactions={yearlyTransactions}
             />
