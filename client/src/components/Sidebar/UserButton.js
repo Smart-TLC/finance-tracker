@@ -73,7 +73,7 @@ export default function UserButton() {
         <PermIdentityIcon />
         <Typography variant='subtitle1'>
             {state.auth.user.name}
-        </ Typography>
+        </Typography>
         <ExpandMore />
       </Button>
       <StyledMenu
