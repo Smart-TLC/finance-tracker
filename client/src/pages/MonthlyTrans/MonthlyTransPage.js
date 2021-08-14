@@ -24,20 +24,25 @@ export default function MonthlyTransPage() {
     data: state.data,
   }));
 
-  const dailyTransactions = sortTransactions(state.data.transactions)
-    .slice(0, 7).filter((transaction) => transaction.category !== "")
-    .filter((transaction) => transaction.spentAt.split("-")[0] === (new Date()).getDate().toString());
+  const expenses = state.data.transactions.filter((transaction) => transaction.type === "expense");
+
+  const dailyTransactions = sortTransactions(expenses)
+    .filter((transaction) => transaction.category !== "")
+    .filter((transaction) => transaction.spentAt.split("-")[0] === (new Date()).getDate().toString())
+    .slice(0, 7);
 
   const currentMonth = (new Date()).getMonth() + 1;
   const monthString = currentMonth < 10 ? `0${currentMonth.toString()}` : currentMonth.toString()
 
-  const monthlyTransactions = sortTransactions(state.data.transactions)
-  .slice(0, 7).filter((transaction) => transaction.category !== "")
-  .filter((transaction) => transaction.spentAt.split("-")[1] === monthString);
+  const monthlyTransactions = sortTransactions(expenses)
+    .filter((transaction) => transaction.category !== "")
+    .filter((transaction) => transaction.spentAt.split("-")[1] === monthString)
+    .slice(0, 7);
 
-  const yearlyTransactions = sortTransactions(state.data.transactions)
-  .slice(0, 7).filter((transaction) => transaction.category !== "")
-  .filter((transaction) => transaction.spentAt.split("-")[2] === (new Date()).getFullYear().toString());
+  const yearlyTransactions = sortTransactions(expenses)
+    .filter((transaction) => transaction.category !== "")
+    .filter((transaction) => transaction.spentAt.split("-")[2] === (new Date()).getFullYear().toString())
+    .slice(0, 7);
 
   return (
     <div className={classes.root}>
