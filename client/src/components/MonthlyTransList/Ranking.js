@@ -60,7 +60,7 @@ export default function Ranking({ dailyTransactions, monthlyTransactions, yearly
       <Tabs>
         <div className='tabs'>
           <div className='tab-list'>
-            <Tab>Date</Tab>
+            <Tab>Today</Tab>
             <Tab>Month</Tab>
             <Tab>Year</Tab>
           </div>
@@ -79,10 +79,10 @@ export default function Ranking({ dailyTransactions, monthlyTransactions, yearly
                     </ListItemAvatar>
                     <Grid container>
                       <Grid item xs={8} >
-                        <ListItemText primary={capitalizeString(transaction.category)} />
+                        <ListItemText primary={capitalizeString(transaction.name)} />
                       </Grid>
                       <Grid item xs={4} >
-                        <ListItemText className={classes.amount}>{`$$ ${transaction.amount}`}</ListItemText>
+                        <ListItemText className={classes.amount}>{`$ ${transaction.amount}`}</ListItemText>
                       </Grid>
                     </Grid>
                   </ListItem>
@@ -108,7 +108,7 @@ export default function Ranking({ dailyTransactions, monthlyTransactions, yearly
                     </ListItemAvatar>
                     <Grid container>
                       <Grid item xs={8} >
-                        <ListItemText primary={capitalizeString(transaction.category)} />
+                        <ListItemText primary={capitalizeString(transaction.name)} />
                       </Grid>
                       <Grid item xs={4} >
                         <ListItemText className={classes.amount}>{`$ ${transaction.amount}`}</ListItemText>
@@ -134,7 +134,7 @@ export default function Ranking({ dailyTransactions, monthlyTransactions, yearly
                     </ListItemAvatar>
                     <Grid container>
                       <Grid item xs={8} >
-                        <ListItemText primary={capitalizeString(transaction.category)} />
+                        <ListItemText primary={capitalizeString(transaction.name)} />
                       </Grid>
                       <Grid item xs={4} >
                         <ListItemText className={classes.amount}>{`$ ${transaction.amount}`}</ListItemText>
