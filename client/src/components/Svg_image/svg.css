@@ -1,0 +1,72 @@
+.svg-animation-container {
+    width: 380px;
+  }
+
+.svg-animation-container svg {
+    width: 100%;
+}
+
+#Shadow {
+    animation: changeColor 3s infinite
+    alternate;
+}
+
+@keyframes changeColor {
+    0% {
+        fill: rgb(204, 163, 163);
+    }
+    100% {
+        fill: rgb(61, 184, 12);
+    }
+}
+
+#EmeRightArm 
+{
+    animation: rotateR 2s infinite
+    alternate;
+    transform-origin: top right;
+    transform-box: fill-box;
+  }
+  
+@keyframes rotateR {
+    0% {
+        transform: rotate(-5deg);
+    }
+    80% {
+        transform: rotate(6deg);
+    }
+}
+
+#EmeLeftArm 
+{
+    animation: rotateL 2s infinite
+    alternate;
+    transform-origin: top ;
+    transform-box: fill-box;
+  }
+  
+@keyframes rotateL {
+    0% {
+        transform: rotate(-3deg);
+    }
+    80% {
+        transform: rotate(4deg);
+    }
+}
+
+#EmeBody {
+    animation: rotateB 2s infinite
+    alternate;
+    transform-origin: top;
+    transform-box: fill-box;
+}
+
+@keyframes rotateB {
+    0% {
+        transform: rotate(3deg);
+    }
+    80% {
+        transform: rotate(-4deg);
+    }
+}
+  

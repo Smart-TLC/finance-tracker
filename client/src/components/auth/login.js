@@ -14,7 +14,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import Particles from 'react-particles-js';
-
+import { getTransactions } from "../../actions/transactionAction";
 
 const ValidationSchema = yup.object({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -80,13 +80,13 @@ const Login = () => {
   }));
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   // if account is already set
   if (state.auth.isAuthenticated) {
+    dispatch(getTransactions(state.auth.user.id));
     history.push("/transaction");
   }
-
-  const dispatch = useDispatch();
 
   const formik = useFormik({
     validationSchema: ValidationSchema,
@@ -123,7 +123,6 @@ const Login = () => {
 	        }
 	      }} 
         height = "100vh"
-        // width = "100vh"
       />
       </Container> 
       <form
@@ -131,7 +130,6 @@ const Login = () => {
         onSubmit={formik.handleSubmit}
       >
         <FormControl className={classes.form}>
-          {/* <h1 style={{ marginBottom: 30, color: "black" }}>Welcome to Budgeto!</h1> */}
           <Typography variant="h4" className={classes.title}>Welcome to Budgeto!</Typography>
           <FormHelperText className={classes.alert}>
             {isError ? state.errors.err : ""}

@@ -23,7 +23,7 @@ export default function MoneyMan() {
       animate = "visible"
       transition={{type: 'spring', delay: 0.7, stiffness: 250 }}
     >
-      <svg width="816" height="722" viewBox="0 0 816 722" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="816" height="722" viewBox="0 0 816 1022" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="Money">
         <g id="Money_2">
         <path id="Vector" d="M558.409 513.39C603.47 513.39 640 476.04 640 429.967C640 383.893 603.47 346.543 558.409 346.543C513.347 346.543 476.817 383.893 476.817 429.967C476.817 476.04 513.347 513.39 558.409 513.39Z" fill="#3F3D56"/>

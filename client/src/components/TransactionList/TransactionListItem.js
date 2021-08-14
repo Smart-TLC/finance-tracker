@@ -54,8 +54,8 @@ export default function TransactionListItem(props) {
                   <Typography variant="h6" color="textPrimary" >
                       {name}
                   </Typography>
-                  <Link to={`/category/${category}`} style={{ textDecoration: 'none' }}>
-                      <Typography variant="subtitle1" color="secondary">
+                  <Link to={`/category/${category}`} style={{ textDecoration: 'none', width: '100px' }}>
+                      <Typography variant="subtitle1" color="secondary" display="inline" className={classes.btnColor}>
                           {capitalizeString(category)}
                       </Typography>
                   </Link>
@@ -71,6 +71,7 @@ export default function TransactionListItem(props) {
                 container
                 justifyContent="flex-end"
                 alignItems="center"
+                className={classes.btnColor}
             >
               <Typography variant="h5" color="secondary">
                 ${amount}
