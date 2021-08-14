@@ -1,6 +1,6 @@
-import React from 'react';
-import { Grid, Box, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { Grid, Box, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,52 +17,59 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.dark,
   },
   category: {
-    fontWeight: 'bold',
-    textAlign: 'center',
-    justifyContent: 'center',
-    padding: 10
+    fontWeight: "bold",
+    textAlign: "center",
+    justifyContent: "center",
+    padding: 10,
   },
   categoryItem: {
-    padding: 5
-  }
-}))
-
+    padding: 5,
+  },
+}));
 
 export default function CategoryDetails({ cateAllTransactions, sumOfCosts }) {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <Grid container xs={12} className={classes.root}>
-      <Grid item xs={10} spacing={1}>
+      <Grid item xs={11} spacing={1}>
         {cateAllTransactions.map((category) => (
           <Grid container className={classes.categoryItem}>
             <Grid item container xs={8}>
               <Box bgcolor={category.color} p={3}></Box>
-              <Typography className={classes.category}>{category.title}</Typography>
+              <Typography className={classes.category}>
+                {category.title}
+              </Typography>
             </Grid>
             <Grid item container xs={4}>
               <Grid item xs={5}>
-                <Typography className={classes.category}>{category.percentage * 100} %</Typography>
+                <Typography className={classes.category}>
+                  {category.percentage * 100} %
+                </Typography>
               </Grid>
               <Grid item xs={7}>
-                <Typography className={classes.category}>$ {category.value}</Typography>
+                <Typography className={classes.category}>
+                  $ {category.value}
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
         ))}
-        <Grid container>
-          <Grid item container xs={8}>
-          </Grid>
-          <Grid item container xs={4}>
-            <Grid item xs={5}>
+        {cateAllTransactions.length ? (
+          <Grid container>
+            <Grid item container xs={8}></Grid>
+            <Grid item container xs={4}>
+              <Grid item xs={5}></Grid>
+              <Grid item xs={7}>
+                <Typography className={classes.category}>
+                  $ {sumOfCosts}
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid item xs={7}>
-              <Typography className={classes.category}>$ {sumOfCosts}</Typography>
-            </Grid>
           </Grid>
-        </Grid>
-        
+        ) : (
+          <Typography style={{textAlign: "center", fontSize: "1.5em"}}>No transactions added this month</Typography>
+        )}
       </Grid>
-
     </Grid>
-  )
+  );
 }
