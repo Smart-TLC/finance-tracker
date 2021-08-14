@@ -87,3 +87,13 @@ export const sortTransactions = (transactions) => {
   return newTransactions
 }
 
+// Filter transactions by month from format MMM/YYYY e.g Aug 2021
+export const filterMonthTransaction = (transactions, date) => {
+  var mon = `${date.format("MM")}-${date.format("YYYY")}`;
+
+  // Filter transactions based on each month
+  return transactions.filter(
+    (transaction) => transaction.spentAt.slice(3, 10) === mon
+  );
+}
+
