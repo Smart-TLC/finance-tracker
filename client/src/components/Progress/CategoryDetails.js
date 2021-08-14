@@ -43,7 +43,7 @@ export default function CategoryDetails({ cateAllTransactions, sumOfCosts }) {
             <Grid item container xs={4}>
               <Grid item xs={5}>
                 <Typography className={classes.category}>
-                  {category.percentage * 100} %
+                  {(category.percentage * 100).toFixed(0)} %
                 </Typography>
               </Grid>
               <Grid item xs={7}>
