@@ -3,6 +3,7 @@ import {
   ADD_TRANSACTION,
   DELETE_TRANSACTION,
   UPDATE_TRANSACTION,
+  CLEAR_TRANSACTION
 } from "../actions/types";
 
 const initialState = {
@@ -33,6 +34,10 @@ export default function transactionReducer(state = initialState, action) {
           return item;
         }),
       };
+    case CLEAR_TRANSACTION:
+      return {
+        transactions: []
+      }
     default: 
       return state;
   }
