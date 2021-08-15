@@ -96,8 +96,8 @@ export default function Sidebar() {
   const [hack, setHack] = useState(false);
   const message =  [
     'đừng kéo nữa bạn ơi!!',
-    'thả tao ra thằng lồn',
-    'disme tao hack máy mày bây giờ >_<',
+    'thả tôi ra đi, không đùa',
+    'tôi hack máy bạn bây giờ >_<',
   ]
 
   const handleClick = (newState) => () => {
