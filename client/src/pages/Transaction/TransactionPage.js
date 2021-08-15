@@ -3,9 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import TransactionList from "../../components/TransactionList/TransactionList";
 import MoneyMan from "../../components/Svg_image/MoneyMan";
-import Shopping from "../../components/Svg_image/ShoppingSvg";
-import Emergency from "../../components/Svg_image/EmergencySvg";
-import Insurance from "../../components/Svg_image/InsuranceSvg";
 import {
   Grid,
 } from '@material-ui/core';
