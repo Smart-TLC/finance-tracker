@@ -15,7 +15,7 @@ const svgVariants = {
     }
 }
 
-function ShoppingSvg() {
+export default function ShoppingSvg() {
     return (
         <motion.div className='svg-animation-container'
             variants={svgVariants}
@@ -78,5 +78,3 @@ function ShoppingSvg() {
         </motion.div>
     )
 }
-
-export default ShoppingSvg
