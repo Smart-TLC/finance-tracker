@@ -11,6 +11,7 @@ import {
   FormControl,
   Button,
   FormHelperText,
+  Typography,
 } from "@material-ui/core";
 import Particles from 'react-particles-js';
 
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "100%",
     width:"100%",
     height:"100%",
-    backgroundColor: theme.palette.primary.main
+    backgroundColor: theme.palette.primary.main,
   },
   form: {
     display: "flex",
@@ -55,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 
     borderRadius: 10,
     boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-    backgroundColor: "white",
+    backgroundColor: theme.palette.background.paper,
     padding: 10,
   },
   submitBtn: {
@@ -67,6 +68,10 @@ const useStyles = makeStyles((theme) => ({
     color: "red",
     fontSize: 15,
   },
+  title: {
+    color: theme.palette.text.primary,
+    paddingBottom: 20,
+  }
 }));
 const Register = () => {
   const classes = useStyles();
@@ -131,7 +136,8 @@ const Register = () => {
         style={{ width: "30%", padding: "5%" }}
       >
         <FormControl className={classes.form}>
-          <h1 style={{ marginBottom: 30 }}>Create Account</h1>
+          {/* <h1 style={{ marginBottom: 30 }}>Create Account</h1> */}
+          <Typography variant="h4" className={classes.title}>Create Account</Typography>
           <FormHelperText className={classes.alert}>
             {isError ? state.errors.err : ""}
           </FormHelperText>

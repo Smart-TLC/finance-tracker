@@ -49,7 +49,7 @@ export default function Balance(props) {
             initial="hidden"
             animate="visible"
         >
-        <Grid container xs={12}>
+        <Grid container>
             <Grid item xs={4}
                 container
                 direction="column"
@@ -69,7 +69,7 @@ export default function Balance(props) {
                         className={classes.remain}
                         variants={textVariants}
                     >
-                        ${budgetMoney - expenseMoney}
+                        {(budgetMoney - expenseMoney) >= 0 ? `$${budgetMoney - expenseMoney}` : `-$${expenseMoney - budgetMoney}`}
                     </motion.h2>
                 </Grid>
             </Grid>

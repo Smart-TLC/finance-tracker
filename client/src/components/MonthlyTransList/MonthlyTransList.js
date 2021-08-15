@@ -15,31 +15,36 @@ import {
 } from "@material-ui/core";
 import { Timeline } from "@material-ui/lab";
 import { useSelector } from "react-redux";
+import {motion} from 'framer-motion';
+import { Scrollbars } from 'react-custom-scrollbars';
 import Balance from "../TransactionList/Balance";
-import { motion } from "framer-motion";
 import BudgetItem from "../TransactionList/BudgetItem";
 import { isSooner, calculateBalance, filterMonthTransaction } from "../../utils/transactionFunc";
 import MonthBar from "./MonthBar";
 import { filter } from "lodash";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: 12,
-  },
-  paper: {
-    marginLeft: 25,
-    backgroundColor: theme.palette.secondary.light,
-    borderRadius: 15,
-    maxWidth: 888,
-    marginBottom: 40,
-  },
-  container: {
-    backgroundColor: theme.palette.secondary.dark,
-  },
-  timeline: {
-    padding: 0,
-  },
-}));
+    root: {
+        padding: 12,
+    },
+    paper: {
+        backgroundColor: theme.palette.secondary.light,
+        borderRadius: 15,
+        marginBottom: 10,
+    },
+    container: {
+        backgroundColor: theme.palette.secondary.dark,
+    },
+    arrow:{
+        marginLeft: 22,
+    },
+    timeline: {
+      padding: 0,
+    },
+    list: {
+      paddingTop: 30,
+    },
+}))
 
 export default function MonthlyTransList({
   dailyTransactions,
@@ -85,16 +90,16 @@ export default function MonthlyTransList({
   const balance = calculateBalance(monthData);
 
   return (
-    <Container disableGutters={true}>
-      <Grid container direction="row" alignItems="flex-start" spacing={4}>
-        <Grid item container xs={9} direction="column">
+    <Container>
+      <Grid container direction="row" alignItems="flex-start" spacing={5}>
+        <Grid item container xs={11} lg={9} direction="column">
           <Grid item>
             <Balance expenseMoney={balance[1]} budgetMoney={balance[0]} />
           </Grid>
           <Grid
             item
             container
-            xs={9}
+            xs='auto'
             direction="row"
             justifyContent="center"
             alignItems="center"
@@ -102,12 +107,14 @@ export default function MonthlyTransList({
           >
             <MonthBar date={date} prevMonth={prevMonth} nextMonth={nextMonth} />
           </Grid>
-          <Grid item>
+          <Grid item className={classes.list}>
             <TransactionTab
               transactionType={type}
               handleTabChange={handleTabChange}
             />
-            <Container className="scrollbar scrollbar-primary">
+             <Scrollbars 
+                style={{ height: 350 }} autoHide autoHideTimeout={1000} autoHideDuration={200}
+              >
               {data.length > 0 ? (
                 type === "expense" ? (
                   <Grid container spacing={1}>
@@ -136,7 +143,7 @@ export default function MonthlyTransList({
                   No transactions added
                 </Typography>
               )}
-            </Container>
+            </Scrollbars>
           </Grid>
           <Grid item container justifyContent="flex-end">
             <Link to="/transaction" style={{ textDecoration: "none" }}>
@@ -146,7 +153,7 @@ export default function MonthlyTransList({
             </Link>
           </Grid>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item lg={3} xs='auto'>
           <motion.h2>TOP EXPENSE</motion.h2>
           <Card height="100%">
             <Ranking

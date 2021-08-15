@@ -53,7 +53,7 @@ export const costsSum = (cateAllTransactions) => {
 
 export const calculatePercentage = (cateAllTransactions, sumOfCosts) => {
   for (let i = 0; i < cateAllTransactions.length; i++) {
-    cateAllTransactions[i].percentage = (cateAllTransactions[i].value / sumOfCosts).toFixed(2);
+    cateAllTransactions[i].percentage = parseFloat((cateAllTransactions[i].value / sumOfCosts));
   }
 }
 

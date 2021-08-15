@@ -23,6 +23,8 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: theme.palette.primary.light,
         },
         cursor: 'pointer',
+        marginLeft: 10,
+        marginRight: 10,
     },
     btnColor: {
         backgroundColor: theme.palette.secondary.light,
@@ -41,31 +43,31 @@ export default function TransactionListItem(props) {
               container
               spacing={1}
           >
-            <Grid item xs={7} container 
+            <Grid item xs={6} lg={7} container 
                 justifyContent="flex-start"
                 alignItems="center"
                 onClick={() => {
                     setExpanded(!expanded)
                 }}
             >
-              <Grid item xs={6} className="name">
+              <Grid item xs={6} lg={8} className="name">
                   <Typography variant="h6" color="textPrimary" >
                       {name}
                   </Typography>
-                  <Link to={`/category/${category}`} style={{ textDecoration: 'none' }}>
-                      <Typography variant="subtitle1" color="secondary">
+                  <Link to={`/category/${category}`} style={{ textDecoration: 'none', width: '100px' }}>
+                      <Typography variant="subtitle1" color="secondary" display="inline">
                           {capitalizeString(category)}
                       </Typography>
                   </Link>
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={6} lg={4}>
                   <Typography variant="subtitle1" color="textSecondary" className={clsx(expanded && classes.hide)}>
                       {spentAt}
                   </Typography>
               </Grid>
             </Grid>
             <Grid 
-                item xs={5} 
+                item xs={6} lg={5}
                 container
                 justifyContent="flex-end"
                 alignItems="center"

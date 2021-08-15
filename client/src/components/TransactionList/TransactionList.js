@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { isSooner, calculateBalance } from "../../utils/transactionFunc";
 import BudgetItem from "./BudgetItem";
 import TransactionTab from "./TransactionTab";
+import { Scrollbars } from 'react-custom-scrollbars';
 
 const textVariants = {
   hidden: {
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
 }));
+
 
 export default function TransactionList() {
   const classes = useStyles();
@@ -51,7 +53,6 @@ export default function TransactionList() {
   const handleClose = () => {
     setOpen(false);
   };
-
   // change tab action: expense and budget
   const handleTabChange = (event, newValue) => {
     setType(newValue);
@@ -62,9 +63,9 @@ export default function TransactionList() {
     .sort((item1, item2) => isSooner(item1.spentAt, item2.spentAt));
 
   const balance = calculateBalance(state.data.transactions);
-
+  
   return (
-    <Container maxWidth="lg" disableGutters={false}>
+    <Container>
       <motion.h2
         variants={textVariants}
         initial="hidden"
@@ -79,7 +80,12 @@ export default function TransactionList() {
         handleTabChange={handleTabChange}
       />
 
-      <Container className="scrollbar scrollbar-winter-neva">
+        <Scrollbars 
+          style={{ height: 350}}
+          autoHide
+          autoHideTimeout={1000}
+          autoHideDuration={200}
+        >
         {type === "expense" ? (
           <Grid container spacing={1}>
             {data.map((item) => (
@@ -102,7 +108,7 @@ export default function TransactionList() {
             ))}
           </Timeline>
         )}
-      </Container>
+      </Scrollbars>
       <Grid>
         <AddTransactionBtn handleClickOpen={handleClickOpen} />
         <TransactionForm

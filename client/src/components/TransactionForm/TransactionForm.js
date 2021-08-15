@@ -1,16 +1,7 @@
 import React, { useEffect } from "react";
 import {
-  makeStyles,
-  Button,
-  TextField,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  InputLabel,
-  FormControl,
-  Select,
+  makeStyles, Button, TextField, Dialog, DialogActions, DialogContent,
+  DialogContentText, DialogTitle, InputLabel, FormControl, Select,
   FormHelperText,
 } from "@material-ui/core";
 import {
@@ -18,7 +9,6 @@ import {
   updateTransaction,
 } from "../../actions/transactionAction";
 import { useFormik } from "formik";
-
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 
@@ -218,7 +208,7 @@ export default function TransactionForm(props) {
           </Button>
           <Button type="submit" color="primary">
             Save
-          </Button>
+          </Button> 
         </DialogActions>
       </form>
     </Dialog>

@@ -2,7 +2,7 @@ import axios from "../config/axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
-import { CLEAR_ERRORS, GET_ERRORS, SET_CURRENT_USER, USER_LOADING, CLEAR_TRANSACTION } from "./types";
+import { CLEAR_ERRORS, GET_ERRORS, SET_CURRENT_USER, USER_LOADING, CLEAR_TRANSACTION, SWITCH_MODE } from "./types";
 
 // Register User
 export const registerUser = (userData, history) => (dispatch) => {
@@ -70,5 +70,6 @@ export const logoutUser = () => (dispatch) => {
   dispatch(setCurrentUser(null));
   dispatch({ type: CLEAR_ERRORS });
   dispatch({ type: CLEAR_TRANSACTION });
+  dispatch({type: SWITCH_MODE, payload: false})
   
 };

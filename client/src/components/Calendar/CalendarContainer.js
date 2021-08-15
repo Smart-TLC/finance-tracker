@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Container } from '@material-ui/core';
 import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
 import moment from 'moment';
-import 'react-big-calendar/lib/css/react-big-calendar.css'
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const localizer = momentLocalizer(moment);
 
@@ -44,7 +44,7 @@ export default function CalendarContainer() {
     const date = parseInt(timeArray[0]);
     const month = parseInt(timeArray[1]);
     const year = parseInt(timeArray[2]);
-    const value = (dailySpent[key] >= 0) ? `+ $ ${dailySpent[key]}` : `- $ ${-dailySpent[key]}`
+    const value = (dailySpent[key] >= 0) ? `+$${dailySpent[key]}` : `-$${-dailySpent[key]}`
     return ({
       'value': dailySpent[key],
       'title': value,
@@ -58,10 +58,10 @@ export default function CalendarContainer() {
     console.log(event.value);
     const style = {
         justifyContent: 'center',
-        backgroundColor: 'white',
         borderRadius: '0px',
         opacity: 0.8,
         color: (event.value >= 0) ? 'green': 'red',
+        backgroundColor: 'white',
         border: '0px',
         display: 'flex',
         padding: '7px',
