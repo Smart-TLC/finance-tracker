@@ -25,11 +25,6 @@ export const ListItemData =  [
         icon: <CalendarTodayIcon />,
         link: "/calendar"
     },
-    {
-        title: "Goal",
-        icon: <MonetizationOnIcon />,
-        link: "/goal"
-    }
 ]
 
 
