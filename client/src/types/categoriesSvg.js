@@ -1,9 +1,9 @@
+import EntertainmentSvg from '../components/Svg_image/EntertainmentSvg';
+import EducationSvg from '../components/Svg_image/EducationSvg';
+import MealSvg from '../components/Svg_image/MealSvg';
+
 export const Svg = {
-    ENTERTAINMENT: <EntertainmentSvg/>,
-    EDUCATION: <EducationSvg/>,
-    SHOPPING: <ShoppingSvg/>,
-    INSURANCE: <InsuranceSvg/>,
-    MEAL: <MealSvg/>,
-    EMERGENCY: <EmergencySvg/>,
-    OTHER: <OtherSvg/>,
+    "entertainment": <EntertainmentSvg/>,
+    "education": <EducationSvg/>,
+    "meal": <MealSvg/>,
 }

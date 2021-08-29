@@ -9,7 +9,8 @@ import { deleteTransaction } from "../../actions/transactionAction";
 import "../../index.css";
 import CategoryItem from '../../components/CategoryList/CategoryItem';
 import {Scrollbars} from 'react-custom-scrollbars';
-import MoneyMan from '../../components/Svg_image/MoneyMan'
+import MoneyMan from '../../components/Svg_image/MoneyMan';
+import {Svg} from '../../types/categoriesSvg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -71,7 +72,7 @@ export default function CategoryDetailsPage() {
               </Scrollbars>
             </Grid>
             <Grid item>
-                  <MoneyMan/>
+                  {Svg[cate]}
             </Grid>
             </Grid>
         </div>
