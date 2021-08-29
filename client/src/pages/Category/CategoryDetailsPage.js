@@ -1,15 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import {Grid, Container} from "@material-ui/core";
-import Typography from '@material-ui/core/Typography';
+import {Grid} from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteTransaction } from "../../actions/transactionAction";
 import "../../index.css";
 import CategoryItem from '../../components/CategoryList/CategoryItem';
 import {Scrollbars} from 'react-custom-scrollbars';
-import MoneyMan from '../../components/Svg_image/MoneyMan';
 import {Svg} from '../../types/categoriesSvg';
 
 const useStyles = makeStyles((theme) => ({
@@ -53,9 +50,6 @@ export default function CategoryDetailsPage() {
             <Grid
               item lg = {8} xs = {12}
             >
-            {/* <Typography variant='h3'>
-                {cate} 
-            </Typography> */}
               <Scrollbars
                 style = {{height: 380}}
                 autoHide 

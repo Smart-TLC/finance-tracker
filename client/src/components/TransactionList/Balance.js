@@ -3,7 +3,7 @@ import {
     Grid,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const useStyles = makeStyles((theme) => ({
     remain: {
@@ -39,16 +39,17 @@ const textVariants = {
     }
 }
 
-export default function Balance() {
+export default function Balance(props) {
     const classes = useStyles();
-    
+    const {expenseMoney, budgetMoney} = props;
+
     return (
         <motion.div
             variants={textVariants}
             initial="hidden"
             animate="visible"
         >
-        <Grid container xs={12}>
+        <Grid container>
             <Grid item xs={4}
                 container
                 direction="column"
@@ -68,7 +69,7 @@ export default function Balance() {
                         className={classes.remain}
                         variants={textVariants}
                     >
-                        $200
+                        {(budgetMoney - expenseMoney) >= 0 ? `$${budgetMoney - expenseMoney}` : `-$${expenseMoney - budgetMoney}`}
                     </motion.h2>
                 </Grid>
             </Grid>
@@ -91,7 +92,7 @@ export default function Balance() {
                         className={classes.budget}
                         variants={textVariants}
                     >
-                        $300
+                        ${budgetMoney}
                     </motion.h2>
                 </Grid>
             </Grid>
@@ -114,7 +115,7 @@ export default function Balance() {
                         className={classes.expense}
                         variants={textVariants}
                     >
-                        $100
+                        ${expenseMoney}
                     </motion.h2>
                 </Grid>
             </Grid>

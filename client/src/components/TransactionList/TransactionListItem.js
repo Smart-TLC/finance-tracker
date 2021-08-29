@@ -10,8 +10,9 @@ import {
     Typography,
     Divider,
 } from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import SettingHover from './SettingHover';
+import { capitalizeString } from "../../utils/transactionFunc";
 
 const useStyles = makeStyles((theme) => ({
     hide: {
@@ -22,6 +23,8 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: theme.palette.primary.light,
         },
         cursor: 'pointer',
+        marginLeft: 10,
+        marginRight: 10,
     },
     btnColor: {
         backgroundColor: theme.palette.secondary.light,
@@ -34,60 +37,60 @@ export default function TransactionListItem(props) {
     const [expanded, setExpanded] = useState(false);
     
     return (
-            <Grid item xs={12}>
-                <Card className={classes.card}>
-                    <Grid 
-                        container
-                        spacing={1}
-                    >
-                        <Grid item xs={7} container 
-                            justifyContent="flex-start"
-                            alignItems="center"
-                            onClick={() => {
-                                setExpanded(!expanded)
-                            }}
-                        >
-                            <Grid item xs={6} className="name">
-                                <Typography variant="h6" color="textPrimary" >
-                                    {name}
-                                </Typography>
-                                <Link to={`/category/${category}`} style={{ textDecoration: 'none' }}>
-                                    <Typography variant="subtitle1" color="secondary">
-                                        {category[0].toUpperCase() + category.slice(1)}
-                                    </Typography>
-                                </Link>
-                            </Grid>
-                            <Grid item xs={4}>
-                                <Typography variant="subtitle1" color="textSecondary" className={clsx(expanded && classes.hide)}>
-                                    {spentAt}
-                                </Typography>
-                            </Grid>
-                        </Grid>
-                        <Grid 
-                            item xs={5} 
-                            container
-                            justifyContent="flex-end"
-                            alignItems="center"
-                        >
-                            <Typography variant="h5" color="secondary">
-                                ${amount}
-                            </Typography>
-                            <SettingHover _id={_id} handleFormOpen={props.handleClickOpen} />
-                        </Grid>
-                    </Grid>
-                    <Divider variant="middle" />
-                    <Collapse in={expanded} timeout="auto" onClick={() => {setExpanded(!expanded)}}>
-                        <CardContent>
-                            <Typography  variant="body2" color="secondary">
-                                {spentAt}
-                            </Typography>
-                            <Typography>
-                                {note}
-                            </Typography>
-                        </CardContent>
-                    </Collapse>
-                </Card>
+      <Grid item xs={12}>
+        <Card className={classes.card}>
+          <Grid 
+              container
+              spacing={1}
+          >
+            <Grid item xs={6} lg={7} container 
+                justifyContent="flex-start"
+                alignItems="center"
+                onClick={() => {
+                    setExpanded(!expanded)
+                }}
+            >
+              <Grid item xs={6} lg={8} className="name">
+                  <Typography variant="h6" color="textPrimary" >
+                      {name}
+                  </Typography>
+                  <Link to={`/category/${category}`} style={{ textDecoration: 'none', width: '100px' }}>
+                      <Typography variant="subtitle1" color="secondary" display="inline">
+                          {capitalizeString(category)}
+                      </Typography>
+                  </Link>
+              </Grid>
+              <Grid item xs={6} lg={4}>
+                  <Typography variant="subtitle1" color="textSecondary" className={clsx(expanded && classes.hide)}>
+                      {spentAt}
+                  </Typography>
+              </Grid>
             </Grid>
+            <Grid 
+                item xs={6} lg={5}
+                container
+                justifyContent="flex-end"
+                alignItems="center"
+            >
+              <Typography variant="h5" color="secondary">
+                ${amount}
+              </Typography>
+              <SettingHover _id={_id} handleFormOpen={props.handleClickOpen} />
+            </Grid>
+          </Grid>
+          <Divider variant="middle" />
+          <Collapse in={expanded} timeout="auto" onClick={() => {setExpanded(!expanded)}}>
+            <CardContent>
+              <Typography variant="body2" color="secondary">
+                  {spentAt}
+              </Typography>
+              <Typography>
+                  {note}
+              </Typography>
+            </CardContent>
+          </Collapse>
+        </Card>
+      </Grid>
     )
 }
 

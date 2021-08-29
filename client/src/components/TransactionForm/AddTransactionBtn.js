@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Grid, Typography } from '@material-ui/core';
+import { Card, Grid, Typography} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -9,7 +9,13 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.secondary.light,
         cursor: 'pointer',
         borderRadius: 16,
-        marginLeft: 24,
+        marginTop: 20,
+    },
+    root: {
+        width: '100%',
+        '& > * + *': {
+            marginTop: theme.spacing(2),
+        },
     },
 }));
 
@@ -22,11 +28,11 @@ const AddTransactionBtn = (props) => {
                 justifyContent="center"
                 alignItems="center"
             >
-            <Typography variant="h5">
-                New Transaction
-            </Typography>
+                <Typography variant="h5">
+                    New Transaction
+                </Typography>
             </Grid>
-      </Card>
+        </Card>
     )
 }
 

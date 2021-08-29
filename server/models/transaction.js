@@ -4,7 +4,6 @@ const TransactionSchema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
-    required: [true, 'Please add a name for your transaction']
   },
   note: {
     type: String,
@@ -17,7 +16,7 @@ const TransactionSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    required: [true, 'Please choose a category']
+    // set: s => `${s[0].toUpperCase()}${s.slice(1)}`,
   },
   createdAt: {
     type: Date,
@@ -31,6 +30,10 @@ const TransactionSchema = new mongoose.Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "users"
+  },
+  type: {
+    type: String,
+    required: [true, 'Cannot find the type of the transaction']
   }
 });
 

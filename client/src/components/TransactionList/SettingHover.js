@@ -1,28 +1,27 @@
 import React, { useState } from "react";
-import { ButtonGroup, IconButton, Grid, Slide } from "@material-ui/core";
+import { ButtonGroup, IconButton, Grid, Slide, Snackbar } from "@material-ui/core";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import DeleteOutlinedIcon from "@material-ui/icons/DeleteOutlined";
+import MuiAlert from '@material-ui/lab/Alert';
 import { deleteTransaction } from "../../actions/transactionAction";
 import { useDispatch } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: theme.spacing(1),
-  },
-  btnColor: {
-    backgroundColor: theme.palette.secondary.dark,
-  },
-}));
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 export default function SettingHover(props) {
   const _id = props._id;
-  const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [openSave, setOpenSave] = React.useState(false);
 
   const handlePopover = () => {
     setOpen(!open);
+  };
+
+  const handleOff = () => {
+    setOpenSave(true);
   };
 
   const dispatch = useDispatch();
@@ -50,18 +49,24 @@ export default function SettingHover(props) {
                 props.handleFormOpen(_id);
               }}
             >
-              <EditOutlinedIcon/>
+              <EditOutlinedIcon fontSize="" />
             </IconButton>
             <IconButton
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(deleteTransaction(_id));
+                setOpenSave(true);
               }}
             >
-              <DeleteOutlinedIcon />
+              <DeleteOutlinedIcon fontSize="" />
             </IconButton>
           </ButtonGroup>
         </Slide>
+        <Snackbar open={openSave} autoHideDuration={2000} onClose={handleOff}>
+          <Alert onClose={handleOff} severity="success">
+            Succesfully Deleted
+          </Alert>
+        </Snackbar>
       </Grid>
     </div>
   );

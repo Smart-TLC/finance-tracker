@@ -136,3 +136,181 @@
         transform: rotate(10deg);
     }
 }
+.svg-animation-container svg {
+    width: 100%;
+}
+
+#BGElement {
+    animation: changeColor 4s infinite
+    alternate;
+}
+
+@keyframes changeColor {
+    0% {
+        fill: rgb(223, 209, 11);
+    }
+    100% {
+        fill: rgb(243, 102, 196);
+    }
+}
+
+#EmeRightArm
+{
+    animation: rotateR 2s infinite
+    alternate;
+    transform-origin: top right;
+    transform-box: fill-box;
+  }
+  
+@keyframes rotateR {
+    0% {
+        transform: rotate(-5deg);
+    }
+    80% {
+        transform: rotate(6deg);
+    }
+}
+
+#EmeLeftArm
+{
+    animation: rotateL 2s infinite
+    alternate;
+    transform-origin: top;
+    transform-box: fill-box;
+  }
+  
+@keyframes rotateL {
+    0% {
+        transform: rotate(-3deg);
+    }
+    80% {
+        transform: rotate(4deg);
+    }
+}
+
+#EmeBody {
+    animation: rotateB 2s infinite
+    alternate;
+    transform-origin: top;
+    transform-box: fill-box;
+}
+
+@keyframes rotateB {
+    0% {
+        transform: rotate(3deg);
+    }
+    80% {
+        transform: rotate(-4deg);
+    }
+}
+
+#ShoArm  
+    {
+        animation: rotateS 1s infinite
+        alternate;
+        transform-origin: left;
+        transform-box: fill-box;
+      }
+      
+@keyframes rotateS {
+    0% {
+        transform: rotate(-15deg);
+    }
+    100% {
+        transform: rotate(16deg);
+    }
+}
+
+#ShoHead  
+    {
+        animation: rotateS 1.5s infinite
+        alternate;
+        transform-origin: bottom;
+        transform-box: fill-box;
+      }
+      
+@keyframes rotateS {
+    0% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(10deg);
+    }
+}
+
+#ShoCloth1 {
+    animation: scaleCl 1.6s infinite 
+    alternate;
+    transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes scaleCl {
+    0% {
+        transform: scale(0.7);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+#ShoCloth2 {
+    animation: rotateCl2 0.4s infinite 
+    alternate;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+@keyframes rotateCl2 {
+    0% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(5deg);
+    }
+}
+
+#ShoLoading {
+    animation: scaleLoading 2s infinite;
+    transform-origin: left;
+    transform-box: fill-box;
+}
+  
+@keyframes scaleLoading {
+    0% {
+        transform: scaleX(0.1);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+#InsMoving {
+    animation: moving 2s infinite;
+    transform-origin: right;
+    transform-box: fill-box;
+}
+@keyframes moving {
+    0% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(-280px);
+    }
+}
+
+#InsHeart {
+    animation: scaleH 1.2s infinite 
+    alternate;
+    transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes scaleH {
+    0% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}

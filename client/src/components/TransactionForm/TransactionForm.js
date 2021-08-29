@@ -1,16 +1,7 @@
 import React, { useEffect } from "react";
 import {
-  makeStyles,
-  Button,
-  TextField,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  InputLabel,
-  FormControl,
-  Select,
+  makeStyles, Button, TextField, Dialog, DialogActions, DialogContent,
+  DialogContentText, DialogTitle, InputLabel, FormControl, Select,
   FormHelperText,
 } from "@material-ui/core";
 import {
@@ -18,15 +9,22 @@ import {
   updateTransaction,
 } from "../../actions/transactionAction";
 import { useFormik } from "formik";
-
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 
 const ValidationSchema = yup.object({
-  name: yup.string().required("Name is required"),
+  name: yup.string().when("type", {
+    is: "expense",
+    then: yup.string().required("Name is required"),
+    otherwise: yup.string()
+  }),
   note: yup.string(),
-  amount: yup.number().required("Amount is required"),
-  category: yup.string().required("Category is required"),
+  amount: yup.number().required("Amount is required").positive("Amount is greater than 0").integer("Amount is an integer"),
+  category: yup.string().when("type", {
+    is: "expense",
+    then: yup.string().required("Category is required"),
+    otherwise: yup.string()
+  }),
   spentAt: yup.string().required("Date is required"),
 });
 
@@ -61,6 +59,7 @@ export default function TransactionForm(props) {
       amount: "",
       category: "",
       spentAt: "",
+      type: props.transactionType,
     },
     onSubmit: (values) => {
       props.handleClose();
@@ -77,17 +76,18 @@ export default function TransactionForm(props) {
       }
     },
   });
+  
+  formik.values.type = props.transactionType;
 
   useEffect(() => {
     formik.resetForm();
-  }, [props.open])
+  }, [props.open]);
 
   // Heading text
   const formHeading = props.id
-    ? "EXPENSE UPDATE FORM"
-    : "EXPENSE ADDITION FORM";
+    ? "TRANSACTION UPDATE FORM"
+    : "TRANSACTION ADDITION FORM";
 
-    
   return (
     <Dialog
       open={props.open}
@@ -111,17 +111,61 @@ export default function TransactionForm(props) {
           <DialogContentText style={{ color: "navy", fontWeight: "bold" }}>
             Information
           </DialogContentText>
+          {props.transactionType === "expense" ? (
+            <>
+              <TextField
+                id="name"
+                name="name"
+                label="Name"
+                type="text"
+                className={classes.textField}
+                variant="outlined"
+                onChange={formik.handleChange}
+                error={Boolean(formik.errors.name)}
+                helperText={formik.errors.name}
+              />
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Category
+                </InputLabel>
+                <Select
+                  native
+                  id="category"
+                  name="category"
+                  label="Category"
+                  onChange={formik.handleChange}
+                  error={Boolean(formik.errors.category)}
+                >
+                  <option value=""></option>
+                  <option value="entertainment">Entertainment</option>
+                  <option value="education">Education</option>
+                  <option value="shopping">Shopping</option>
+                  <option value="insurance">Insurance</option>
+                  <option value="meal">Meal</option>
+                  <option value="emergency">Emergency</option>
+                  <option value="other">Other</option>
+                </Select>
+                <FormHelperText style={{ color: "#ff0000" }}>
+                  {formik.errors.category}
+                </FormHelperText>
+              </FormControl>
+            </>
+          ) : (
+            <></>
+          )}
+        </DialogContent>
 
+        <DialogContent>
           <TextField
-            id="name"
-            name="name"
-            label="Name"
-            type="text"
+            id="amount"
+            label="Amount"
+            name="amount"
             className={classes.textField}
+            type="number"
             variant="outlined"
             onChange={formik.handleChange}
-            error={Boolean(formik.errors.name)}
-            helperText={formik.errors.name}
+            error={Boolean(formik.errors.amount)}
+            helperText={formik.errors.amount}
           />
           <TextField
             variant="outlined"
@@ -138,43 +182,6 @@ export default function TransactionForm(props) {
             error={Boolean(formik.errors.spentAt)}
             helperText={formik.errors.spentAt}
           />
-        </DialogContent>
-
-        <DialogContent>
-          <TextField
-            id="amount"
-            label="Cost"
-            name="amount"
-            className={classes.textField}
-            type="number"
-            variant="outlined"
-            onChange={formik.handleChange}
-            error={Boolean(formik.errors.amount)}
-            helperText={formik.errors.amount}
-          />
-          <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">
-              Category
-            </InputLabel>
-            <Select
-              native
-              id="category"
-              name="category"
-              label="Category"
-              onChange={formik.handleChange}
-              error={Boolean(formik.errors.category)}
-            >
-              <option value=""></option>
-              <option value="entertainment">Entertainment</option>
-              <option value="education">Education</option>
-              <option value="shopping">Shopping</option>
-              <option value="insurance">Insurance</option>
-              <option value="meal">Meal</option>
-              <option value="emergency">Emergency</option>
-              <option value="other">Other</option>
-            </Select>
-            <FormHelperText style={{color: "#ff0000"}}>{formik.errors.category}</FormHelperText>
-          </FormControl>
         </DialogContent>
 
         <DialogContent>
@@ -199,14 +206,11 @@ export default function TransactionForm(props) {
           <Button onClick={props.handleClose} color="primary">
             Cancel
           </Button>
-          <Button
-            type="submit"
-            color="primary"
-          >
+          <Button type="submit" color="primary">
             Save
-          </Button>
+          </Button> 
         </DialogActions>
-      </form> 
+      </form>
     </Dialog>
   );
 }
