@@ -59,7 +59,6 @@ export default function TransactionListItem(props) {
                             <Typography variant="h4" style={{color: "mediumblue"}} className="amount">
                                     ${amount}
                                 </Typography>
-                            <SettingHover _id={_id}/>
                         </Grid>
                     </Grid>
                     </CardContent>

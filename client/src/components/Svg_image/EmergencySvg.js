@@ -23,7 +23,7 @@ function EmergencySvg() {
             animate = "visible"
             transition={{type: 'spring', delay: 0.7, stiffness: 250 }}
         >
-            <svg width="523" height="500" viewBox="0 0 563 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="250" height="720" viewBox="0 0 563 600" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="Emergency">
                 <g id="EmePerson">
                 <g id="EmeRightArm">

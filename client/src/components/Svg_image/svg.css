@@ -197,10 +197,10 @@
 
 @keyframes rotateB {
     0% {
-        transform: rotate(3deg);
+        transform: rotate(0deg);
     }
     80% {
-        transform: rotate(-4deg);
+        transform: rotate(-1deg);
     }
 }
 
