@@ -21,7 +21,6 @@ import Balance from "../TransactionList/Balance";
 import BudgetItem from "../TransactionList/BudgetItem";
 import { isSooner, calculateBalance, filterMonthTransaction } from "../../utils/transactionFunc";
 import MonthBar from "./MonthBar";
-import { filter } from "lodash";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -163,7 +162,7 @@ export default function MonthlyTransList({
             />
           </Card>
         </Grid>
-        <TransactionForm open={open} handleClose={handleClose} id={formId} />
+        <TransactionForm open={open} handleClose={handleClose} id={formId} transactionType={type}/>
       </Grid>
     </Container>
   );

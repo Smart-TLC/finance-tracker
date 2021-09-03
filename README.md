@@ -1,5 +1,10 @@
 # Notes for Backend
 
+### How to run this program on your own pc
+
+* Clone this program and run `npm run dev` on the terminal
+* Make sure you have MongoDB preinstalled on your machine 
+
 ### Understand files and folders in server (backend)
 
 * `index.js`: the main file of server
@@ -12,19 +17,16 @@
 
 ### Dependencies used in Backend
 
-* `express`: express :)
+* `express`
 * `mongoose`: to connect and control database
-* `cors`: provides middleware that enables CORS (ncl de qua kiem duyet cua google, t cx deo bt lam dau :)))
+* `cors`: provides middleware that enables CORS
 * `is-empty`: check if data is nul-like (use with `validator`)
 * `validator`: validate data easier (use in folder `validation`)
 * `jsonwebtoken`: for authorization
 * `passport`: authenticate request
 * `passport-jwt`: authenticate with JSON web token (JWT)
+* `concurrently`: to run client and server simultaneously
 **Note: `jsonwebtoken` `passport` `passport-jwt` is for stay logging in after using websites**
 
 * `crypto`: not a dependency, builtin package, use for encrypt passwords
 * `body-parser`: uses this if using node version < 16. In this project, we just need to use express
-
-### Others
-
-* change config/key.js when deploying web pages

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import {Grid} from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useSelector, useDispatch } from 'react-redux';
@@ -57,11 +57,15 @@ export default function CategoryDetailsPage() {
                 autoHideDuration = {200}
               >
                 <Grid container spacing = {1}>
-                  {cateData.map((item) => {
+                  {cateData.length > 0 ? cateData.map((item) => {
                     return (
                       <CategoryItem item = {item} key = {item._id} />
                     );
-                  })}
+                  }) : (
+                    <Typography justifyContent="center">
+                      No transactions added
+                    </Typography>
+                  )}
                 </Grid>
               </Scrollbars>
             </Grid>

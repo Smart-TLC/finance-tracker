@@ -1,8 +1,6 @@
 html, body, #root, .App {
-  height: 100vh;
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
 }
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
 
@@ -222,4 +220,11 @@ code {
   70% {
     transform: scaleY(0.5);
   }
+}
+
+#not_found {
+  text-align: center;
+  font-size: 3em;
+  color: #cfcfcf;
+  margin-top: 2em;
 }
