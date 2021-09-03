@@ -1,15 +1,17 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Card, CardContent} from "@material-ui/core";
-import Typography from '@material-ui/core/Typography';
+import {Grid} from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteTransaction } from "../../actions/transactionAction";
-
+import "../../index.css";
+import CategoryItem from '../../components/CategoryList/CategoryItem';
+import {Scrollbars} from 'react-custom-scrollbars';
+import {Svg} from '../../types/categoriesSvg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        backgroundColor: theme.palette.background.paper,
         padding: theme.spacing(1),
         marginLeft: 75,
     },
@@ -25,6 +27,13 @@ export default function CategoryDetailsPage() {
       data: state.data
     }))
 
+    console.log(state);
+
+    // load user transactions data at the beginning
+    //   useEffect(() => {
+    //   dispatch(getTransactions(state.auth.user.id));
+    // }, []);
+
     // Filter transactions based on each category
     const cateData = state.data.transactions.filter((transaction) => transaction.category === cate);
     console.log(cateData);
@@ -32,32 +41,34 @@ export default function CategoryDetailsPage() {
     return (            
         <div className={classes.root}>
             <Sidebar />
-            <Typography variant='h3'>
-                {`${cate[0].toUpperCase()}${cate.slice(1)}`} Page
-            </Typography>
-            <div>
-          {cateData.map((item) => {
-            return (
-              <Card key={item._id}> 
-                <CardContent>
-                  <h4>Name: {item.name}</h4>
-                  <p>Note: {item.note}</p>
-                  <p>Amount: {item.amount}</p>
-                  <p>CreatedAt: {item.createdAt}</p>
-                  <p>Category: {item.category}</p>
-                  <p>Owner: {item.owner}</p>
-                  <button onClick={(e) => {
-                    e.preventDefault();
-                    dispatch(deleteTransaction(item._id))
-                  }}>Delete</button>
-                  <button>Change</button> 
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-
-
+            <Grid 
+              container
+              direction = 'row'
+              justifyContent = 'space-evenly'
+              alignItems = 'flex-start'
+            >
+            <Grid
+              item lg = {8} xs = {12}
+            >
+              <Scrollbars
+                style = {{height: 380}}
+                autoHide 
+                autoHideTimeout = {1000}
+                autoHideDuration = {200}
+              >
+                <Grid container spacing = {1}>
+                  {cateData.map((item) => {
+                    return (
+                      <CategoryItem item = {item} key = {item._id} />
+                    );
+                  })}
+                </Grid>
+              </Scrollbars>
+            </Grid>
+            <Grid item>
+                  {Svg[cate]}
+            </Grid>
+            </Grid>
         </div>
     )
 }

@@ -23,7 +23,7 @@ function InsuranceSvg() {
             animate = "visible"
             transition={{type: 'spring', delay: 0.7, stiffness: 250 }}
         >
-          <svg width="900" height="592" viewBox="0 0 900 592" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="900" height="700" viewBox="0 0 900 592" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="Insurance">
             <g id="InsMoving">
             <g id="InsCar">

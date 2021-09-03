@@ -1,7 +1,141 @@
 .svg-animation-container {
     width: 380px;
   }
+  
+  .svg-animation-container svg {
+    width: 100%;
+  }
 
+#QuestionMark {
+    animation: rotateQuestionMark 1.3s infinite alternate;
+    transform-origin: bottom;
+    transform-box: fill-box;
+}
+@keyframes rotateQuestionMark {
+    0% {
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform: rotate(10deg);
+    }
+}
+#HandA {
+    animation: rotateHandA 1.3s infinite alternate;
+    transform-origin: bottom right;
+    transform-box: fill-box;
+}
+@keyframes rotateHandA {
+    0% {
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform: rotate(10deg);
+    }
+}
+#HandB {
+    animation: rotateHandB 1.3s infinite alternate;
+    transform-origin: top left;
+    transform-box: fill-box;
+}
+@keyframes rotateHandB {
+    0% {
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform: rotate(10deg);
+    }
+}
+
+#EduPointer {
+    animation: MovePointer 1.6s infinite alternate;
+    transform-origin: bottom left;
+    transform-box: fill-box;
+}
+@keyframes MovePointer {
+    0% {
+        transform: rotate(-15deg);
+    }
+    100% {
+        transform: rotate(9deg);
+    }
+}
+
+#EduCard1 {
+    animation: moving1 0.8s infinite
+    alternate;
+}
+@keyframes moving1 {
+    0% {
+        transform: translateY(20px);
+      }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+#EduCard2 {
+    animation: moving2 0.8s infinite
+    alternate;
+}
+@keyframes moving2 {
+    0% {
+        transform: translateY(20px);
+      }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+#EduCard3 {
+    animation: moving3 0.8s infinite
+    alternate;
+}
+@keyframes moving3 {
+    0% {
+        transform: translateY(20px);
+      }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+#Draw1 {
+    animation: moving01 0.9s infinite
+    alternate;
+}
+@keyframes moving01 {
+    0% {
+        transform: translateY(20px);
+      }
+    100% {
+        transform: translateY(-30px);
+    }
+}
+
+#Draw2 {
+    animation: moving02 0.9s infinite
+    alternate;
+}
+@keyframes moving02 {
+    0% {
+        transform: translateY(20px);
+      }
+    100% {
+        transform: translateY(-30px);
+    }
+}
+
+#SnowManHead {
+    animation: rotateHead 1.5s infinite alternate;
+    transform-origin: bottom;
+    transform-box: fill-box;
+}
+@keyframes rotateHead {
+    0% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(10deg);
+    }
+}
 .svg-animation-container svg {
     width: 100%;
 }
@@ -63,10 +197,10 @@
 
 @keyframes rotateB {
     0% {
-        transform: rotate(3deg);
+        transform: rotate(0deg);
     }
     80% {
-        transform: rotate(-4deg);
+        transform: rotate(-1deg);
     }
 }
 
