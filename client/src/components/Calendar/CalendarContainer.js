@@ -23,7 +23,6 @@ export default function CalendarContainer() {
     data: state.data,
   }));
 
-  console.log(state.data.transactions);
   const dailySpent = {};
 
   state.data.transactions.forEach((transaction) => {
@@ -55,7 +54,6 @@ export default function CalendarContainer() {
 
   const classes = useStyles();
   const eventStyleGetter = (event) => {
-    console.log(event.value);
     const style = {
         justifyContent: 'center',
         borderRadius: '0px',

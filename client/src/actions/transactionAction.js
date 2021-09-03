@@ -9,7 +9,7 @@ import {
 
 export const getTransactions = (data) => (dispatch) => {
   axios
-    .get("/", {
+    .get("/api/transaction", {
       params: {
         id: data
       }
@@ -30,7 +30,7 @@ export const getTransactions = (data) => (dispatch) => {
 
 export const addTransaction = (data) => (dispatch) => {
   axios
-    .post("/", data)
+    .post("/api/transaction", data)
     .then((res) => {
       dispatch({
         type: ADD_TRANSACTION,
@@ -47,7 +47,7 @@ export const addTransaction = (data) => (dispatch) => {
 
 export const deleteTransaction = (data) => (dispatch) => {
   axios
-    .delete("/", {
+    .delete("/api/transaction", {
       params: {
         id: data
       }
@@ -69,7 +69,7 @@ export const deleteTransaction = (data) => (dispatch) => {
 // do this feature after form Ui is complete
 export const updateTransaction = (data) => (dispatch) => {
   axios
-    .patch("/", data)
+    .patch("/api/transaction", data)
     .then((res) => {
       dispatch({
         type: UPDATE_TRANSACTION,

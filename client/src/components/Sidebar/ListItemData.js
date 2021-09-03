@@ -1,6 +1,5 @@
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
-import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import EventIcon from '@material-ui/icons/Event';
 
@@ -25,11 +24,6 @@ export const ListItemData =  [
         icon: <CalendarTodayIcon />,
         link: "/calendar"
     },
-    {
-        title: "Goal",
-        icon: <MonetizationOnIcon />,
-        link: "/goal"
-    }
 ]
 
 

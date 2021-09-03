@@ -126,11 +126,11 @@ const Login = () => {
       />
       </Container> 
       <form
-        style={{ width: "30%", padding: "3%" }}
+        style={{ width: "30%", padding: "3%", margin: "5% 0" }}
         onSubmit={formik.handleSubmit}
       >
         <FormControl className={classes.form}>
-          <Typography variant="h4" className={classes.title}>Welcome to Budgeto!</Typography>
+          <Typography variant="h4" className={classes.title}>Welcome to UpWhy!</Typography>
           <FormHelperText className={classes.alert}>
             {isError ? state.errors.err : ""}
           </FormHelperText>

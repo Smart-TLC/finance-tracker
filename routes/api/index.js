@@ -1,9 +1,9 @@
 const router = require("express").Router();
 
 // authentication api
-router.use("/auth", require("./auth"));
+router.use("/api/auth", require("./auth"));
 
 // transaction api
-router.use("/", require("./transaction"));
+router.use("/api/transaction", require("./transaction"));
 
 module.exports = router;

@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import {Grid, Card, CardContent, Collapse, Typography, Divider,} from "@material-ui/core";
 import "../../index.css";
 import {makeStyles} from "@material-ui/core/styles";
-import SettingHover from '../TransactionList/SettingHover';
-
 
 const useStyles = makeStyles((theme) => ({
     item : {
@@ -20,7 +18,6 @@ export default function TransactionListItem(props) {
     const {_id, name, spentAt, amount, note} = props.item;
     const classes = useStyles();
     const [expanded, setExpanded] = useState(false);
-    console.log({name})
 
     return (
             <Grid item key={_id} xs={12}>
